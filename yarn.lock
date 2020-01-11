@@ -63,6 +63,11 @@ eventemitter3@^4.0.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.0.tgz#d65176163887ee59f386d64c82610b696a4a74eb"
   integrity sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
 
+flock-ecs@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/flock-ecs/-/flock-ecs-0.1.5.tgz#b808721fa0cfe5ee0e004bfd0c1d74e2e15292d4"
+  integrity sha512-23Sx3tQ/IFjlTyoNPygVj1q7SDt2OVdJ4epdn/kH7GoKpjZI1Js4YNUS+4H5AhsdbGXbLNR/9GdlCClLrxtsMw==
+
 has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"

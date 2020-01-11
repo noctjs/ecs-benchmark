@@ -13,5 +13,8 @@
     "perform-ecs": "^0.7.8",
     "picoes": "^0.5.3",
     "tiny-ecs": "^2.0.0"
+  },
+  "devDependencies": {
+    "flock-ecs": "^0.1.5"
   }
 }
