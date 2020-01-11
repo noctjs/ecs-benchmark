@@ -1,33 +1,35 @@
-const EntComp = require("./cases/ent-comp");
-const flock = require("./cases/flock-ecs");
-const makr = require("./cases/makr");
-const ModECS = require("./cases/modecs");
-const PerformECS = require("./cases/perform-ecs");
-const PicoES = require("./cases/picoes");
-const TinyECS = require("./cases/tiny-ecs");
-const JakeklassenECS = require("./cases/jakeklassen-ecs");
 const suite = require("./suite");
 
 const NUM_ENTITIES = 1000;
 
-suite(`Create and delete (entities: ${4 * NUM_ENTITIES})`)
-  .add("ent-comp", EntComp.bench_create_delete(NUM_ENTITIES))
-  .add("flock", flock.bench_create_delete(NUM_ENTITIES))
-  .add("makr", makr.bench_create_delete(NUM_ENTITIES))
-  .add("ModECS", ModECS.bench_create_delete(NUM_ENTITIES))
-  .add("Perform-ECS", PerformECS.bench_create_delete(NUM_ENTITIES))
-  .add("PicoES", PicoES.bench_create_delete(NUM_ENTITIES))
-  .add("TinyECS", TinyECS.bench_create_delete(NUM_ENTITIES))
-  .add("@jakeklassen/ecs", JakeklassenECS.bench_create_delete(NUM_ENTITIES))
-  .run();
+const create_and_delete_suite = suite(
+  `Create and delete (entities: ${4 * NUM_ENTITIES})`
+);
 
-suite(`Update (entities: ${4 * NUM_ENTITIES}, queries: 3)`)
-  .add("ent-comp", EntComp.bench_update(NUM_ENTITIES))
-  .add("flock", flock.bench_update(NUM_ENTITIES))
-  .add("makr", makr.bench_update(NUM_ENTITIES))
-  .add("ModECS", ModECS.bench_update(NUM_ENTITIES))
-  .add("Perform-ECS", PerformECS.bench_update(NUM_ENTITIES))
-  .add("PicoES", PicoES.bench_update(NUM_ENTITIES))
-  .add("TinyECS", TinyECS.bench_update(NUM_ENTITIES))
-  .add("@jakeklassen/ecs", JakeklassenECS.bench_update(NUM_ENTITIES))
-  .run();
+const update_3_queries_suite = suite(
+  `Update (entities: ${4 * NUM_ENTITIES}, queries: 3)`
+);
+
+add_implementation("@jakeklassen/ecs");
+add_implementation("ent-comp");
+add_implementation("flock-ecs");
+add_implementation("makr");
+add_implementation("modecs");
+add_implementation("perform-ecs");
+add_implementation("picoes");
+add_implementation("tiny-ecs");
+
+create_and_delete_suite.run();
+update_3_queries_suite.run();
+
+function add_implementation(pkg) {
+  let { version } = require(`${pkg}/package.json`);
+  let name = `${pkg}@${version}`;
+
+  let normalized_pkg = pkg.replace(/^@/, "").replace(/\//, "-");
+  let impl_path = require.resolve(`./cases/${normalized_pkg}.js`);
+  let impl = require(impl_path);
+
+  create_and_delete_suite.add(name, impl.bench_create_delete(NUM_ENTITIES));
+  update_3_queries_suite.add(name, impl.bench_update(NUM_ENTITIES));
+}
