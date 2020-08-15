@@ -18,13 +18,19 @@ add_implementation("modecs");
 add_implementation("perform-ecs");
 add_implementation("picoes");
 add_implementation("tiny-ecs");
+add_implementation("goodluck");
 
 create_and_delete_suite.run();
 update_3_queries_suite.run();
 
 function add_implementation(pkg) {
-  let { version } = require(`${pkg}/package.json`);
-  let name = `${pkg}@${version}`;
+  let name;
+  if (pkg === "goodluck") {
+    name = pkg;
+  } else {
+    let { version } = require(`${pkg}/package.json`);
+    name = `${pkg}@${version}`;
+  }
 
   let normalized_pkg = pkg.replace(/^@/, "").replace(/\//, "-");
   let impl_path = require.resolve(`./cases/${normalized_pkg}.js`);
