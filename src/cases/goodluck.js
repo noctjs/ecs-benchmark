@@ -1,17 +1,20 @@
+const { BaseWorld, destroyEntity, instantiate } = require("goodluck");
+
+// Component masks and storage.
+
 const HAS_POSITION = 1 << 0;
 const HAS_VELOCITY = 1 << 1;
 const HAS_ANIMATION = 1 << 2;
 const HAS_RENDER = 1 << 3;
 
-class World {
-  Signature = [];
+class World extends BaseWorld {
   Position = [];
   Velocity = [];
   Animation = [];
   Render = [];
 }
 
-// Mixins
+// Component data mixins.
 
 function position(x = 0, y = 0) {
   return function (world, entity) {
@@ -41,33 +44,7 @@ function render(sprite = null) {
   };
 }
 
-// Goodluck Core
-
-const MAX_ENTITIES = 10000;
-
-function create(world, signature = 0) {
-  for (let i = 0; i < MAX_ENTITIES; i++) {
-    if (!world.Signature[i]) {
-      world.Signature[i] = signature;
-      return i;
-    }
-  }
-  throw new Error("No more entities available.");
-}
-
-function instantiate(world, blueprint) {
-  let entity = create(world);
-  for (let mixin of blueprint.Using) {
-    mixin(world, entity);
-  }
-  return entity;
-}
-
-function destroy(world, entity) {
-  world.Signature[entity] = 0;
-}
-
-// Benchmarks
+// Scene setup.
 
 function insertEntities(world, count) {
   for (let i = 0; i < count; i++) {
@@ -86,12 +63,14 @@ function insertEntities(world, count) {
   }
 }
 
+// Benchmarks.
+
 exports.bench_create_delete = (count) => {
   let world = new World();
   return () => {
     insertEntities(world, count);
     for (let i = 0; i < world.Signature.length; i++) {
-      destroy(world, i);
+      destroyEntity(world, i);
     }
   };
 };

@@ -68,6 +68,11 @@ flock-ecs@^0.1.5:
   resolved "https://registry.yarnpkg.com/flock-ecs/-/flock-ecs-0.1.5.tgz#b808721fa0cfe5ee0e004bfd0c1d74e2e15292d4"
   integrity sha512-23Sx3tQ/IFjlTyoNPygVj1q7SDt2OVdJ4epdn/kH7GoKpjZI1Js4YNUS+4H5AhsdbGXbLNR/9GdlCClLrxtsMw==
 
+goodluck@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/goodluck/-/goodluck-5.0.1.tgz#685fc711b6e324538fdd97dbf63dfc9e5f84c968"
+  integrity sha512-6D3N0AysMb/p76+1850VMZSEqwr7KcsHOXSZKhpPW8NSngtwPDQC8XJXP59IhLzblgSNvdtPftvF6mYwWBLw+w==
+
 has-flag@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
