@@ -18,6 +18,7 @@ add_implementation("modecs");
 add_implementation("perform-ecs");
 add_implementation("picoes");
 add_implementation("tiny-ecs");
+add_implementation("goodluck");
 
 create_and_delete_suite.run();
 update_3_queries_suite.run();
