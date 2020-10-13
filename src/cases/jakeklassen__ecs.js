@@ -31,10 +31,6 @@ class Render extends Component {
   }
 }
 
-function setup() {
-  return new World();
-}
-
 function insertEntities(world, count) {
   let entities = [];
 
@@ -66,8 +62,8 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
-  let world = setup();
+exports.bench_create_delete = (count) => {
+  let world = new World();
 
   return () => {
     for (let entity of insertEntities(world, count)) {
@@ -76,8 +72,8 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
-  let world = setup();
+exports.bench_update = (count) => {
+  let world = new World();
 
   insertEntities(world, count);
 

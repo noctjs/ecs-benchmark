@@ -6,7 +6,7 @@ const Animation = new flock.Component(() => ({ frame: 0, length: 5 }));
 const Render = new flock.Component(() => ({ sprite: null }));
 
 const movementSystem = new flock.System(
-  entities => {
+  (entities) => {
     for (let entity of entities) {
       let pos = entity.getComponent(Position);
       let vel = entity.getComponent(Velocity);
@@ -18,7 +18,7 @@ const movementSystem = new flock.System(
 );
 
 const animationSystem = new flock.System(
-  entities => {
+  (entities) => {
     for (let entity of entities) {
       let anim = entity.getComponent(Animation);
       anim.frame = (anim.frame + 1) % anim.length;
@@ -28,7 +28,7 @@ const animationSystem = new flock.System(
 );
 
 const renderingSystem = new flock.System(
-  entities => {
+  (entities) => {
     for (let entity of entities) {
       if (!entity) throw new Error();
     }
@@ -75,7 +75,7 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
+exports.bench_create_delete = (count) => {
   let world = setup();
 
   return () => {
@@ -86,7 +86,7 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
+exports.bench_update = (count) => {
   let world = setup();
 
   insertEntities(world, count);

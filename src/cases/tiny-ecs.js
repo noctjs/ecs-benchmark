@@ -19,20 +19,13 @@ function Render(sprite = null) {
   this.sprite = sprite;
 }
 
-function setup() {
-  return new EntityManager();
-}
-
 function insertEntities(ecs, count) {
   let entities = [];
 
   for (let i = 0; i < count; i++) {
     entities.push(
       ecs.createEntity().addComponent(Position),
-      ecs
-        .createEntity()
-        .addComponent(Position)
-        .addComponent(Render),
+      ecs.createEntity().addComponent(Position).addComponent(Render),
       ecs
         .createEntity()
         .addComponent(Position)
@@ -50,8 +43,8 @@ function insertEntities(ecs, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
-  let ecs = setup();
+exports.bench_create_delete = (count) => {
+  let ecs = new EntityManager();
 
   return () => {
     for (let entity of insertEntities(ecs, count)) {
@@ -60,8 +53,8 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
-  let ecs = setup();
+exports.bench_update = (count) => {
+  let ecs = new EntityManager();
 
   insertEntities(ecs, count);
 

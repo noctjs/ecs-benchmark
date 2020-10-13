@@ -51,15 +51,8 @@ function insertEntities(world, count) {
   for (let i = 0; i < count; i++) {
     entities.push(
       world.entity().set("position"),
-      world
-        .entity()
-        .set("position")
-        .set("render", "a"),
-      world
-        .entity()
-        .set("position")
-        .set("render", "a")
-        .set("animation", 5),
+      world.entity().set("position").set("render", "a"),
+      world.entity().set("position").set("render", "a").set("animation", 5),
       world
         .entity()
         .set("position")
@@ -72,7 +65,7 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
+exports.bench_create_delete = (count) => {
   let ecs = setup(false);
 
   return () => {
@@ -82,7 +75,7 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
+exports.bench_update = (count) => {
   let world = setup(true);
 
   insertEntities(world, count);

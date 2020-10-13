@@ -13,7 +13,7 @@ function suite(name) {
     .on("complete", () => {
       console.log();
     })
-    .on("cycle", event => {
+    .on("cycle", (event) => {
       let bench = event.target;
       if (bench.error) {
         console.log(`  ${bench.name}  ${chalk.red.inverse(" ERROR ")}`);

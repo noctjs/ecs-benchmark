@@ -3,7 +3,7 @@ const {
   ECS,
   EntityViewFactory,
   makeComponent,
-  System
+  System,
 } = require("perform-ecs");
 
 class PositionComponent extends Component {
@@ -39,12 +39,9 @@ makeComponent(AnimationComponent);
 makeComponent(RenderComponent);
 
 class MovementSystem extends System {
-  constructor() {
-    super();
-    this.view = EntityViewFactory.createView({
-      components: [PositionComponent, VelocityComponent]
-    });
-  }
+  view = EntityViewFactory.createView({
+    components: [PositionComponent, VelocityComponent],
+  });
 
   update() {
     for (let entity of this.view.entities) {
@@ -55,12 +52,9 @@ class MovementSystem extends System {
 }
 
 class AnimationSystem extends System {
-  constructor() {
-    super();
-    this.view = EntityViewFactory.createView({
-      components: [AnimationComponent]
-    });
-  }
+  view = EntityViewFactory.createView({
+    components: [AnimationComponent],
+  });
 
   update() {
     for (let entity of this.view.entities) {
@@ -70,26 +64,15 @@ class AnimationSystem extends System {
 }
 
 class RenderingSystem extends System {
-  constructor() {
-    super();
-    this.view = EntityViewFactory.createView({
-      components: [PositionComponent, RenderComponent]
-    });
-  }
+  view = EntityViewFactory.createView({
+    components: [PositionComponent, RenderComponent],
+  });
 
   update() {
     for (let entity of this.view.entities) {
       if (!entity.sprite) throw new Error();
     }
   }
-}
-
-function setup() {
-  let ecs = new ECS();
-  ecs.registerSystem(new MovementSystem());
-  ecs.registerSystem(new AnimationSystem());
-  ecs.registerSystem(new RenderingSystem());
-  return ecs;
 }
 
 let ent_a = [{ component: PositionComponent, args: [0, 0] }];
@@ -112,8 +95,8 @@ function create_entities(ecs, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
-  let ecs = setup();
+exports.bench_create_delete = (count) => {
+  let ecs = new ECS();
 
   return () => {
     for (let entity of create_entities(ecs, count)) {
@@ -122,8 +105,13 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
-  let ecs = setup();
+exports.bench_update = (count) => {
+  let ecs = new ECS();
+
+  ecs.registerSystem(new MovementSystem());
+  ecs.registerSystem(new AnimationSystem());
+  ecs.registerSystem(new RenderingSystem());
+
   create_entities(ecs, count);
 
   return () => {

@@ -21,28 +21,28 @@
 
 ```
 Create and delete (entities: 4000)
-  @jakeklassen/ecs@2.3.6: 74 op/s (±3.08%)
-  ent-comp@0.9.1: 67 op/s (±2.16%)
-  flock-ecs@0.1.5: 63 op/s (±19.94%)
-  makr@2.1.1: 2,119 op/s (±1.36%)
-  modecs@0.1.11: 3 op/s (±3.36%)
-  perform-ecs@0.7.8: 136 op/s (±1.69%)
-  picoes@0.5.3: 100 op/s (±6.06%)
-  tiny-ecs@2.0.0: 95 op/s (±1.21%)
-  goodluck@5.0.1: 47 op/s (±1.15%)
+  @jakeklassen/ecs: 105 op/s (±3.56%)
+  ent-comp: 85 op/s (±2.33%)
+  flock-ecs: 82 op/s (±23.51%)
+  goodluck: 85 op/s (±0.89%)
+  makr: 3,525 op/s (±1.34%)
+  modecs: 8 op/s (±2.48%)
+  perform-ecs: 415 op/s (±0.63%)
+  picoes: 144 op/s (±5.65%)
+  tiny-ecs: 119 op/s (±1.85%)
 ```
 
 ### Iterating over entities
 
 ```
 Update (entities: 4000, queries: 3)
-  @jakeklassen/ecs@2.3.6: 1,702 op/s (±1.19%)
-  ent-comp@0.9.1: 27,696 op/s (±14.31%)
-  flock-ecs@0.1.5: 1,531 op/s (±3.16%)
-  makr@2.1.1: 7,480 op/s (±1.28%)
-  modecs@0.1.11: 1,655 op/s (±1.57%)
-  perform-ecs@0.7.8: 31,974 op/s (±1.28%)
-  picoes@0.5.3: 908 op/s (±1.44%)
-  tiny-ecs@2.0.0: 22,624 op/s (±12.09%)
-  goodluck@5.0.1: 25,529 op/s (±1.13%)
+  @jakeklassen/ecs: 2,506 op/s (±0.99%)
+  ent-comp: 38,800 op/s (±14.62%)
+  flock-ecs: 1,981 op/s (±1.87%)
+  goodluck: 33,347 op/s (±0.41%)
+  makr: 9,848 op/s (±0.39%)
+  modecs: 2,485 op/s (±0.68%)
+  perform-ecs: 47,612 op/s (±0.67%)
+  picoes: 1,273 op/s (±0.54%)
+  tiny-ecs: 36,544 op/s (±12.92%)
 ```

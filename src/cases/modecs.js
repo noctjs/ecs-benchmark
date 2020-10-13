@@ -43,7 +43,7 @@ function insertEntities(engine, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
+exports.bench_create_delete = (count) => {
   let engine = setup();
 
   return () => {
@@ -53,7 +53,7 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
+exports.bench_update = (count) => {
   let engine = setup();
 
   let movables = engine.registerSystem(
@@ -68,7 +68,7 @@ exports.bench_update = count => {
   let animations = engine.registerSystem(
     "Animation",
     ["ANIMATION"],
-    () => anim => {
+    () => (anim) => {
       anim.frame = (anim.frame + 1) % anim.length;
     }
   );

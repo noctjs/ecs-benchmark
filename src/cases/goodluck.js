@@ -17,28 +17,28 @@ class World extends BaseWorld {
 // Component data mixins.
 
 function position(x = 0, y = 0) {
-  return function (world, entity) {
+  return (world, entity) => {
     world.Signature[entity] |= HAS_POSITION;
     world.Position[entity] = { x, y };
   };
 }
 
 function velocity(dx = 0, dy = 0) {
-  return function (world, entity) {
+  return (world, entity) => {
     world.Signature[entity] |= HAS_VELOCITY;
     world.Velocity[entity] = { dx, dy };
   };
 }
 
 function animation(length = 1) {
-  return function (world, entity) {
+  return (world, entity) => {
     world.Signature[entity] |= HAS_ANIMATION;
     world.Animation[entity] = { frame: 1, length };
   };
 }
 
 function render(sprite = null) {
-  return function (world, entity) {
+  return (world, entity) => {
     world.Signature[entity] |= HAS_RENDER;
     world.Render[entity] = { sprite };
   };

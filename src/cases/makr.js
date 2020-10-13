@@ -51,7 +51,7 @@ function insertEntities(em, count) {
   return entities;
 }
 
-exports.bench_create_delete = count => {
+exports.bench_create_delete = (count) => {
   let em = setup();
 
   return () => {
@@ -61,7 +61,7 @@ exports.bench_create_delete = count => {
   };
 };
 
-exports.bench_update = count => {
+exports.bench_update = (count) => {
   let em = setup();
 
   insertEntities(em, count);
