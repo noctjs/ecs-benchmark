@@ -7,6 +7,7 @@
     "@jakeklassen/ecs": "^2.3.7",
     "benchmark": "^2.1.4",
     "chalk": "^4.1.0",
+    "ecsy": "^0.4.2",
     "ent-comp": "^0.9.1",
     "flock-ecs": "^0.1.5",
     "goodluck": "^5.0.1",
