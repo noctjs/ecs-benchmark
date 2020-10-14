@@ -11,6 +11,7 @@ const update_3_queries_suite = suite(
 );
 
 add_implementation("@jakeklassen/ecs");
+add_implementation("ecsy");
 add_implementation("ent-comp");
 add_implementation("flock-ecs");
 add_implementation("goodluck");
