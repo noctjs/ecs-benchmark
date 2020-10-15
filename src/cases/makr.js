@@ -1,4 +1,4 @@
-const makr = require("makr");
+import makr from "makr";
 
 function Position(x = 0, y = 0) {
   this.x = x;
@@ -51,7 +51,9 @@ function insertEntities(em, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "makr";
+
+export function bench_create_delete(count) {
   let em = setup();
 
   return () => {
@@ -59,9 +61,9 @@ exports.bench_create_delete = (count) => {
       entity.destroy();
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let em = setup();
 
   insertEntities(em, count);
@@ -83,4 +85,4 @@ exports.bench_update = (count) => {
       if (!entity) throw new Error();
     }
   };
-};
+}

@@ -1,4 +1,4 @@
-const flock = require("flock-ecs");
+import flock from "flock-ecs";
 
 const Position = new flock.Component(() => ({ x: 0, y: 0 }));
 const Velocity = new flock.Component(() => ({ dx: 0, dy: 0 }));
@@ -75,7 +75,9 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "flock-ecs";
+
+export function bench_create_delete(count) {
   let world = setup();
 
   return () => {
@@ -84,9 +86,9 @@ exports.bench_create_delete = (count) => {
     }
     world.maintain();
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = setup();
 
   insertEntities(world, count);
@@ -98,4 +100,4 @@ exports.bench_update = (count) => {
     animationSystem.run(world);
     renderingSystem.run(world);
   };
-};
+}

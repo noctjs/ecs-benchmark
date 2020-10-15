@@ -1,4 +1,6 @@
-const { EntityManager } = require("tiny-ecs");
+import TinyECS from "tiny-ecs";
+
+const { EntityManager } = TinyECS;
 
 function Position(x = 0, y = 0) {
   this.x = x;
@@ -43,7 +45,9 @@ function insertEntities(ecs, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "tiny-ecs";
+
+export function bench_create_delete(count) {
   let ecs = new EntityManager();
 
   return () => {
@@ -51,9 +55,9 @@ exports.bench_create_delete = (count) => {
       entity.remove();
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let ecs = new EntityManager();
 
   insertEntities(ecs, count);
@@ -81,4 +85,4 @@ exports.bench_update = (count) => {
     animations.forEach(animationsFn);
     renderables.forEach(renderablesFn);
   };
-};
+}

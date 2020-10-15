@@ -1,4 +1,4 @@
-const { Component, World } = require("@jakeklassen/ecs");
+import { Component, World } from "@jakeklassen/ecs";
 
 class Position extends Component {
   constructor(x = 0, y = 0) {
@@ -62,7 +62,9 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "@jakeklassen/ecs";
+
+export function bench_create_delete(count) {
   let world = new World();
 
   return () => {
@@ -70,9 +72,9 @@ exports.bench_create_delete = (count) => {
       world.deleteEntity(entity);
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = new World();
 
   insertEntities(world, count);
@@ -94,4 +96,4 @@ exports.bench_update = (count) => {
       if (!entity) throw new Error();
     }
   };
-};
+}
