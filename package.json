@@ -10,7 +10,7 @@
     "ecsy": "^0.4.2",
     "ent-comp": "^0.9.1",
     "flock-ecs": "^0.1.5",
-    "goodluck": "^5.0.1",
+    "goodluck": "5.1.0",
     "makr": "^2.1.1",
     "modecs": "^0.1.11",
     "perform-ecs": "^0.7.8",
