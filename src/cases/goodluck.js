@@ -1,4 +1,6 @@
-import { BaseWorld, destroyEntity, instantiate } from "goodluck";
+import goodluck from "goodluck";
+
+const { BaseWorld, destroyEntity, instantiate } = goodluck;
 
 // Component masks and storage.
 
