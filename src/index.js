@@ -16,7 +16,7 @@ add_implementation("ent-comp");
 add_implementation("flock-ecs");
 add_implementation("goodluck");
 add_implementation("makr");
-add_implementation("modecs");
+add_implementation("bitecs");
 add_implementation("perform-ecs");
 add_implementation("picoes");
 add_implementation("tiny-ecs");
