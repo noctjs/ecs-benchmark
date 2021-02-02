@@ -15,7 +15,7 @@ function setup() {
 
   ecs.createComponent({
     name: "Animation",
-    state: { frame: 0, length: 5 },
+    state: { frame: 0, size: 1 },
   });
 
   ecs.createComponent({
@@ -30,12 +30,23 @@ function insertEntities(ecs, count) {
   let entities = [];
 
   for (let i = 0; i < count; i++) {
-    entities.push(
-      ecs.createEntity(["Position"]),
-      ecs.createEntity(["Position", "Render"]),
-      ecs.createEntity(["Position", "Render", "Animation"]),
-      ecs.createEntity(["Position", "Render", "Animation", "Velocity"])
-    );
+    let e1 = ecs.createEntity();
+    let e2 = ecs.createEntity();
+    let e3 = ecs.createEntity();
+    let e4 = ecs.createEntity();
+
+    ecs.addComponent(e1, "Position");
+    ecs.addComponent(e2, "Position");
+    ecs.addComponent(e2, "Render", { sprite: "A" });
+    ecs.addComponent(e3, "Position");
+    ecs.addComponent(e3, "Render", { sprite: "A" });
+    ecs.addComponent(e3, "Animation", { frame: 0, size: 5 });
+    ecs.addComponent(e4, "Position");
+    ecs.addComponent(e4, "Render", { sprite: "A" });
+    ecs.addComponent(e4, "Animation", { frame: 0, size: 5 });
+    ecs.addComponent(e4, "Velocity", { dx: 0.1, dy: 0.1 });
+
+    entities.push(e1, e2, e3, e4);
   }
 
   return entities;
@@ -71,7 +82,7 @@ export function bench_update(count) {
   }
 
   function animationsFn(state) {
-    state.frame = (state.frame + 1) % state.length;
+    state.frame = (state.frame + 1) % state.size;
   }
 
   function renderablesFn(state) {

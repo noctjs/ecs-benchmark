@@ -1,7 +1,7 @@
 import { Component, World } from "@jakeklassen/ecs";
 
 class Position extends Component {
-  constructor(x = 0, y = 0) {
+  constructor(x, y) {
     super();
     this.x = x;
     this.y = y;
@@ -9,7 +9,7 @@ class Position extends Component {
 }
 
 class Velocity extends Component {
-  constructor(dx = 0, dy = 0) {
+  constructor(dx, dy) {
     super();
     this.dx = dx;
     this.dy = dy;
@@ -17,15 +17,15 @@ class Velocity extends Component {
 }
 
 class Animation extends Component {
-  constructor(length = 1) {
+  constructor(frame, size) {
     super();
-    this.frame = 0;
-    this.length = length;
+    this.frame = frame;
+    this.size = size;
   }
 }
 
 class Render extends Component {
-  constructor(sprite = null) {
+  constructor(sprite) {
     super();
     this.sprite = sprite;
   }
@@ -40,20 +40,20 @@ function insertEntities(world, count) {
     let e3 = world.createEntity();
     let e4 = world.createEntity();
 
-    world.addEntityComponents(e1, new Position());
-    world.addEntityComponents(e2, new Position(), new Render());
+    world.addEntityComponents(e1, new Position(0, 0));
+    world.addEntityComponents(e2, new Position(0, 0), new Render("A"));
     world.addEntityComponents(
       e3,
-      new Position(),
-      new Render(),
-      new Animation()
+      new Position(0, 0),
+      new Render("A"),
+      new Animation(0, 5)
     );
     world.addEntityComponents(
       e4,
-      new Position(),
-      new Render(),
-      new Animation(),
-      new Velocity()
+      new Position(0, 0),
+      new Render("A"),
+      new Animation(0, 5),
+      new Velocity(0.1, 0.1)
     );
 
     entities.push(e1, e2, e3, e4);
@@ -89,7 +89,7 @@ export function bench_update(count) {
 
     for (let comps of world.view(Animation).values()) {
       let anim = comps.get(Animation);
-      anim.frame = (anim.frame + 1) % anim.length;
+      anim.frame = (anim.frame + 1) % anim.size;
     }
 
     for (let entity of world.view(Position, Velocity).keys()) {
