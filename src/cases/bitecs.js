@@ -19,18 +19,15 @@ function insertEntities(engine, count) {
     engine.addComponent("POSITION", e1);
 
     let e2 = engine.addEntity();
-    engine.addEntity(e2);
     engine.addComponent("POSITION", e2);
     engine.addComponent("RENDER", e2, { sprite: "A" });
 
     let e3 = engine.addEntity();
-    engine.addEntity(e3);
     engine.addComponent("POSITION", e3);
     engine.addComponent("RENDER", e3, { sprite: "A" });
     engine.addComponent("ANIMATION", e3, { frame: 0, size: 5 });
 
     let e4 = engine.addEntity();
-    engine.addEntity(e4);
     engine.addComponent("POSITION", e4);
     engine.addComponent("RENDER", e4, { sprite: "A" });
     engine.addComponent("ANIMATION", e4, { frame: 0, size: 5 });

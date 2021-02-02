@@ -23,7 +23,7 @@
 ```
 Create and delete (entities: 4000)
   @jakeklassen/ecs: 118 op/s (±1.99%)
-  bitecs: 98 op/s (±0.80%)
+  bitecs: 99 op/s (±0.42%)
   ecsy: 110 op/s (±2.88%)
   ent-comp: 84 op/s (±2.79%)
   flock-ecs: 75 op/s (±18.54%)
@@ -39,7 +39,7 @@ Create and delete (entities: 4000)
 ```
 Update (entities: 4000, queries: 3)
   @jakeklassen/ecs: 2,518 op/s (±0.63%)
-  bitecs: 45,687 op/s (±5.94%)
+  bitecs: 44,077 op/s (±6.63%)
   ecsy: 2,081 op/s (±0.97%)
   ent-comp: 42,910 op/s (±9.14%)
   flock-ecs: 1,993 op/s (±2.20%)
