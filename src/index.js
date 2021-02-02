@@ -1,11 +1,11 @@
 import { suite } from "./suite.js";
+import * as bitecs from "./cases/bitecs.js";
 import * as ecsy from "./cases/ecsy.js";
 import * as ent_comp from "./cases/ent-comp.js";
 import * as flock_ecs from "./cases/flock-ecs.js";
 import * as goodluck from "./cases/goodluck.js";
 import * as jakeklassen__ecs from "./cases/jakeklassen__ecs.js";
 import * as makr from "./cases/makr.js";
-import * as modecs from "./cases/modecs.js";
 import * as perform_ecs from "./cases/perform-ecs.js";
 import * as picoes from "./cases/picoes.js";
 import * as tiny_ecs from "./cases/tiny-ecs.js";
@@ -21,12 +21,12 @@ const update_3_queries_suite = suite(
 );
 
 add_implementation(jakeklassen__ecs);
+add_implementation(bitecs);
 add_implementation(ecsy);
 add_implementation(ent_comp);
 add_implementation(flock_ecs);
 add_implementation(goodluck);
 add_implementation(makr);
-add_implementation(modecs);
 add_implementation(perform_ecs);
 add_implementation(picoes);
 add_implementation(tiny_ecs);
