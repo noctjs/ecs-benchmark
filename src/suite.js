@@ -1,14 +1,14 @@
-const Benchmark = require("benchmark");
-const chalk = require("chalk");
+import Benchmark from "benchmark";
+import { bold, dim, inverse, red, white } from "kleur/colors";
 
 /**
  * @param {string} name
  * @returns {Benchmark.Suite}
  */
-function suite(name) {
+export function suite(name) {
   return new Benchmark.Suite()
     .on("start", () => {
-      console.log(chalk.white.bold(name));
+      console.log(bold(white(name)));
     })
     .on("complete", () => {
       console.log();
@@ -16,14 +16,12 @@ function suite(name) {
     .on("cycle", (event) => {
       let bench = event.target;
       if (bench.error) {
-        console.log(`  ${bench.name}  ${chalk.red.inverse(" ERROR ")}`);
-        console.log(chalk.red(bench.error.stack));
+        console.log(`  ${bench.name}  ${inverse(red(" ERROR "))}`);
+        console.log(red(bench.error.stack));
       } else {
         let ops = Math.floor(bench.hz).toLocaleString();
         let rme = bench.stats.rme.toFixed(2);
-        console.log(`  ${bench.name}:`, chalk.gray(`${ops} op/s (±${rme}%)`));
+        console.log(`  ${bench.name}:`, dim(`${ops} op/s (±${rme}%)`));
       }
     });
 }
-
-module.exports = suite;

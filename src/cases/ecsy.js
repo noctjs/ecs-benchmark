@@ -1,4 +1,4 @@
-const { Component, Types, World, System } = require("ecsy");
+import { Component, Types, World, System } from "ecsy";
 
 class Position extends Component {
   static schema = {
@@ -103,7 +103,9 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "ecsy";
+
+export function bench_create_delete(count) {
   let world = setup();
 
   return () => {
@@ -111,9 +113,9 @@ exports.bench_create_delete = (count) => {
       entity.remove(true);
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = setup();
 
   world.registerSystem(MovementSystem);
@@ -125,4 +127,4 @@ exports.bench_update = (count) => {
   return () => {
     world.execute();
   };
-};
+}

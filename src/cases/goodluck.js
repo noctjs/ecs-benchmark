@@ -1,4 +1,6 @@
-const { BaseWorld, destroyEntity, instantiate } = require("goodluck");
+import goodluck from "goodluck";
+
+const { BaseWorld, destroyEntity, instantiate } = goodluck;
 
 // Component masks and storage.
 
@@ -65,7 +67,9 @@ function insertEntities(world, count) {
 
 // Benchmarks.
 
-exports.bench_create_delete = (count) => {
+export const name = "goodluck";
+
+export function bench_create_delete(count) {
   let world = new World();
   return () => {
     insertEntities(world, count);
@@ -73,9 +77,9 @@ exports.bench_create_delete = (count) => {
       destroyEntity(world, i);
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = new World();
   insertEntities(world, count);
 
@@ -118,4 +122,4 @@ exports.bench_update = (count) => {
     sys_animations(world);
     sys_renderables(world);
   };
-};
+}

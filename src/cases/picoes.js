@@ -1,4 +1,4 @@
-const { MemoizedQueryIndex, SimpleIndex, World } = require("picoes");
+import { MemoizedQueryIndex, SimpleIndex, World } from "picoes";
 
 function setup(memoize) {
   let world = new World(memoize ? MemoizedQueryIndex : SimpleIndex);
@@ -65,7 +65,9 @@ function insertEntities(world, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "picoes";
+
+export function bench_create_delete(count) {
   let ecs = setup(false);
 
   return () => {
@@ -73,9 +75,9 @@ exports.bench_create_delete = (count) => {
       entity.destroy();
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = setup(true);
 
   insertEntities(world, count);
@@ -98,4 +100,4 @@ exports.bench_update = (count) => {
     world.every(["animation"], animationsFn);
     world.every(["position", "render"], renderablesFn);
   };
-};
+}

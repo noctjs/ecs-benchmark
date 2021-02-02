@@ -1,16 +1,17 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "node src/index.js"
   },
   "dependencies": {
     "@jakeklassen/ecs": "^2.3.7",
     "benchmark": "^2.1.4",
-    "chalk": "^4.1.0",
     "ecsy": "^0.4.2",
     "ent-comp": "^0.9.1",
     "flock-ecs": "^0.1.5",
-    "goodluck": "5.2.0",
+    "goodluck": "^5.2.0",
+    "kleur": "^4.1.4",
     "makr": "^2.1.1",
     "modecs": "^0.1.11",
     "perform-ecs": "^0.7.8",
