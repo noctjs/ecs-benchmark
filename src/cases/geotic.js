@@ -82,6 +82,8 @@ export function bench_create_delete(count) {
 export function bench_update(count) {
   let world = setup(count);
 
+  insertEntities(world, count);
+
   let movables = world.createQuery({
     all: [Position, Velocity],
   });
@@ -93,8 +95,6 @@ export function bench_update(count) {
   let renderables = world.createQuery({
     all: [Position, Render],
   });
-
-  insertEntities(world, count);
 
   return () => {
     for (let entity of movables.get()) {
