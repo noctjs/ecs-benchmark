@@ -32,10 +32,10 @@ function velocity(dx = 0, dy = 0) {
   };
 }
 
-function animation(length = 1) {
+function animation(frame = 0, size = 1) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_ANIMATION;
-    world.Animation[entity] = { frame: 1, length };
+    world.Animation[entity] = { frame, size };
   };
 }
 
@@ -51,16 +51,16 @@ function render(sprite = null) {
 function insertEntities(world, count) {
   for (let i = 0; i < count; i++) {
     instantiate(world, {
-      Using: [position()],
+      Using: [position(0, 0)],
     });
     instantiate(world, {
-      Using: [position(), render("a")],
+      Using: [position(0, 0), render("A")],
     });
     instantiate(world, {
-      Using: [position(), render("a"), animation(5)],
+      Using: [position(0, 0), render("A"), animation(0, 5)],
     });
     instantiate(world, {
-      Using: [position(), render("a"), animation(5), velocity()],
+      Using: [position(0, 0), render("A"), animation(0, 5), velocity(0.1, 0.1)],
     });
   }
 }
@@ -100,7 +100,7 @@ export function bench_update(count) {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & QUERY_ANIMATIONS) === QUERY_ANIMATIONS) {
         let animation = world.Animation[i];
-        animation.frame = (animation.frame + 1) % animation.length;
+        animation.frame = (animation.frame + 1) % animation.size;
       }
     }
   }

@@ -26,9 +26,9 @@ function setup(memoize) {
   world.component(
     "animation",
     class {
-      onCreate(_, length = 1) {
-        this.frame = 0;
-        this.length = length;
+      onCreate(_, frame = 0, size = 1) {
+        this.frame = frame;
+        this.size = size;
       }
     }
   );
@@ -51,14 +51,14 @@ function insertEntities(world, count) {
   for (let i = 0; i < count; i++) {
     entities.push(
       world.entity().set("position"),
-      world.entity().set("position").set("render", "a"),
-      world.entity().set("position").set("render", "a").set("animation", 5),
+      world.entity().set("position").set("render", "A"),
+      world.entity().set("position").set("render", "A").set("animation", 0, 5),
       world
         .entity()
         .set("position")
-        .set("render", "a")
-        .set("animation", 5)
-        .set("velocity")
+        .set("render", "A")
+        .set("animation", 0, 5)
+        .set("velocity", 0.1, 0.1)
     );
   }
 
@@ -88,7 +88,7 @@ export function bench_update(count) {
   }
 
   function animationsFn(anim) {
-    anim.frame = (anim.frame + 1) % anim.length;
+    anim.frame = (anim.frame + 1) % anim.size;
   }
 
   function renderablesFn(entity) {
