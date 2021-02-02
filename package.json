@@ -13,6 +13,7 @@
     "flock-ecs": "^0.1.5",
     "geotic": "^4.1.4",
     "goodluck": "^5.2.0",
+    "js13k-ecs": "^0.1.4",
     "kleur": "^4.1.4",
     "makr": "^2.1.1",
     "perform-ecs": "^0.7.8",

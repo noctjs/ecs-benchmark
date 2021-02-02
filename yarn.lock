@@ -53,6 +53,11 @@ goodluck@^5.2.0:
   resolved "https://registry.yarnpkg.com/goodluck/-/goodluck-5.2.0.tgz#8f06ca10318292af75fb2e0ffa7a332f640553d6"
   integrity sha512-DzPuYxSuVObwbpyjKMYbMRucfcn6pt8HQSLEU5zPEp7twN6C7LlhUdOBVQTd48WHCCBgSH+WJr8XO8Pxc2JCyQ==
 
+js13k-ecs@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/js13k-ecs/-/js13k-ecs-0.1.4.tgz#680b1f37c6f898f8e704232678507bbb08677717"
+  integrity sha512-F/OgEkkKMIyZ4b5znThA72oqQDusYFB9m3GZOhjXR2yHR3U6me7363Dc80gM+g3kz9gajhEe3adMstefNeGbqw==
+
 kleur@^4.1.4:
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-4.1.4.tgz#8c202987d7e577766d039a8cd461934c01cda04d"
