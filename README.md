@@ -19,36 +19,38 @@
 
 ## Benchmarks
 
+The benchmarks are run on node v15.8.0.
+
 ### Adding and deleting entities
 
 ```
 Create and delete (entities: 4000)
-  @jakeklassen/ecs: 111 op/s (±2.15%)
-  bitecs: 98 op/s (±0.61%)
-  ecsy: 105 op/s (±2.23%)
-  ent-comp: 77 op/s (±2.74%)
-  flock-ecs: 79 op/s (±19.40%)
-  geotic: 63 op/s (±4.27%)
-  goodluck: 1,665 op/s (±6.60%)
-  makr: 3,112 op/s (±1.59%)
-  perform-ecs: 366 op/s (±1.66%)
-  picoes: 134 op/s (±4.97%)
-  tiny-ecs: 93 op/s (±1.86%)
+  @jakeklassen/ecs: 92 op/s (±3.00%)
+  bitecs: 324 op/s (±1.38%)
+  ecsy: 89 op/s (±2.01%)
+  ent-comp: 69 op/s (±1.70%)
+  flock-ecs: 71 op/s (±20.99%)
+  geotic: 57 op/s (±2.13%)
+  goodluck: 1,491 op/s (±6.17%)
+  makr: 2,975 op/s (±0.53%)
+  perform-ecs: 353 op/s (±0.64%)
+  picoes: 119 op/s (±4.28%)
+  tiny-ecs: 81 op/s (±1.70%)
 ```
 
 ### Iterating over entities
 
 ```
 Update (entities: 4000, queries: 3)
-  @jakeklassen/ecs: 2,006 op/s (±3.27%)
-  bitecs: 42,784 op/s (±7.28%)
-  ecsy: 1,506 op/s (±5.13%)
-  ent-comp: 44,785 op/s (±7.42%)
-  flock-ecs: 1,933 op/s (±2.89%)
-  geotic: 18,772 op/s (±1.25%)
-  goodluck: 22,509 op/s (±1.56%)
-  makr: 8,446 op/s (±1.25%)
-  perform-ecs: 43,760 op/s (±0.61%)
-  picoes: 1,174 op/s (±1.11%)
-  tiny-ecs: 36,374 op/s (±7.96%)
+  @jakeklassen/ecs: 2,165 op/s (±4.22%)
+  bitecs: 41,950 op/s (±7.81%)
+  ecsy: 1,963 op/s (±1.58%)
+  ent-comp: 42,141 op/s (±10.58%)
+  flock-ecs: 1,842 op/s (±2.79%)
+  geotic: 21,873 op/s (±1.03%)
+  goodluck: 23,985 op/s (±1.27%)
+  makr: 9,071 op/s (±0.60%)
+  perform-ecs: 44,368 op/s (±0.56%)
+  picoes: 1,173 op/s (±1.78%)
+  tiny-ecs: 37,374 op/s (±7.16%)
 ```
