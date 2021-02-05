@@ -1,10 +1,10 @@
-const {
+import {
   Component,
   ECS,
   EntityViewFactory,
   makeComponent,
   System,
-} = require("perform-ecs");
+} from "perform-ecs";
 
 class PositionComponent extends Component {
   reset(obj, x, y) {
@@ -21,9 +21,9 @@ class VelocityComponent extends Component {
 }
 
 class AnimationComponent extends Component {
-  reset(obj, length) {
-    obj.frame = 0;
-    obj.length = length;
+  reset(obj, frame, size) {
+    obj.frame = frame;
+    obj.size = size;
   }
 }
 
@@ -58,7 +58,7 @@ class AnimationSystem extends System {
 
   update() {
     for (let entity of this.view.entities) {
-      entity.frame = (entity.frame + 1) % entity.length;
+      entity.frame = (entity.frame + 1) % entity.size;
     }
   }
 }
@@ -76,9 +76,9 @@ class RenderingSystem extends System {
 }
 
 let ent_a = [{ component: PositionComponent, args: [0, 0] }];
-let ent_b = ent_a.concat({ component: RenderComponent, args: ["a"] });
-let ent_c = ent_b.concat({ component: AnimationComponent, args: [5] });
-let ent_d = ent_c.concat({ component: VelocityComponent, args: [0, 0] });
+let ent_b = ent_a.concat({ component: RenderComponent, args: ["A"] });
+let ent_c = ent_b.concat({ component: AnimationComponent, args: [0, 5] });
+let ent_d = ent_c.concat({ component: VelocityComponent, args: [0.1, 0.1] });
 
 function create_entities(ecs, count) {
   let entities = [];
@@ -95,7 +95,9 @@ function create_entities(ecs, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "perform-ecs";
+
+export function bench_create_delete(count) {
   let ecs = new ECS();
 
   return () => {
@@ -103,9 +105,9 @@ exports.bench_create_delete = (count) => {
       ecs.removeEntity(entity);
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let ecs = new ECS();
 
   ecs.registerSystem(new MovementSystem());
@@ -117,4 +119,4 @@ exports.bench_update = (count) => {
   return () => {
     ecs.update(0);
   };
-};
+}

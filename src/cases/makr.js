@@ -1,21 +1,21 @@
-const makr = require("makr");
+import makr from "makr";
 
-function Position(x = 0, y = 0) {
+function Position(x, y) {
   this.x = x;
   this.y = y;
 }
 
-function Velocity(dx = 0, dy = 0) {
+function Velocity(dx, dy) {
   this.dx = dx;
   this.dy = dy;
 }
 
-function Animation(length = 1) {
-  this.frame = 0;
-  this.length = length;
+function Animation(frame, size) {
+  this.frame = frame;
+  this.size = size;
 }
 
-function Render(sprite = null) {
+function Render(sprite) {
   this.sprite = sprite;
 }
 
@@ -32,18 +32,18 @@ function insertEntities(em, count) {
 
     let e2 = em.create();
     e2.add(new Position(0, 0));
-    e2.add(new Render("a"));
+    e2.add(new Render("A"));
 
     let e3 = em.create();
     e3.add(new Position(0, 0));
-    e3.add(new Render("a"));
-    e3.add(new Animation(5));
+    e3.add(new Render("A"));
+    e3.add(new Animation(0, 5));
 
     let e4 = em.create();
     e4.add(new Position(0, 0));
-    e4.add(new Render("a"));
-    e4.add(new Animation(5));
-    e4.add(new Velocity(0, 0));
+    e4.add(new Render("A"));
+    e4.add(new Animation(0, 5));
+    e4.add(new Velocity(0.1, 0.1));
 
     entities.push(e1, e2, e3, e4);
   }
@@ -51,7 +51,9 @@ function insertEntities(em, count) {
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "makr";
+
+export function bench_create_delete(count) {
   let em = setup();
 
   return () => {
@@ -59,9 +61,9 @@ exports.bench_create_delete = (count) => {
       entity.destroy();
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let em = setup();
 
   insertEntities(em, count);
@@ -76,11 +78,11 @@ exports.bench_update = (count) => {
 
     for (let entity of em.query(Animation)) {
       let anim = entity.get(Animation);
-      anim.frame = (anim.frame + 1) % anim.length;
+      anim.frame = (anim.frame + 1) % anim.size;
     }
 
     for (let entity of em.query(Position, Render)) {
       if (!entity) throw new Error();
     }
   };
-};
+}

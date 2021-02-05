@@ -1,4 +1,4 @@
-const { Component, Types, World, System } = require("ecsy");
+import { Component, Types, World, System } from "ecsy";
 
 class Position extends Component {
   static schema = {
@@ -17,7 +17,7 @@ class Velocity extends Component {
 class Animation extends Component {
   static schema = {
     frame: { type: Types.Number, default: 0 },
-    length: { type: Types.Number, default: 5 },
+    size: { type: Types.Number, default: 1 },
   };
 }
 
@@ -50,7 +50,7 @@ class AnimationSystem extends System {
   execute() {
     this.queries.animations.results.forEach((entity) => {
       let anim = entity.getMutableComponent(Animation);
-      anim.frame = (anim.frame + 1) % anim.length;
+      anim.frame = (anim.frame + 1) % anim.size;
     });
   }
 }
@@ -62,7 +62,7 @@ class RenderingSystem extends System {
 
   execute() {
     this.queries.renderables.results.forEach((entity) => {
-      if (!entity) throw new Error();
+      if (!entity) throw new Error(entity.id);
     });
   }
 }
@@ -85,25 +85,30 @@ function insertEntities(world, count) {
   for (let i = 0; i < count; i++) {
     entities.push(
       world.createEntity().addComponent(Position),
-      world.createEntity().addComponent(Position).addComponent(Render),
       world
         .createEntity()
         .addComponent(Position)
-        .addComponent(Render)
-        .addComponent(Animation),
+        .addComponent(Render, { sprite: "A" }),
       world
         .createEntity()
         .addComponent(Position)
-        .addComponent(Render)
-        .addComponent(Animation)
-        .addComponent(Velocity)
+        .addComponent(Render, { sprite: "A" })
+        .addComponent(Animation, { frame: 0, size: 5 }),
+      world
+        .createEntity()
+        .addComponent(Position)
+        .addComponent(Render, { sprite: "A" })
+        .addComponent(Animation, { frame: 0, size: 5 })
+        .addComponent(Velocity, { dx: 0.1, dy: 0.1 })
     );
   }
 
   return entities;
 }
 
-exports.bench_create_delete = (count) => {
+export const name = "ecsy";
+
+export function bench_create_delete(count) {
   let world = setup();
 
   return () => {
@@ -111,9 +116,9 @@ exports.bench_create_delete = (count) => {
       entity.remove(true);
     }
   };
-};
+}
 
-exports.bench_update = (count) => {
+export function bench_update(count) {
   let world = setup();
 
   world.registerSystem(MovementSystem);
@@ -125,4 +130,4 @@ exports.bench_update = (count) => {
   return () => {
     world.execute();
   };
-};
+}
