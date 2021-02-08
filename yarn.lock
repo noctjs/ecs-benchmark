@@ -30,11 +30,6 @@ ecsy@^0.4.2:
   resolved "https://registry.yarnpkg.com/ecsy/-/ecsy-0.4.2.tgz#5d0c78fb248c81f587dfc05c01cb39e8bb2233ab"
   integrity sha512-dVKOkuz1IsRvS7GlHcWghUtMZzXr70h6b+SQEHlKy2RgsCRNDzdYr6a43Q6HafuquA/67YFZCQt8zqadq/jlLA==
 
-ent-comp@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/ent-comp/-/ent-comp-0.9.1.tgz#7d93b56236097e97ef4f6a4787f4cfe2978c5735"
-  integrity sha512-Jai4J7ln0RIUhgiW74DZ5PHpZ67U0k1LS2Ssdifw6gBDlvesGhUHIn4X6HkoLRF/0fB0ydgKqHH80LJ0P1aXEw==
-
 flock-ecs@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/flock-ecs/-/flock-ecs-0.1.5.tgz#b808721fa0cfe5ee0e004bfd0c1d74e2e15292d4"
@@ -77,11 +72,6 @@ perform-ecs@^0.7.8:
   version "0.7.8"
   resolved "https://registry.yarnpkg.com/perform-ecs/-/perform-ecs-0.7.8.tgz#230eadbedf799d29c3d05f62a59536cca0340eb6"
   integrity sha512-+4WYfCW6/ZVYQDF+78RJc7oWmK2dqtfsdDRfB/kyiHfbQfRIWldJqn2hpQt0ByDWQgtFQrMGGpED1S9wQj3WOw==
-
-picoes@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/picoes/-/picoes-0.5.3.tgz#7948d5da635a3ee536f497db0de0e01044f503ba"
-  integrity sha512-75BfyxXitwbVnhUE56wTaPLkRxMNuuXDVUXQ5inIjAaWDI8ipLRbtKCBojJi1/v66wZ8XRWfKDAbJJlGnH8YBg==
 
 platform@^1.3.3:
   version "1.3.6"

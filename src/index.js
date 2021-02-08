@@ -1,42 +1,52 @@
+import * as bitecs from "./cases/bitecs/mod.js";
+import * as ecsy from "./cases/ecsy/mod.js";
+import * as flock_ecs from "./cases/flock-ecs/mod.js";
+import * as geotic from "./cases/geotic/mod.js";
+import * as goodluck from "./cases/goodluck/mod.js";
+import * as jakeklassen__ecs from "./cases/jakeklassen__ecs/mod.js";
+import * as makr from "./cases/makr/mod.js";
+import * as perform_ecs from "./cases/perform-ecs/mod.js";
+import * as tiny_ecs from "./cases/tiny-ecs/mod.js";
 import { suite } from "./suite.js";
-import * as bitecs from "./cases/bitecs.js";
-import * as ecsy from "./cases/ecsy.js";
-import * as ent_comp from "./cases/ent-comp.js";
-import * as flock_ecs from "./cases/flock-ecs.js";
-import * as geotic from "./cases/geotic.js";
-import * as goodluck from "./cases/goodluck.js";
-import * as jakeklassen__ecs from "./cases/jakeklassen__ecs.js";
-import * as makr from "./cases/makr.js";
-import * as perform_ecs from "./cases/perform-ecs.js";
-import * as picoes from "./cases/picoes.js";
-import * as tiny_ecs from "./cases/tiny-ecs.js";
 
-const NUM_ENTITIES = 1000;
+const packed_1 = suite(`Packed (1 query)`);
+const packed_5 = suite(`Packed (5 queries)`);
+const add_remove = suite(`Add / Remove`);
+const simple_iter = suite(`Simple Iteration`);
+const frag_iter = suite(`Fragmented Iteration`);
 
-const create_and_delete_suite = suite(
-  `Create and delete (entities: ${4 * NUM_ENTITIES})`
-);
+const libraries = [
+  jakeklassen__ecs,
+  bitecs,
+  ecsy,
+  flock_ecs,
+  geotic,
+  goodluck,
+  makr,
+  perform_ecs,
+  tiny_ecs,
+];
 
-const update_3_queries_suite = suite(
-  `Update (entities: ${4 * NUM_ENTITIES}, queries: 3)`
-);
+const suites = [packed_1, packed_5, add_remove, simple_iter, frag_iter];
 
-add_implementation(jakeklassen__ecs);
-add_implementation(bitecs);
-add_implementation(ecsy);
-add_implementation(ent_comp);
-add_implementation(flock_ecs);
-add_implementation(geotic);
-add_implementation(goodluck);
-add_implementation(makr);
-add_implementation(perform_ecs);
-add_implementation(picoes);
-add_implementation(tiny_ecs);
+for (let mod of libraries) {
+  packed_1.add(mod.name, mod.bench_packed_1(5_000));
+  packed_5.add(mod.name, mod.bench_packed_5(1_000));
+  simple_iter.add(mod.name, mod.bench_simple_iter(1_000));
+  frag_iter.add(mod.name, mod.bench_frag_iter(100));
+  add_remove.add(mod.name, mod.bench_add_remove(1_000));
+}
 
-create_and_delete_suite.run();
-update_3_queries_suite.run();
+for (let suite of suites) {
+  suite.run();
+}
 
-function add_implementation(mod) {
-  create_and_delete_suite.add(mod.name, mod.bench_create_delete(NUM_ENTITIES));
-  update_3_queries_suite.add(mod.name, mod.bench_update(NUM_ENTITIES));
+console.log("|     | " + libraries.map((mod) => mod.name).join(" | ") + " |");
+console.log("| --- |" + " --: |".repeat(libraries.length));
+for (let suite of suites) {
+  console.log(
+    `| ${suite.name} | ${suite
+      .map((bench) => Math.floor(bench.hz).toLocaleString())
+      .join(" op/s | ")} |`
+  );
 }
