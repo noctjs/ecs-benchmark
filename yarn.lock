@@ -15,10 +15,10 @@ benchmark@^2.1.4:
     lodash "^4.17.4"
     platform "^1.3.3"
 
-bitecs@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/bitecs/-/bitecs-0.1.2.tgz#32f7e2f08f77cd00287feaef5e6068cf17d300b6"
-  integrity sha512-WaWQIu71SlPp+rYMTXnw3uWS2OJQLPvuEO3Lwy/T4JzqOy9oB7bZzL+huOJAOj8jVXgQngCUURIzz8Ji/+LDIQ==
+bitecs@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/bitecs/-/bitecs-0.1.6.tgz#6eb27a7ffd2175ee97355085a5a8c5f07dc82ace"
+  integrity sha512-2KNWemFxfKQ6jyv47eGnsAjl9sOyeYHCW6UtTp267lijDMvqPIziMmqouR8ycCNYsIzcjkTbCObuvBjB2WV9DQ==
 
 camelcase@6.0.0:
   version "6.0.0"

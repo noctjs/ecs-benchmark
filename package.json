@@ -7,7 +7,7 @@
   "dependencies": {
     "@jakeklassen/ecs": "^2.3.7",
     "benchmark": "^2.1.4",
-    "bitecs": "^0.1.2",
+    "bitecs": "^0.1.6",
     "ecsy": "^0.4.2",
     "ent-comp": "^0.9.1",
     "flock-ecs": "^0.1.5",
