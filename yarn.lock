@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@jakeklassen/ecs@^2.3.7":
-  version "2.3.7"
-  resolved "https://registry.yarnpkg.com/@jakeklassen/ecs/-/ecs-2.3.7.tgz#dcc0ef06cd11b6bb0d1f6c5f0e3f7d7054f2a7b2"
-  integrity sha512-8kmSt450l5NTWPQOYD4m9Abwhgmb3WwMQF7kdlbl5hf5VzPsJAY6wIFSmGBrMrFWVGCf2G2MgS9NOMKJIBxIpQ==
+"@types/node@^14.14.28":
+  version "14.14.28"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.28.tgz#cade4b64f8438f588951a6b35843ce536853f25b"
+  integrity sha512-lg55ArB+ZiHHbBBttLpzD07akz0QPrZgUODNakeC09i62dnrywr9mFErHuaPlB6I7z+sEbK+IYmplahvplCj2g==
 
 benchmark@^2.1.4:
   version "2.1.4"
@@ -35,10 +35,10 @@ flock-ecs@^0.1.5:
   resolved "https://registry.yarnpkg.com/flock-ecs/-/flock-ecs-0.1.5.tgz#b808721fa0cfe5ee0e004bfd0c1d74e2e15292d4"
   integrity sha512-23Sx3tQ/IFjlTyoNPygVj1q7SDt2OVdJ4epdn/kH7GoKpjZI1Js4YNUS+4H5AhsdbGXbLNR/9GdlCClLrxtsMw==
 
-geotic@^4.1.4:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/geotic/-/geotic-4.1.4.tgz#6c2cd8664fde4612ba2d8101b790451b217255b4"
-  integrity sha512-HkAd/qyifGJekIBDcH0Ua2Ir5Ow/d0Cy1FIup4FQm4elwN5v/QVcHUGLjyQqaSIsoFPI0nyycU7jqyp72flD4g==
+geotic@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/geotic/-/geotic-4.1.5.tgz#b7a0f36e95130d11ccb2ffd0d4959edd5526f81d"
+  integrity sha512-VVAP+qlLBK14eWW5u5XTVlG7ld/nUIzoEn8/FC2fNGQr91zdnkC3OKXOJX78ODqu7x7H+hnkTfEBsf4RBw88Vw==
   dependencies:
     camelcase "6.0.0"
     nanoid "3.1.3"
