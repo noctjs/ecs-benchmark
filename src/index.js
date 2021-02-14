@@ -3,7 +3,6 @@ import * as ecsy from "./cases/ecsy/mod.js";
 import * as flock_ecs from "./cases/flock-ecs/mod.js";
 import * as geotic from "./cases/geotic/mod.js";
 import * as goodluck from "./cases/goodluck/mod.js";
-import * as jakeklassen__ecs from "./cases/jakeklassen__ecs/mod.js";
 import * as makr from "./cases/makr/mod.js";
 import * as perform_ecs from "./cases/perform-ecs/mod.js";
 import * as tiny_ecs from "./cases/tiny-ecs/mod.js";
@@ -16,7 +15,6 @@ const simple_iter = suite(`Simple Iteration`);
 const frag_iter = suite(`Fragmented Iteration`);
 
 const libraries = [
-  jakeklassen__ecs,
   bitecs,
   ecsy,
   flock_ecs,
@@ -27,7 +25,7 @@ const libraries = [
   tiny_ecs,
 ];
 
-const suites = [packed_1, packed_5, add_remove, simple_iter, frag_iter];
+const suites = [packed_1, packed_5, simple_iter, frag_iter, add_remove];
 
 for (let mod of libraries) {
   packed_1.add(mod.name, mod.bench_packed_1(5_000));
