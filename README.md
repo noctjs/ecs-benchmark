@@ -2,13 +2,17 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-|                      | @jakeklassen/ecs |           bitecs |        ecsy |   flock-ecs |      geotic |         goodluck |        makr |     perform-ecs |    tiny-ecs |
-| -------------------- | ---------------: | ---------------: | ----------: | ----------: | ----------: | ---------------: | ----------: | --------------: | ----------: |
-| Packed (1 query)     |       1,336 op/s | **102,388** op/s | 13,749 op/s |  4,305 op/s | 27,235 op/s |  **99,783** op/s | 12,882 op/s |     57,609 op/s | 19,103 op/s |
-| Packed (5 queries)   |       2,151 op/s |      22,308 op/s |  7,518 op/s |  4,048 op/s | 31,418 op/s | **100,599** op/s | 11,098 op/s |     58,707 op/s | 17,809 op/s |
-| Simple Iteration     |       1,262 op/s |      11,398 op/s |  4,805 op/s |  1,802 op/s | 22,489 op/s |      45,955 op/s |  6,589 op/s | **95,412** op/s | 25,912 op/s |
-| Fragmented Iteration |       3,908 op/s |      25,692 op/s | 20,475 op/s |  9,107 op/s | 54,339 op/s | **124,318** op/s | 22,221 op/s |     27,945 op/s | 94,788 op/s |
-| Add / Remove         |       4,976 op/s |         923 op/s |    725 op/s | 19,172 op/s |    578 op/s | **266,291** op/s | 21,822 op/s |        343 op/s |    916 op/s |
+|                  | Packed (1 query) | Packed (5 queries) | Add / Remove     | Simple Iteration | Fragmented Iteration |
+|------------------|------------------|--------------------|------------------|------------------|----------------------|
+| @jakeklassen/ecs | 1,510 op/s       | 2,326 op/s         | 4,729 op/s       | 1,155 op/s       | 3,712 op/s           |
+| bitecs           | 105,069 op/s     | 14,387 op/s        | 716 op/s         | 10,755 op/s      | 22,614 op/s          |
+| ecsy             | 13,954 op/s      | 5,924 op/s         | 233 op/s         | 4,100 op/s       | 16,408 op/s          |
+| flock-ecs        | 3,596 op/s       | 4,014 op/s         | 18,908 op/s      | 1,546 op/s       | 8,852 op/s           |
+| geotic           | 31,201 op/s      | 38,097 op/s        | 727 op/s         | 29,375 op/s      | 70,292 op/s          |
+| goodluck         | **128,556 op/s** | **149,271 op/s**   | **317,066 op/s** | 55,528 op/s      | **93,897 op/s**      |
+| makr             | 12,424 op/s      | 10,308 op/s        | 21,362 op/s      | 7,028 op/s       | 24,836 op/s          |
+| perform-ecs      | 60,098 op/s      | 62,406 op/s        | 391 op/s         | **87,091 op/s**  | 24,522 op/s          |
+| tiny-ecs         | 16,196 op/s      | 15,774 op/s        | 897 op/s         | 23,972 op/s      | 67,528 op/s          |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”.
 
@@ -79,57 +83,57 @@ The benchmarks are run on node v15.8.0.
 
 ```
 Packed (1 query)
-  @jakeklassen/ecs: 1,336 op/s (±4.09%)
-  bitecs: 102,388 op/s (±11.34%)
-  ecsy: 13,749 op/s (±3.33%)
-  flock-ecs: 4,305 op/s (±2.36%)
-  geotic: 27,235 op/s (±1.28%)
-  goodluck: 99,783 op/s (±0.67%)
-  makr: 12,882 op/s (±0.43%)
-  perform-ecs: 57,609 op/s (±0.41%)
-  tiny-ecs: 19,103 op/s (±0.76%)
+  @jakeklassen/ecs: 1,510 op/s (±3.71%)
+  bitecs: 105,069 op/s (±22.15%)
+  ecsy: 13,954 op/s (±2.82%)
+  flock-ecs: 3,596 op/s (±4.00%)
+  geotic: 31,201 op/s (±4.46%)
+  goodluck: 128,556 op/s (±3.20%)
+  makr: 12,424 op/s (±4.41%)
+  perform-ecs: 60,098 op/s (±5.57%)
+  tiny-ecs: 16,196 op/s (±4.86%)
 
 Packed (5 queries)
-  @jakeklassen/ecs: 2,151 op/s (±0.54%)
-  bitecs: 22,308 op/s (±0.30%)
-  ecsy: 7,518 op/s (±3.48%)
-  flock-ecs: 4,048 op/s (±0.40%)
-  geotic: 31,418 op/s (±0.89%)
-  goodluck: 100,599 op/s (±0.29%)
-  makr: 11,098 op/s (±0.43%)
-  perform-ecs: 58,707 op/s (±0.72%)
-  tiny-ecs: 17,809 op/s (±0.79%)
-
-Simple Iteration
-  @jakeklassen/ecs: 1,262 op/s (±0.84%)
-  bitecs: 11,398 op/s (±0.71%)
-  ecsy: 4,805 op/s (±2.32%)
-  flock-ecs: 1,802 op/s (±0.31%)
-  geotic: 22,489 op/s (±0.57%)
-  goodluck: 45,955 op/s (±1.02%)
-  makr: 6,589 op/s (±0.79%)
-  perform-ecs: 95,412 op/s (±0.65%)
-  tiny-ecs: 25,912 op/s (±1.08%)
-
-Fragmented Iteration
-  @jakeklassen/ecs: 3,908 op/s (±0.79%)
-  bitecs: 25,692 op/s (±0.40%)
-  ecsy: 20,475 op/s (±4.17%)
-  flock-ecs: 9,107 op/s (±1.48%)
-  geotic: 54,339 op/s (±1.93%)
-  goodluck: 124,318 op/s (±0.88%)
-  makr: 22,221 op/s (±1.13%)
-  perform-ecs: 27,945 op/s (±1.60%)
-  tiny-ecs: 94,788 op/s (±1.17%)
+  @jakeklassen/ecs: 2,326 op/s (±3.31%)
+  bitecs: 14,387 op/s (±7.10%)
+  ecsy: 5,924 op/s (±4.88%)
+  flock-ecs: 4,014 op/s (±3.82%)
+  geotic: 38,097 op/s (±27.46%)
+  goodluck: 149,271 op/s (±1.05%)
+  makr: 10,308 op/s (±2.84%)
+  perform-ecs: 62,406 op/s (±5.93%)
+  tiny-ecs: 15,774 op/s (±2.76%)
 
 Add / Remove
-  @jakeklassen/ecs: 4,976 op/s (±0.57%)
-  bitecs: 923 op/s (±0.48%)
-  ecsy: 725 op/s (±2.69%)
-  flock-ecs: 19,172 op/s (±0.36%)
-  geotic: 578 op/s (±3.51%)
-  goodluck: 266,291 op/s (±0.36%)
-  makr: 21,822 op/s (±0.49%)
-  perform-ecs: 343 op/s (±3.81%)
-  tiny-ecs: 916 op/s (±0.79%)
+  @jakeklassen/ecs: 4,729 op/s (±3.25%)
+  bitecs: 716 op/s (±3.44%)
+  ecsy: 233 op/s (±1.84%)
+  flock-ecs: 18,908 op/s (±2.34%)
+  geotic: 727 op/s (±1.68%)
+  goodluck: 317,066 op/s (±3.36%)
+  makr: 21,362 op/s (±2.68%)
+  perform-ecs: 391 op/s (±4.09%)
+  tiny-ecs: 897 op/s (±2.76%)
+
+Simple Iteration
+  @jakeklassen/ecs: 1,155 op/s (±2.56%)
+  bitecs: 10,755 op/s (±6.93%)
+  ecsy: 4,100 op/s (±4.41%)
+  flock-ecs: 1,546 op/s (±16.45%)
+  geotic: 29,375 op/s (±1.68%)
+  goodluck: 55,528 op/s (±2.03%)
+  makr: 7,028 op/s (±2.25%)
+  perform-ecs: 87,091 op/s (±2.24%)
+  tiny-ecs: 23,972 op/s (±2.84%)
+
+Fragmented Iteration
+  @jakeklassen/ecs: 3,712 op/s (±4.28%)
+  bitecs: 22,614 op/s (±3.29%)
+  ecsy: 16,408 op/s (±44.60%)
+  flock-ecs: 8,852 op/s (±2.66%)
+  geotic: 70,292 op/s (±7.06%)
+  goodluck: 93,897 op/s (±6.47%)
+  makr: 24,836 op/s (±2.47%)
+  perform-ecs: 24,522 op/s (±6.25%)
+  tiny-ecs: 67,528 op/s (±16.72%)
 ```
