@@ -2,12 +2,12 @@ import pkg from "tiny-ecs";
 
 const { EntityManager } = pkg;
 
-const COMPS = Array.from(
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-  () =>
-    function (value = 0) {
+const COMPS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (name) =>
+  Function(`
+    return function ${name} (value = 0) {
       this.value = value;
     }
+  `)()
 );
 
 function Data(value = 0) {
