@@ -7,16 +7,14 @@
   "dependencies": {
     "@jakeklassen/ecs": "^2.3.7",
     "benchmark": "^2.1.4",
-    "bitecs": "^0.1.1",
+    "bitecs": "^0.1.6",
     "ecsy": "^0.4.2",
-    "ent-comp": "^0.9.1",
     "flock-ecs": "^0.1.5",
     "geotic": "^4.1.4",
     "goodluck": "^5.2.0",
     "kleur": "^4.1.4",
     "makr": "^2.1.1",
     "perform-ecs": "^0.7.8",
-    "picoes": "^0.5.3",
     "tiny-ecs": "^2.0.0"
   }
 }

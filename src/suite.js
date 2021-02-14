@@ -6,7 +6,7 @@ import { bold, dim, inverse, red, white } from "kleur/colors";
  * @returns {Benchmark.Suite}
  */
 export function suite(name) {
-  return new Benchmark.Suite()
+  return new Benchmark.Suite(name)
     .on("start", () => {
       console.log(bold(white(name)));
     })
