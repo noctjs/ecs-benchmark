@@ -26,13 +26,14 @@ export default (count) => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === 0) {
         world.Signature[i] |= HAS_B;
-        world.B[i] = 0;
+        world.B[i] = { value: 0 };
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === HAS_B) {
         world.Signature[i] &= ~HAS_B;
+        world.B[i] = undefined;
       }
     }
   };
