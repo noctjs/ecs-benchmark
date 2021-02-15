@@ -14,38 +14,38 @@ const HAS_C = 1 << 2;
 const HAS_D = 1 << 3;
 const HAS_E = 1 << 4;
 
-function A(x = 0) {
+function A(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = x;
+    world.A[entity] = { value };
   };
 }
 
-function B(x = 0) {
+function B(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_B;
-    world.B[entity] = x;
+    world.B[entity] = { value };
   };
 }
 
-function C(x = 0) {
+function C(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_C;
-    world.C[entity] = x;
+    world.C[entity] = { value };
   };
 }
 
-function D(x = 0) {
+function D(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_D;
-    world.D[entity] = x;
+    world.D[entity] = { value };
   };
 }
 
-function E(x = 0) {
+function E(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_E;
-    world.E[entity] = x;
+    world.E[entity] = { value };
   };
 }
 
@@ -66,25 +66,25 @@ export default (count) => {
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & QUERY_AB) === QUERY_AB) {
-        let x = world.A[i];
-        world.A[i] = world.B[i];
-        world.B[i] = x;
+        let x = world.A[i].value;
+        world.A[i].value = world.B[i].value;
+        world.B[i].value = x;
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & QUERY_CD) === QUERY_CD) {
-        let x = world.C[i];
-        world.C[i] = world.D[i];
-        world.D[i] = x;
+        let x = world.C[i].value;
+        world.C[i].value = world.D[i].value;
+        world.D[i].value = x;
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & QUERY_CE) === QUERY_CE) {
-        let x = world.C[i];
-        world.C[i] = world.E[i];
-        world.E[i] = x;
+        let x = world.C[i].value;
+        world.C[i].value = world.E[i].value;
+        world.E[i].value = x;
       }
     }
   };
