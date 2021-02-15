@@ -41,12 +41,16 @@ for (let suite of suites) {
   suite.run();
 }
 
-console.log("|     | " + libraries.map((mod) => mod.name).join(" | ") + " |");
-console.log("| --- |" + " --: |".repeat(libraries.length));
-for (let suite of suites) {
-  console.log(
-    `| ${suite.name} | ${suite
-      .map((bench) => Math.floor(bench.hz).toLocaleString())
-      .join(" op/s | ")} |`
-  );
+console.log("|     | " + suites.map((suite) => suite.name).join(" | ") + " |");
+console.log("| --- |" + " --: |".repeat(suites.length));
+for (let mod of libraries) {
+  let row = `| ${mod.name} |`;
+
+  for (let suite of suites) {
+    const result = suite.filter((bench) => bench.name === mod.name)[0];
+
+    row += ` ${Math.floor(result.hz).toLocaleString()} op/s |`;
+  }
+
+  console.log(row);
 }
