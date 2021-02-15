@@ -43,27 +43,27 @@ export default (count) => {
     world.addComponent("E", e, { value: 0 });
   }
 
-  const { A, B, C, D, E } = world.registry.components
-
+  
   return () => {
+    const { A, B, C, D, E } = world.registry.components
     for (let i = 0; i < packed_a.localEntities.length; i++) {
       let eid = packed_a.localEntities[i]
       A.value[eid] *= 2;
     }
     for (let i = 0; i < packed_b.localEntities.length; i++) {
-      let eid = packed_a.localEntities[i]
+      let eid = packed_b.localEntities[i]
       B.value[eid] *= 2;
     }
     for (let i = 0; i < packed_c.localEntities.length; i++) {
-      let eid = packed_a.localEntities[i]
+      let eid = packed_c.localEntities[i]
       C.value[eid] *= 2;
     }
     for (let i = 0; i < packed_d.localEntities.length; i++) {
-      let eid = packed_a.localEntities[i]
+      let eid = packed_d.localEntities[i]
       D.value[eid] *= 2;
     }
     for (let i = 0; i < packed_e.localEntities.length; i++) {
-      let eid = packed_a.localEntities[i]
+      let eid = packed_e.localEntities[i]
       E.value[eid] *= 2;
     }
   };
