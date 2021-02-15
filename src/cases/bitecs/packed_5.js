@@ -1,7 +1,7 @@
-import bitECS from "bitecs";
+import bitECS from "../../../../bitECS/src/index.js";
 
 export default (count) => {
-  let world = bitECS();
+  let world = bitECS({maxEntities:5000});
 
   world.registerComponent("A", { value: "int32" });
   world.registerComponent("B", { value: "int32" });
@@ -9,44 +9,29 @@ export default (count) => {
   world.registerComponent("D", { value: "int32" });
   world.registerComponent("E", { value: "int32" });
 
-  world.registerSystem({
+  const packed_a = world.registerSystem({
     name: "PACKED_A",
-    components: ["A"],
-    update: (a) => (eid) => {
-      a.value[eid] *= 2;
-    },
+    components: ["A"]
   });
 
-  world.registerSystem({
+  const packed_b = world.registerSystem({
     name: "PACKED_B",
-    components: ["B"],
-    update: (b) => (eid) => {
-      b.value[eid] *= 2;
-    },
+    components: ["B"]
   });
 
-  world.registerSystem({
+  const packed_c = world.registerSystem({
     name: "PACKED_C",
-    components: ["C"],
-    update: (c) => (eid) => {
-      c.value[eid] *= 2;
-    },
+    components: ["C"]
   });
 
-  world.registerSystem({
+  const packed_d = world.registerSystem({
     name: "PACKED_D",
-    components: ["D"],
-    update: (d) => (eid) => {
-      d.value[eid] *= 2;
-    },
+    components: ["D"]
   });
 
-  world.registerSystem({
+  const packed_e = world.registerSystem({
     name: "PACKED_E",
-    components: ["E"],
-    update: (e) => (eid) => {
-      e.value[eid] *= 2;
-    },
+    components: ["E"]
   });
 
   for (let i = 0; i < count; i++) {
@@ -59,6 +44,20 @@ export default (count) => {
   }
 
   return () => {
-    world.step();
+    for (let i = 0; i < packed_a.localEntities.length; i++) {
+      world.registry.components.A.value[i] *= 2;
+    }
+    for (let i = 0; i < packed_b.localEntities.length; i++) {
+      world.registry.components.B.value[i] *= 2;
+    }
+    for (let i = 0; i < packed_c.localEntities.length; i++) {
+      world.registry.components.C.value[i] *= 2;
+    }
+    for (let i = 0; i < packed_d.localEntities.length; i++) {
+      world.registry.components.D.value[i] *= 2;
+    }
+    for (let i = 0; i < packed_e.localEntities.length; i++) {
+      world.registry.components.E.value[i] *= 2;
+    }
   };
 };
