@@ -11,16 +11,16 @@ const DataQuery = [new flock.Current(Data)];
 export default (count) => {
   let world = new flock.World();
 
-  for (let comp of COMPS) {
-    world.registerComponent(comp);
+  for (let Comp of COMPS) {
+    world.registerComponent(Comp);
   }
 
   world.registerComponent(Data);
 
   for (let i = 0; i < count; i++) {
-    for (let comp of COMPS) {
+    for (let Comp of COMPS) {
       let e = world.createEntity();
-      e.addComponent(comp);
+      e.addComponent(Comp);
       e.addComponent(Data);
     }
   }
