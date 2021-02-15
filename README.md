@@ -2,16 +2,16 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-|             |         packed_1 |         packed_5 |     simple_iter |        frag_iter |      add_remove |
-| ----------- | ---------------: | ---------------: | --------------: | ---------------: | --------------: |
-| bitecs      | **155,690 op/s** |      24,031 op/s |     19,351 op/s | **256,273 op/s** |        969 op/s |
-| ecsy        |      13,228 op/s |       7,980 op/s |      4,049 op/s |      27,031 op/s |        779 op/s |
-| flock-ecs   |       3,674 op/s |       4,392 op/s |      2,169 op/s |       9,480 op/s |     17,791 op/s |
-| geotic      |      35,887 op/s |      40,176 op/s |     27,413 op/s |      52,031 op/s |        883 op/s |
-| goodluck    |     112,402 op/s | **115,208 op/s** |     45,434 op/s |     128,875 op/s | **91,454 op/s** |
-| makr        |      13,108 op/s |      10,912 op/s |      6,754 op/s |      22,589 op/s |     26,650 op/s |
-| perform-ecs |      61,016 op/s |      56,979 op/s | **74,168 op/s** |      29,918 op/s |        345 op/s |
-| tiny-ecs    |      17,686 op/s |      18,799 op/s |     28,911 op/s |      53,393 op/s |        829 op/s |
+|             |         packed_1 |        packed_5 |     simple_iter |        frag_iter |      add_remove |
+| ----------- | ---------------: | --------------: | --------------: | ---------------: | --------------: |
+| bitecs      | **156,884 op/s** |     23,825 op/s |     18,774 op/s | **254,007 op/s** |        950 op/s |
+| ecsy        |      13,942 op/s |      7,223 op/s |      3,463 op/s |      23,958 op/s |        752 op/s |
+| flock-ecs   |       3,269 op/s |      4,658 op/s |      1,900 op/s |       8,240 op/s |     18,702 op/s |
+| geotic      |      36,420 op/s |     46,334 op/s |     29,546 op/s |      53,521 op/s |        915 op/s |
+| goodluck    |      55,556 op/s |     54,153 op/s |     30,100 op/s |     111,126 op/s | **87,386 op/s** |
+| makr        |      13,207 op/s |     11,121 op/s |      6,910 op/s |      25,396 op/s |     27,215 op/s |
+| perform-ecs |      62,546 op/s | **59,691 op/s** | **73,185 op/s** |      29,505 op/s |        346 op/s |
+| tiny-ecs    |      18,145 op/s |     17,819 op/s |     30,253 op/s |      54,270 op/s |        916 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
 
