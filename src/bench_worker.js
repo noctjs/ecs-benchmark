@@ -19,17 +19,16 @@ let fn = setup(workerData.config);
 let initial_n = 1_000;
 let initial_ms = bench_iter(fn, initial_n) / initial_n;
 
-// Try to correct the estimate
-let cycle_n = 1_000 / initial_ms;
+// Try to correct the estimate for 500ms
+let cycle_n = 500 / initial_ms;
 let cycle_ms = bench_iter(fn, cycle_n) / cycle_n;
 
-// Try to estimate the iteration count for 1s
-let target_n = 1_000 / cycle_ms;
+// Try to estimate the iteration count for 500ms
+let target_n = 500 / cycle_ms;
 let total_ms = bench_iter(fn, target_n);
-let total_hz = (target_n / total_ms) * 1_000;
 
 parentPort.postMessage({
-  hz: total_hz, // ops/sec
+  hz: (target_n / total_ms) * 1_000, // ops/sec
   ms: total_ms / target_n, // ms/op
 });
 
