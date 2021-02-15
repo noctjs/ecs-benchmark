@@ -1,7 +1,7 @@
-import bitECS from "../../../../bitECS/src/index.js";
+import bitECS from "bitecs";
 
 export default (count) => {
-  let world = bitECS({maxEntities:5000});
+  let world = bitECS();
 
   world.registerComponent("A", { value: "int32" });
   world.registerComponent("B", { value: "int32" });
