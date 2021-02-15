@@ -2,7 +2,17 @@ import { performance } from "perf_hooks";
 import { parentPort, workerData } from "worker_threads";
 
 // Load the function to bench
-let { default: setup } = await import(workerData.path);
+let mod;
+try {
+  mod = await import(workerData.path);
+} catch {
+  let todo = new Error();
+  todo.message = "Not yet implemented";
+  todo.code = "TODO";
+  throw todo;
+}
+
+let setup = mod.default;
 let fn = setup(workerData.config);
 
 // Run an initial cycle to get an estimate

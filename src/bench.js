@@ -30,15 +30,15 @@ for (let lib of LIBRARIES) {
   for (let name in BENCHMARKS) {
     let config = BENCHMARKS[name];
     let path = `./cases/${lib}/${name}.js`;
+    let log = `  ${name} ${" ".repeat(14 - name.length)}`;
     try {
       let result = await run_bench(path, config);
-      let pad = " ".repeat(14 - name.length);
-      console.log(
-        `  ${name}${pad} ${Math.floor(result.hz).toLocaleString()} op/s`
-      );
       results.push(result);
+      console.log(`${log} ${Math.floor(result.hz).toLocaleString()} op/s`);
     } catch (err) {
-      console.log(err);
+      results.push(err);
+      console.log(`${log} ${err.code ?? "ERROR"}`);
+      console.log(err.stack);
     }
   }
   console.log();
@@ -50,7 +50,11 @@ for (let i = 0; i < LIBRARIES.length; i++) {
   console.log(
     `| ${LIBRARIES[i]} | ` +
       RESULTS[i]
-        .map((result) => `${Math.floor(result.hz).toLocaleString()} op/s`)
+        .map((result) =>
+          "hz" in result
+            ? `${Math.floor(result.hz).toLocaleString()} op/s`
+            : result.code ?? "ERROR"
+        )
         .join(" | ") +
       " |"
   );
