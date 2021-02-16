@@ -10,6 +10,7 @@ const LIBRARIES = [
   "goodluck",
   "makr",
   "perform-ecs",
+  "picoes",
   "tiny-ecs",
 ];
 
