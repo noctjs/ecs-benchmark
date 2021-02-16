@@ -19,6 +19,7 @@ const BENCHMARKS = {
   packed_5: 1_000,
   simple_iter: 1_000,
   frag_iter: 100,
+  entity_cycle: 100,
   add_remove: 1_000,
 };
 
