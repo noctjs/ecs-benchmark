@@ -15,13 +15,17 @@ try {
 let setup = mod.default;
 let fn = setup(workerData.config);
 
-// Run an initial cycle to get an estimate
-let initial_n = 1_000;
-let initial_ms = bench_iter(fn, initial_n) / initial_n;
+let cycle_n = 1;
+let cycle_ms = 0;
+let cycle_total_ms = 0;
 
-// Try to correct the estimate for 500ms
-let cycle_n = 500 / initial_ms;
-let cycle_ms = bench_iter(fn, cycle_n) / cycle_n;
+// Run multiple cycles to get an estimate
+while (cycle_total_ms < 500) {
+  let elapsed = bench_iter(fn, cycle_n);
+  cycle_ms = elapsed / cycle_n;
+  cycle_n *= 2;
+  cycle_total_ms += elapsed;
+}
 
 // Try to estimate the iteration count for 500ms
 let target_n = 500 / cycle_ms;
