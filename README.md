@@ -4,14 +4,14 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |         packed_1 |        packed_5 |     simple_iter |        frag_iter |      add_remove |
 | ----------- | ---------------: | --------------: | --------------: | ---------------: | --------------: |
-| bitecs      | **229,460 op/s** | **207,628 op/s**| **121,285 op/s**| **418,492 op/s** | 1,071 op/s      |
-| ecsy        | 6,039 op/s       | 4,680 op/s      | 1,979 op/s      | 11,552 op/s      | 534 op/s        |
-| flock-ecs   | 2,190 op/s       | 2,949 op/s      | 1,141 op/s      | 4,816 op/s       | 12,081 op/s     |
-| geotic      | 20,619 op/s      | 40,264 op/s     | 18,357 op/s     | 35,961 op/s      | 658 op/s        |
-| goodluck    | 34,211 op/s      | 33,650 op/s     | 20,749 op/s     | 68,192 op/s      | **52,618 op/s** |
-| makr        | 7,921 op/s       | 6,575 op/s      | 4,134 op/s      | 16,666 op/s      | 16,877 op/s     |
-| perform-ecs | 37,267 op/s      | 36,790 op/s     | 49,039 op/s     | 18,907 op/s      | 271 op/s        |
-| tiny-ecs    | 10,420 op/s      | 12,819 op/s     | 23,410 op/s     | 35,004 op/s      | 661 op/s        |
+| bitecs      | **229,460 op/s** | **207,628 op/s**| **121,285 op/s**| **418,492 op/s** |      1,071 op/s |
+| ecsy        |       6,039 op/s |      4,680 op/s |      1,979 op/s |      11,552 op/s |        534 op/s |
+| flock-ecs   |       2,190 op/s |      2,949 op/s |      1,141 op/s |       4,816 op/s |     12,081 op/s |
+| geotic      |      20,619 op/s |     40,264 op/s |     18,357 op/s |      35,961 op/s |        658 op/s |
+| goodluck    |      34,211 op/s |     33,650 op/s |     20,749 op/s |      68,192 op/s | **52,618 op/s** |
+| makr        |       7,921 op/s |      6,575 op/s |      4,134 op/s |      16,666 op/s |     16,877 op/s |
+| perform-ecs |      37,267 op/s |     36,790 op/s |     49,039 op/s |      18,907 op/s |        271 op/s |
+| tiny-ecs    |      10,420 op/s |     12,819 op/s |     23,410 op/s |      35,004 op/s |        661 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
 
