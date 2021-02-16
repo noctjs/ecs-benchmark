@@ -11,20 +11,22 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | goodluck    |      55,556 op/s |     54,153 op/s |     30,100 op/s |     111,126 op/s | **87,386 op/s** |
 | makr        |      13,207 op/s |     11,121 op/s |      6,910 op/s |      25,396 op/s |     27,215 op/s |
 | perform-ecs |      62,546 op/s | **59,691 op/s** | **73,185 op/s** |      29,505 op/s |        346 op/s |
+| picoes      |       3,799 op/s |      2,739 op/s |      1,935 op/s |       5,456 op/s |      2,602 op/s |
 | tiny-ecs    |      18,145 op/s |     17,819 op/s |     30,253 op/s |      54,270 op/s |        916 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
 
 ## Frameworks
 
-- [bitecs](https://github.com/NateTheGreatt/bitecs)
-- [ecsy](https://github.com/ecsyjs/ecsy)
-- [flock-ecs](https://github.com/dannyfritz/flock-ecs)
-- [geotic](https://github.com/ddmills/geotic)
-- [goodluck](https://github.com/piesku/goodluck)
-- [makr](https://github.com/makrjs/makr)
-- [perform-ecs](https://github.com/fireveined/perform-ecs)
-- [tiny-ecs](https://github.com/bvalosek/tiny-ecs)
+- [`bitecs`](https://github.com/NateTheGreatt/bitecs)
+- [`ecsy`](https://github.com/ecsyjs/ecsy)
+- [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
+- [`geotic`](https://github.com/ddmills/geotic)
+- [`goodluck`](https://github.com/piesku/goodluck)
+- [`makr`](https://github.com/makrjs/makr)
+- [`perform-ecs`](https://github.com/fireveined/perform-ecs)
+- [`picoes`](https://github.com/ayebear/picoes)
+- [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
 
 ## Benchmarks
 
