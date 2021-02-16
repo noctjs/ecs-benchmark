@@ -9,17 +9,23 @@ export default (count) => {
   world.registerSystem({
     name: "ADD_B",
     components: ["A"],
-    update: () => (eid) => {
-      world.addComponent("B", eid, { value: 0 });
-    },
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        world.addComponent("B", eid, { value: 0 });
+      }
+    }
   });
 
   world.registerSystem({
     name: "REM_B",
     components: ["B"],
-    update: () => (eid) => {
-      world.removeComponent("B", eid);
-    },
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        world.removeComponent("B", eid);
+      }
+    }
   });
 
   for (let i = 0; i < count; i++) {

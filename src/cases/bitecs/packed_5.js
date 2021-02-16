@@ -3,35 +3,65 @@ import bitECS from "bitecs";
 export default (count) => {
   let world = bitECS();
 
-  world.registerComponent("A", { value: "int32" });
-  world.registerComponent("B", { value: "int32" });
-  world.registerComponent("C", { value: "int32" });
-  world.registerComponent("D", { value: "int32" });
-  world.registerComponent("E", { value: "int32" });
+  const a = world.registerComponent("A", { value: "int32" });
+  const b = world.registerComponent("B", { value: "int32" });
+  const c = world.registerComponent("C", { value: "int32" });
+  const d = world.registerComponent("D", { value: "int32" });
+  const e = world.registerComponent("E", { value: "int32" });
 
-  const packed_a = world.registerSystem({
+  world.registerSystem({
     name: "PACKED_A",
-    components: ["A"]
+    components: ["A"],
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        a.value[eid] *= 2;
+      }
+    },
   });
 
-  const packed_b = world.registerSystem({
+  world.registerSystem({
     name: "PACKED_B",
-    components: ["B"]
+    components: ["B"],
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        b.value[eid] *= 2;
+      }
+    },
   });
 
-  const packed_c = world.registerSystem({
+  world.registerSystem({
     name: "PACKED_C",
-    components: ["C"]
+    components: ["C"],
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        c.value[eid] *= 2;
+      }
+    },
   });
 
-  const packed_d = world.registerSystem({
+  world.registerSystem({
     name: "PACKED_D",
-    components: ["D"]
+    components: ["D"],
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        d.value[eid] *= 2;
+      }
+    },
   });
 
-  const packed_e = world.registerSystem({
+  world.registerSystem({
     name: "PACKED_E",
-    components: ["E"]
+    components: ["E"],
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i]
+        e.value[eid] *= 2;
+      }
+    },
   });
 
   for (let i = 0; i < count; i++) {
@@ -43,28 +73,7 @@ export default (count) => {
     world.addComponent("E", e, { value: 0 });
   }
 
-  
   return () => {
-    const { A, B, C, D, E } = world.registry.components
-    for (let i = 0; i < packed_a.localEntities.length; i++) {
-      let eid = packed_a.localEntities[i]
-      A.value[eid] *= 2;
-    }
-    for (let i = 0; i < packed_b.localEntities.length; i++) {
-      let eid = packed_b.localEntities[i]
-      B.value[eid] *= 2;
-    }
-    for (let i = 0; i < packed_c.localEntities.length; i++) {
-      let eid = packed_c.localEntities[i]
-      C.value[eid] *= 2;
-    }
-    for (let i = 0; i < packed_d.localEntities.length; i++) {
-      let eid = packed_d.localEntities[i]
-      D.value[eid] *= 2;
-    }
-    for (let i = 0; i < packed_e.localEntities.length; i++) {
-      let eid = packed_e.localEntities[i]
-      E.value[eid] *= 2;
-    }
+    world.step();
   };
 };

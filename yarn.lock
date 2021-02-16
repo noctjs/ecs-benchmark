@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.28.tgz#cade4b64f8438f588951a6b35843ce536853f25b"
   integrity sha512-lg55ArB+ZiHHbBBttLpzD07akz0QPrZgUODNakeC09i62dnrywr9mFErHuaPlB6I7z+sEbK+IYmplahvplCj2g==
 
-bitecs@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/bitecs/-/bitecs-0.1.6.tgz#6eb27a7ffd2175ee97355085a5a8c5f07dc82ace"
-  integrity sha512-2KNWemFxfKQ6jyv47eGnsAjl9sOyeYHCW6UtTp267lijDMvqPIziMmqouR8ycCNYsIzcjkTbCObuvBjB2WV9DQ==
+bitecs@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/bitecs/-/bitecs-0.2.0.tgz#07abc7d2ac4df2ba668805ac1622281efdcc43c1"
+  integrity sha512-IjvlCT3GX4ZhjzRdV/kstZqcSliFZdep8Y2y/M+V/MLKwQyhUskX01c0ySRPavGYNI2l5uQvOMCvG0WameVU+A==
 
 camelcase@6.0.0:
   version "6.0.0"
