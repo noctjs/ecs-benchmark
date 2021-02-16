@@ -4,7 +4,7 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |     packed_1 |     packed_5 |  simple_iter |    frag_iter |  add_remove |
 | ----------- | -----------: | -----------: | -----------: | -----------: | ----------: |
-| bitecs      | 352,547 op/s | 314,035 op/s | 196,879 op/s | 675,655 op/s |  1,582 op/s |
+| bitecs      | 351,356 op/s | 332,906 op/s | 196,004 op/s | 642,282 op/s |  1,525 op/s |
 | ecsy        |  13,942 op/s |   7,223 op/s |   3,463 op/s |  23,958 op/s |    752 op/s |
 | flock-ecs   |   3,269 op/s |   4,658 op/s |   1,900 op/s |   8,240 op/s | 18,702 op/s |
 | geotic      |  36,420 op/s |  46,334 op/s |  29,546 op/s |  53,521 op/s |    915 op/s |

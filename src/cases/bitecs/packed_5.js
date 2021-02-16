@@ -1,7 +1,7 @@
 import bitECS from "bitecs";
 
 export default (count) => {
-  let world = bitECS();
+  let world = bitECS({ maxEntities: count });
 
   const a = world.registerComponent("A", { value: "int32" });
   const b = world.registerComponent("B", { value: "int32" });
@@ -14,7 +14,7 @@ export default (count) => {
     components: ["A"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         a.value[eid] *= 2;
       }
     },
@@ -25,7 +25,7 @@ export default (count) => {
     components: ["B"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         b.value[eid] *= 2;
       }
     },
@@ -36,7 +36,7 @@ export default (count) => {
     components: ["C"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         c.value[eid] *= 2;
       }
     },
@@ -47,7 +47,7 @@ export default (count) => {
     components: ["D"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         d.value[eid] *= 2;
       }
     },
@@ -58,7 +58,7 @@ export default (count) => {
     components: ["E"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         e.value[eid] *= 2;
       }
     },

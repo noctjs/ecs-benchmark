@@ -1,7 +1,7 @@
 import bitECS from "bitecs";
 
 export default (count) => {
-  let world = bitECS();
+  let world = bitECS({ maxEntities: count * 4 });
 
   const a = world.registerComponent("A", { value: "int32" });
   const b = world.registerComponent("B", { value: "int32" });
@@ -14,12 +14,12 @@ export default (count) => {
     components: ["A", "B"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         let x = a.value[eid];
         a.value[eid] = b.value[eid];
         b.value[eid] = x;
       }
-    }
+    },
   });
 
   world.registerSystem({
@@ -27,12 +27,12 @@ export default (count) => {
     components: ["C", "D"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         let x = c.value[eid];
         c.value[eid] = d.value[eid];
         d.value[eid] = x;
       }
-    }
+    },
   });
 
   world.registerSystem({
@@ -40,12 +40,12 @@ export default (count) => {
     components: ["C", "E"],
     update: (entities) => {
       for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i]
+        const eid = entities[i];
         let x = c.value[eid];
         c.value[eid] = e.value[eid];
         e.value[eid] = x;
       }
-    }
+    },
   });
 
   for (let i = 0; i < count; i++) {
