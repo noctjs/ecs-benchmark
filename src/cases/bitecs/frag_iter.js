@@ -3,18 +3,21 @@ import bitECS from "bitecs";
 const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 export default (count) => {
-  let world = bitECS();
+  let world = bitECS({ maxEntities: count * COMPS.length });
 
   for (let COMP of COMPS) {
     world.registerComponent(COMP, { value: "int32" });
   }
 
-  world.registerComponent("DATA", { value: "int32" });
+  const data = world.registerComponent("DATA", { value: "int32" });
   world.registerSystem({
     name: "DATA",
     components: ["DATA"],
-    update: (data) => (eid) => {
-      data.value[eid] *= 2;
+    update: (entities) => {
+      for (let i = 0; i < entities.length; i++) {
+        const eid = entities[i];
+        data.value[eid] *= 2;
+      }
     },
   });
 
