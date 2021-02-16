@@ -4,15 +4,15 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |  add_remove |
 | ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | ----------: |
-| bitecs      | 351,356 op/s | 332,906 op/s | 196,004 op/s | 642,282 op/s |   6,181 op/s |  1,525 op/s |
-| ecsy        |  13,942 op/s |   7,223 op/s |   3,463 op/s |  23,958 op/s |   1,440 op/s |    752 op/s |
-| flock-ecs   |   3,269 op/s |   4,658 op/s |   1,900 op/s |   8,240 op/s |     169 op/s | 18,702 op/s |
-| geotic      |  36,420 op/s |  46,334 op/s |  29,546 op/s |  53,521 op/s |   1,356 op/s |    915 op/s |
-| goodluck    |  55,556 op/s |  54,153 op/s |  30,100 op/s | 111,126 op/s | 119,464 op/s | 87,386 op/s |
-| makr        |  13,207 op/s |  11,121 op/s |   6,910 op/s |  25,396 op/s |  94,902 op/s | 27,215 op/s |
-| perform-ecs |  62,546 op/s |  59,691 op/s |  73,185 op/s |  29,505 op/s |   2,186 op/s |    346 op/s |
-| picoes      |   3,799 op/s |   2,739 op/s |   1,935 op/s |   5,456 op/s |   9,253 op/s |  2,602 op/s |
-| tiny-ecs    |  18,145 op/s |  17,819 op/s |  30,253 op/s |  54,270 op/s |   2,311 op/s |    916 op/s |
+| bitecs      | 328,625 op/s | 328,672 op/s | 191,774 op/s | 659,881 op/s |     623 op/s |  1,510 op/s |
+| ecsy        |  13,810 op/s |   7,343 op/s |   4,707 op/s |  25,882 op/s |      32 op/s |    788 op/s |
+| flock-ecs   |   3,599 op/s |   4,722 op/s |   1,610 op/s |   7,925 op/s |      88 op/s | 18,523 op/s |
+| geotic      |  32,987 op/s |  47,799 op/s |  27,691 op/s |  49,348 op/s |      29 op/s |    888 op/s |
+| goodluck    |  51,657 op/s |  52,887 op/s |  29,363 op/s | 110,981 op/s |  12,959 op/s | 81,781 op/s |
+| makr        |  12,707 op/s |  10,368 op/s |   6,653 op/s |  24,439 op/s |   8,790 op/s | 25,504 op/s |
+| perform-ecs |  55,518 op/s |  57,716 op/s |  72,009 op/s |  28,827 op/s |      38 op/s |    350 op/s |
+| picoes      |   3,827 op/s |   2,729 op/s |   1,897 op/s |   5,522 op/s |   1,050 op/s |  2,997 op/s |
+| tiny-ecs    |  19,419 op/s |  19,013 op/s |  29,778 op/s |  11,676 op/s |      38 op/s |    895 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
 
@@ -74,7 +74,7 @@ This benchmark is designed to test how the ECS handles iteration through a fragm
 
 This benchmark is designed to test the base cost of constructing and destroying entities into the ECS.
 
-- **Dataset:** 100 entities with a single `A` component.
+- **Dataset:** 1,000 entities with a single `A` component.
 - **Test:** Iterate through all entities, and create 2 entities with a `B` component. Then iterate through all entities with a `B` component and destroy them.
 
 ### Add / Remove
