@@ -14,38 +14,38 @@ const HAS_C = 1 << 2;
 const HAS_D = 1 << 3;
 const HAS_E = 1 << 4;
 
-function A(x = 0) {
+function A(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = x;
+    world.A[entity] = { value };
   };
 }
 
-function B(x = 0) {
+function B(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_B;
-    world.B[entity] = x;
+    world.B[entity] = { value };
   };
 }
 
-function C(x = 0) {
+function C(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_C;
-    world.C[entity] = x;
+    world.C[entity] = { value };
   };
 }
 
-function D(x = 0) {
+function D(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_D;
-    world.D[entity] = x;
+    world.D[entity] = { value };
   };
 }
 
-function E(x = 0) {
+function E(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_E;
-    world.E[entity] = x;
+    world.E[entity] = { value };
   };
 }
 
@@ -59,7 +59,7 @@ export default (count) => {
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_A) === HAS_A) {
-        world.A[i] *= 2;
+        world.A[i].value *= 2;
       }
     }
   };
