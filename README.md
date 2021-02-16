@@ -2,27 +2,31 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-|                      | @jakeklassen/ecs |           bitecs |        ecsy |   flock-ecs |      geotic |         goodluck |        makr |     perform-ecs |    tiny-ecs |
-| -------------------- | ---------------: | ---------------: | ----------: | ----------: | ----------: | ---------------: | ----------: | --------------: | ----------: |
-| Packed (1 query)     |       1,336 op/s | **102,388** op/s | 13,749 op/s |  4,305 op/s | 27,235 op/s |  **99,783** op/s | 12,882 op/s |     57,609 op/s | 19,103 op/s |
-| Packed (5 queries)   |       2,151 op/s |      22,308 op/s |  7,518 op/s |  4,048 op/s | 31,418 op/s | **100,599** op/s | 11,098 op/s |     58,707 op/s | 17,809 op/s |
-| Simple Iteration     |       1,262 op/s |      11,398 op/s |  4,805 op/s |  1,802 op/s | 22,489 op/s |      45,955 op/s |  6,589 op/s | **95,412** op/s | 25,912 op/s |
-| Fragmented Iteration |       3,908 op/s |      25,692 op/s | 20,475 op/s |  9,107 op/s | 54,339 op/s | **124,318** op/s | 22,221 op/s |     27,945 op/s | 94,788 op/s |
-| Add / Remove         |       4,976 op/s |         923 op/s |    725 op/s | 19,172 op/s |    578 op/s | **266,291** op/s | 21,822 op/s |        343 op/s |    916 op/s |
+|             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |  add_remove |
+| ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | ----------: |
+| bitecs      | 328,625 op/s | 328,672 op/s | 191,774 op/s | 659,881 op/s |     623 op/s |  1,510 op/s |
+| ecsy        |  13,810 op/s |   7,343 op/s |   4,707 op/s |  25,882 op/s |      32 op/s |    788 op/s |
+| flock-ecs   |   3,599 op/s |   4,722 op/s |   1,610 op/s |   7,925 op/s |      88 op/s | 18,523 op/s |
+| geotic      |  32,987 op/s |  47,799 op/s |  27,691 op/s |  49,348 op/s |      29 op/s |    888 op/s |
+| goodluck    |  51,657 op/s |  52,887 op/s |  29,363 op/s | 110,981 op/s |  12,959 op/s | 81,781 op/s |
+| makr        |  12,707 op/s |  10,368 op/s |   6,653 op/s |  24,439 op/s |   8,790 op/s | 25,504 op/s |
+| perform-ecs |  55,518 op/s |  57,716 op/s |  72,009 op/s |  28,827 op/s |      38 op/s |    350 op/s |
+| picoes      |   3,827 op/s |   2,729 op/s |   1,897 op/s |   5,522 op/s |   1,050 op/s |  2,997 op/s |
+| tiny-ecs    |  19,419 op/s |  19,013 op/s |  29,778 op/s |  11,676 op/s |      38 op/s |    895 op/s |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”.
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
 
 ## Frameworks
 
-- [@jakeklassen/ecs](https://github.com/jakeklassen/ecs)
-- [bitecs](https://github.com/NateTheGreatt/bitecs)
-- [ecsy](https://github.com/ecsyjs/ecsy)
-- [flock-ecs](https://github.com/dannyfritz/flock-ecs)
-- [geotic](https://github.com/ddmills/geotic)
-- [goodluck](https://github.com/piesku/goodluck)
-- [makr](https://github.com/makrjs/makr)
-- [perform-ecs](https://github.com/fireveined/perform-ecs)
-- [tiny-ecs](https://github.com/bvalosek/tiny-ecs)
+- [`bitecs`](https://github.com/NateTheGreatt/bitecs)
+- [`ecsy`](https://github.com/ecsyjs/ecsy)
+- [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
+- [`geotic`](https://github.com/ddmills/geotic)
+- [`goodluck`](https://github.com/piesku/goodluck)
+- [`makr`](https://github.com/makrjs/makr)
+- [`perform-ecs`](https://github.com/fireveined/perform-ecs)
+- [`picoes`](https://github.com/ayebear/picoes)
+- [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
 
 ## Benchmarks
 
@@ -66,70 +70,16 @@ This benchmark is designed to test how the ECS handles iteration through a fragm
 - **Dataset:** 26 component types (`A` through `Z`), each with 100 entities plus a `Data` component.
 - **Test:** Iterate through all entities with a `Data` component and double its value.
 
+### Entity Cycle
+
+This benchmark is designed to test the base cost of constructing and destroying entities into the ECS.
+
+- **Dataset:** 1,000 entities with a single `A` component.
+- **Test:** Iterate through all entities, and create 2 entities with a `B` component. Then iterate through all entities with a `B` component and destroy them.
+
 ### Add / Remove
 
 This benchmark is designed to test how quickly the ECS can add and then remove a component from an existing entity.
 
 - **Dataset:** 1,000 entities with a single `A` component.
 - **Test:** Iterate through all entities, adding a `B` component. Then iterate through all entities again, removing their `B` component.
-
-## Results
-
-The benchmarks are run on node v15.8.0.
-
-```
-Packed (1 query)
-  @jakeklassen/ecs: 1,336 op/s (±4.09%)
-  bitecs: 102,388 op/s (±11.34%)
-  ecsy: 13,749 op/s (±3.33%)
-  flock-ecs: 4,305 op/s (±2.36%)
-  geotic: 27,235 op/s (±1.28%)
-  goodluck: 99,783 op/s (±0.67%)
-  makr: 12,882 op/s (±0.43%)
-  perform-ecs: 57,609 op/s (±0.41%)
-  tiny-ecs: 19,103 op/s (±0.76%)
-
-Packed (5 queries)
-  @jakeklassen/ecs: 2,151 op/s (±0.54%)
-  bitecs: 22,308 op/s (±0.30%)
-  ecsy: 7,518 op/s (±3.48%)
-  flock-ecs: 4,048 op/s (±0.40%)
-  geotic: 31,418 op/s (±0.89%)
-  goodluck: 100,599 op/s (±0.29%)
-  makr: 11,098 op/s (±0.43%)
-  perform-ecs: 58,707 op/s (±0.72%)
-  tiny-ecs: 17,809 op/s (±0.79%)
-
-Simple Iteration
-  @jakeklassen/ecs: 1,262 op/s (±0.84%)
-  bitecs: 11,398 op/s (±0.71%)
-  ecsy: 4,805 op/s (±2.32%)
-  flock-ecs: 1,802 op/s (±0.31%)
-  geotic: 22,489 op/s (±0.57%)
-  goodluck: 45,955 op/s (±1.02%)
-  makr: 6,589 op/s (±0.79%)
-  perform-ecs: 95,412 op/s (±0.65%)
-  tiny-ecs: 25,912 op/s (±1.08%)
-
-Fragmented Iteration
-  @jakeklassen/ecs: 3,908 op/s (±0.79%)
-  bitecs: 25,692 op/s (±0.40%)
-  ecsy: 20,475 op/s (±4.17%)
-  flock-ecs: 9,107 op/s (±1.48%)
-  geotic: 54,339 op/s (±1.93%)
-  goodluck: 124,318 op/s (±0.88%)
-  makr: 22,221 op/s (±1.13%)
-  perform-ecs: 27,945 op/s (±1.60%)
-  tiny-ecs: 94,788 op/s (±1.17%)
-
-Add / Remove
-  @jakeklassen/ecs: 4,976 op/s (±0.57%)
-  bitecs: 923 op/s (±0.48%)
-  ecsy: 725 op/s (±2.69%)
-  flock-ecs: 19,172 op/s (±0.36%)
-  geotic: 578 op/s (±3.51%)
-  goodluck: 266,291 op/s (±0.36%)
-  makr: 21,822 op/s (±0.49%)
-  perform-ecs: 343 op/s (±3.81%)
-  tiny-ecs: 916 op/s (±0.79%)
-```

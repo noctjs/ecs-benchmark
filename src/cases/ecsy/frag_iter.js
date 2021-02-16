@@ -32,18 +32,18 @@ class DataSystem extends System {
 export default (count) => {
   let world = new World();
 
-  for (let comp of COMPS) {
-    world.registerComponent(comp);
+  for (let Comp of COMPS) {
+    world.registerComponent(Comp);
   }
 
   world.registerComponent(Data);
   world.registerSystem(DataSystem);
 
   for (let i = 0; i < count; i++) {
-    for (let comp of COMPS) {
+    for (let Comp of COMPS) {
       world
         .createEntity()
-        .addComponent(comp, { value: 0 })
+        .addComponent(Comp, { value: 0 })
         .addComponent(Data, { value: 0 });
     }
   }
