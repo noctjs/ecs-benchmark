@@ -3,16 +3,16 @@ import bitECS from "bitecs";
 export default (count) => {
   let world = bitECS({ maxEntities: count * 4 });
 
-  const a = world.registerComponent("A", { value: "int32" });
-  const b = world.registerComponent("B", { value: "int32" });
-  const c = world.registerComponent("C", { value: "int32" });
-  const d = world.registerComponent("D", { value: "int32" });
-  const e = world.registerComponent("E", { value: "int32" });
+  world.registerComponent("A", { value: "int32" });
+  world.registerComponent("B", { value: "int32" });
+  world.registerComponent("C", { value: "int32" });
+  world.registerComponent("D", { value: "int32" });
+  world.registerComponent("E", { value: "int32" });
 
   world.registerSystem({
     name: "AB",
     components: ["A", "B"],
-    update: (entities) => {
+    update: (a, b) => (entities) => {
       for (let i = 0; i < entities.length; i++) {
         const eid = entities[i];
         let x = a.value[eid];
@@ -25,7 +25,7 @@ export default (count) => {
   world.registerSystem({
     name: "CD",
     components: ["C", "D"],
-    update: (entities) => {
+    update: (c, d) => (entities) => {
       for (let i = 0; i < entities.length; i++) {
         const eid = entities[i];
         let x = c.value[eid];
@@ -38,7 +38,7 @@ export default (count) => {
   world.registerSystem({
     name: "CE",
     components: ["C", "E"],
-    update: (entities) => {
+    update: (c, e) => (entities) => {
       for (let i = 0; i < entities.length; i++) {
         const eid = entities[i];
         let x = c.value[eid];
