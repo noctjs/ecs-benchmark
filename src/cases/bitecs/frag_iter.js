@@ -9,11 +9,11 @@ export default (count) => {
     world.registerComponent(COMP, { value: "int32" });
   }
 
-  const data = world.registerComponent("DATA", { value: "int32" });
+  world.registerComponent("DATA", { value: "int32" });
   world.registerSystem({
     name: "DATA",
     components: ["DATA"],
-    update: (entities) => {
+    update: (data) => (entities) => {
       for (let i = 0; i < entities.length; i++) {
         const eid = entities[i];
         data.value[eid] *= 2;
