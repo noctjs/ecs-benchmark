@@ -5,6 +5,7 @@
     "start": "node src/bench.js"
   },
   "dependencies": {
+    "@javelin/ecs": "^0.21.0",
     "bitecs": "^0.2.2",
     "ecsy": "^0.4.2",
     "flock-ecs": "^0.1.5",
