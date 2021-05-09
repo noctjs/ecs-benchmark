@@ -6,7 +6,7 @@ import {
   addComponent,
   addEntity,
   Types,
-} from "../../../../bitECS/src/index.js";
+} from "bitecs";
 
 const { i32 } = Types;
 
