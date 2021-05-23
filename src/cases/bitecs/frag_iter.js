@@ -28,9 +28,9 @@ export default (count) => {
   });
 
   for (let i = 0; i < count; i++) {
-    const e = addEntity(world);
-    addComponent(world, Data, e);
     for (const component of components) {
+      const e = addEntity(world);
+      addComponent(world, Data, e);
       addComponent(world, component, e);
     }
   }
