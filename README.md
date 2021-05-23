@@ -2,22 +2,24 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-|             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |  add_remove |
-| ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | ----------: |
-| bitecs      | 328,625 op/s | 328,672 op/s | 191,774 op/s | 659,881 op/s |     623 op/s |  1,510 op/s |
-| ecsy        |  13,810 op/s |   7,343 op/s |   4,707 op/s |  25,882 op/s |      32 op/s |    788 op/s |
-| flock-ecs   |   3,599 op/s |   4,722 op/s |   1,610 op/s |   7,925 op/s |      88 op/s | 18,523 op/s |
-| geotic      |  32,987 op/s |  47,799 op/s |  27,691 op/s |  49,348 op/s |      29 op/s |    888 op/s |
-| goodluck    |  51,657 op/s |  52,887 op/s |  29,363 op/s | 110,981 op/s |  12,959 op/s | 81,781 op/s |
-| makr        |  12,707 op/s |  10,368 op/s |   6,653 op/s |  24,439 op/s |   8,790 op/s | 25,504 op/s |
-| perform-ecs |  55,518 op/s |  57,716 op/s |  72,009 op/s |  28,827 op/s |      38 op/s |    350 op/s |
-| picoes      |   3,827 op/s |   2,729 op/s |   1,897 op/s |   5,522 op/s |   1,050 op/s |  2,997 op/s |
-| tiny-ecs    |  19,419 op/s |  19,013 op/s |  29,778 op/s |  11,676 op/s |      38 op/s |    895 op/s |
+|             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |   add_remove |
+| ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | -----------: |
+| bitecs      | 398,843 op/s | 384,813 op/s | 221,454 op/s | 791,205 op/s |   4,407 op/s |   8,491 op/s |
+| ecsy        |  18,935 op/s |   9,042 op/s |   6,105 op/s |  32,452 op/s |      42 op/s |     864 op/s |
+| flock-ecs   |   5,036 op/s |   6,130 op/s |   2,283 op/s |  12,780 op/s |      95 op/s |  28,341 op/s |
+| geotic      |  52,929 op/s |  74,522 op/s |  46,648 op/s |  71,527 op/s |      38 op/s |   1,043 op/s |
+| goodluck    |  78,407 op/s |  77,178 op/s |  36,055 op/s | 159,210 op/s |  17,637 op/s | 116,252 op/s |
+| javelin-ecs | 101,249 op/s |  94,856 op/s |  74,556 op/s | 167,545 op/s |     375 op/s |   3,318 op/s |
+| makr        |  17,636 op/s |  14,125 op/s |   9,427 op/s |  35,799 op/s |  13,237 op/s |  30,274 op/s |
+| perform-ecs |  95,183 op/s |  94,492 op/s | 119,659 op/s |  40,631 op/s |      55 op/s |     460 op/s |
+| picoes      |  31,345 op/s |   9,557 op/s |   5,778 op/s |  17,167 op/s |   1,596 op/s |   5,011 op/s |
+| tiny-ecs    |  27,960 op/s |  26,597 op/s |  38,677 op/s |  68,370 op/s |      56 op/s |   1,092 op/s |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.8.0.
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.12.0.
 
 ## Frameworks
 
+- [`@javelin/ecs`](https://github.com/3mcd/javelin)
 - [`bitecs`](https://github.com/NateTheGreatt/bitecs)
 - [`ecsy`](https://github.com/ecsyjs/ecsy)
 - [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)

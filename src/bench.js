@@ -8,6 +8,7 @@ const LIBRARIES = [
   "flock-ecs",
   "geotic",
   "goodluck",
+  "javelin-ecs",
   "makr",
   "perform-ecs",
   "picoes",

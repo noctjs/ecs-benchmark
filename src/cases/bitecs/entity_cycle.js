@@ -13,7 +13,7 @@ import {
 const { i32 } = Types;
 
 export default (count) => {
-  const world = createWorld(5_000_000);
+  const world = createWorld();
 
   const A = defineComponent({ value: i32 });
   const B = defineComponent({ value: i32 });

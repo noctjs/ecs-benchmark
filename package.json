@@ -5,6 +5,7 @@
     "start": "node src/bench.js"
   },
   "dependencies": {
+    "@javelin/ecs": "^0.21.0",
     "bitecs": "^0.3.6",
     "ecsy": "^0.4.2",
     "flock-ecs": "^0.1.5",
@@ -12,7 +13,7 @@
     "goodluck": "^5.2.0",
     "makr": "^2.1.1",
     "perform-ecs": "^0.7.8",
-    "picoes": "^1.0.0-alpha4",
+    "picoes": "^1.0.0",
     "tiny-ecs": "^2.0.0"
   },
   "devDependencies": {
