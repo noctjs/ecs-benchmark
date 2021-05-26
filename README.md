@@ -20,6 +20,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 ## Frameworks
 
 - [`@javelin/ecs`](https://github.com/3mcd/javelin)
+- [`@lastolivegames/becsy`](https://github.com/lastolivegames/becsy)
 - [`bitecs`](https://github.com/NateTheGreatt/bitecs)
 - [`ecsy`](https://github.com/ecsyjs/ecsy)
 - [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
