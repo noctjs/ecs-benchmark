@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { Worker } from "worker_threads";
 
 const LIBRARIES = [
+  "becsy",
   "bitecs",
   "ecsy",
   "flock-ecs",
