@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@javelin/ecs": "^0.21.0",
-    "bitecs": "^0.2.2",
+    "bitecs": "^0.3.6",
     "ecsy": "^0.4.2",
     "flock-ecs": "^0.1.5",
     "geotic": "^4.1.5",

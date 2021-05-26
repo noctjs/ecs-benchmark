@@ -1,35 +1,41 @@
-import bitECS from "bitecs";
+import { 
+  createWorld,
+  defineComponent,
+  defineQuery,
+  defineSystem,
+  addComponent,
+  addEntity,
+  Types,
+} from "bitecs";
 
-const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const { i32 } = Types;
+
+const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
 
 export default (count) => {
-  let world = bitECS({ maxEntities: count * COMPS.length });
+  const world = createWorld();
 
-  for (let COMP of COMPS) {
-    world.registerComponent(COMP, { value: "int32" });
-  }
+  const components = COMPS.map(c => defineComponent({ value: i32 }));
 
-  world.registerComponent("DATA", { value: "int32" });
-  world.registerSystem({
-    name: "DATA",
-    components: ["DATA"],
-    update: (data) => (entities) => {
-      for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i];
-        data.value[eid] *= 2;
-      }
-    },
+  const Data = defineComponent({ value: i32 });
+  const dataQuery = defineQuery([Data]);
+  const dataSystem = defineSystem(world => {
+    const ents = dataQuery(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      Data.value[eid] *= 2;
+    }
   });
 
   for (let i = 0; i < count; i++) {
-    for (let COMP of COMPS) {
-      let e = world.addEntity();
-      world.addComponent(COMP, e, { value: 0 });
-      world.addComponent("DATA", e, { value: 0 });
+    for (const component of components) {
+      const e = addEntity(world);
+      addComponent(world, Data, e);
+      addComponent(world, component, e);
     }
   }
 
   return () => {
-    world.step();
+    dataSystem(world);
   };
 };

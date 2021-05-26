@@ -1,38 +1,58 @@
-import bitECS from "bitecs";
+import { 
+  createWorld,
+  defineComponent,
+  defineQuery,
+  defineSystem,
+  addComponent,
+  addEntity,
+  removeEntity,
+  Types,
+  pipe
+} from "bitecs";
+
+const { i32 } = Types;
 
 export default (count) => {
-  let world = bitECS({ maxEntities: count * 4 });
+  const world = createWorld();
 
-  world.registerComponent("A", { value: "int32" });
-  world.registerComponent("B", { value: "int32" });
+  const A = defineComponent({ value: i32 });
+  const B = defineComponent({ value: i32 });
 
-  world.registerSystem({
-    name: "SPAWN_B",
-    components: ["A"],
-    update: (a) => (entities) => {
-      for (let i = 0; i < entities.length; i++) {
-        let value = a.value[entities[i]];
-        world.addComponent("B", world.addEntity(), { value });
-        world.addComponent("B", world.addEntity(), { value });
-      }
-    },
+  const queryA = defineQuery([A]);
+  const spawnB = defineSystem(world => {
+    const ents = queryA(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      const eidA = addEntity(world);
+      const eidB = addEntity(world);
+      addComponent(world, B, eidA);
+      addComponent(world, B, eidB);
+      B.value[eidA] = A.value[eid];
+      B.value[eidB] = A.value[eid];
+    }
   });
 
-  world.registerSystem({
-    name: "KILL_B",
-    components: ["B"],
-    update: () => (entities) => {
-      for (let i = 0; i < entities.length; i++) {
-        world.removeEntity(entities[i]);
-      }
-    },
+  const queryB = defineQuery([B]);
+  const killB = defineSystem(world => {
+    const ents = queryB(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      removeEntity(world, eid);
+    }
   });
 
   for (let i = 0; i < count; i++) {
-    world.addComponent("A", world.addEntity(), { value: i });
+    const eid = addEntity(world);
+    addComponent(world, A, eid);
+    A.value[eid] = i;
   }
 
+  const pipeline = pipe(
+    spawnB,
+    killB,
+  );
+
   return () => {
-    world.step();
+    pipeline(world);
   };
 };

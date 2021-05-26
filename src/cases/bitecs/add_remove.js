@@ -1,39 +1,49 @@
-import bitECS from "bitecs";
+import { 
+  createWorld,
+  defineComponent,
+  defineQuery,
+  defineSystem,
+  addComponent,
+  removeComponent,
+  addEntity,
+  Types,
+  pipe,
+} from "bitecs";
+
+const { i32 } = Types;
 
 export default (count) => {
-  let world = bitECS({ maxEntities: count });
+  const world = createWorld();
 
-  world.registerComponent("A", { value: "int32" });
-  world.registerComponent("B", { value: "int32" });
+  const A = defineComponent({ value: i32 });
+  const B = defineComponent({ value: i32 });
 
-  world.registerSystem({
-    name: "ADD_B",
-    components: ["A"],
-    update: () => (entities) => {
-      for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i];
-        world.addComponent("B", eid, { value: 0 });
-      }
-    },
+  const queryA = defineQuery([A]);
+  const addB = defineSystem(world => {
+    const ents = queryA(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      addComponent(world, B, eid);
+    }
   });
 
-  world.registerSystem({
-    name: "REM_B",
-    components: ["B"],
-    update: () => (entities) => {
-      for (let i = 0; i < entities.length; i++) {
-        const eid = entities[i];
-        world.removeComponent("B", eid);
-      }
-    },
-  });
+  const queryB = defineQuery([B]);
+  const removeB = defineSystem(world => {
+    const ents = queryB(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      removeComponent(world, B, eid);
+    }
+  })
 
   for (let i = 0; i < count; i++) {
-    let eid = world.addEntity();
-    world.addComponent("A", eid, { value: 0 });
+    let eid = addEntity(world);
+    addComponent(world, A, eid);
   }
 
+  const pipeline = pipe(addB, removeB);
+
   return () => {
-    world.step();
+    pipeline(world);
   };
 };
