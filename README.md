@@ -15,7 +15,7 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | picoes | 3,832 op/s | 1,968 op/s | 1,282 op/s | 3,630 op/s | 438 op/s | 841 op/s |
 | tiny-ecs | 5,003 op/s | 5,152 op/s | 10,026 op/s | 13,066 op/s | 7 op/s | 312 op/s |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.12.0.
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v16.3.0.
 
 ## Frameworks
 
