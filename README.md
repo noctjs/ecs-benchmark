@@ -32,6 +32,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
 - [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
+- [`wolf-ecs`](https://github.com/EnderShadow8/wolf-ecs)
 
 ## Benchmarks
 
