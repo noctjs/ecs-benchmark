@@ -14,7 +14,7 @@ const LIBRARIES = [
   "perform-ecs",
   "picoes",
   "tiny-ecs",
-  "wolf-ecs"
+  "wolf-ecs",
 ];
 
 const BENCHMARKS = {
