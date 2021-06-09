@@ -11,16 +11,18 @@ export default function(n) {
 
   function add() {
     for(let i = 0, l = qA.archetypes.length; i < l; i++) {
-      for(let j of qA.archetypes[i].entities) {
-        ecs.addComponent(j, "B")
+      const ent = qA.archetypes[i].entities
+      for(let j = ent.length; j > 0; j--) {
+        ecs.addComponent(ent[j - 1], "B")
       }
     }
   }
 
   function remove() {
     for(let i = 0, l = qB.archetypes.length; i < l; i++) {
-      for(let j of qB.archetypes[i].entities) {
-        ecs.removeComponent(j, "B")
+      const ent = qB.archetypes[i].entities
+      for(let j = ent.length; j > 0; j--) {
+        ecs.removeComponent(ent[j - 1], "B")
       }
     }
   }

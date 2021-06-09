@@ -22,8 +22,9 @@ export default function(n) {
 
   function destroy() {
     for(let i = 0, l = qB.archetypes.length; i < l; i++) {
-      for(let j of qB.archetypes[i].entities) {
-        ecs.destroyEntity(j)
+      const ent = qB.archetypes[i].entities
+      for(let j = ent.length; j > 0; j--) {
+        ecs.destroyEntity(ent[j - 1])
       }
     }
   }
