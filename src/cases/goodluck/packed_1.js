@@ -1,6 +1,6 @@
-import { BaseWorld, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
   C = [];
@@ -53,7 +53,7 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(0), B(0), C(0), D(0), E(0)] });
+    instantiate(world, [A(0), B(0), C(0), D(0), E(0)]);
   }
 
   return () => {

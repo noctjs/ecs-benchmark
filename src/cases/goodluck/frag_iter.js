@@ -1,6 +1,6 @@
-import { BaseWorld, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
   C = [];
@@ -52,7 +52,7 @@ export default (count) => {
 
   for (let i = 0; i < count; i++) {
     for (let Comp of COMPS) {
-      instantiate(world, { Using: [Data(0), Comp(0)] });
+      instantiate(world, [Data(0), Comp(0)]);
     }
   }
 

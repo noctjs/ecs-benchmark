@@ -1,6 +1,6 @@
-import { BaseWorld, destroyEntity, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
 }
@@ -26,21 +26,21 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(i)] });
+    instantiate(world, [A(i)]);
   }
 
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_A) === HAS_A) {
         let value = world.A[i].value;
-        instantiate(world, { Using: [B(value)] });
-        instantiate(world, { Using: [B(value)] });
+        instantiate(world, [B(value)]);
+        instantiate(world, [B(value)]);
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === HAS_B) {
-        destroyEntity(world, i);
+        world.DestroyEntity(i);
       }
     }
   };
