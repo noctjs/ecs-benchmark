@@ -13,7 +13,7 @@ try {
 }
 
 let setup = mod.default;
-let fn = setup(workerData.config);
+let fn = await setup(workerData.config);
 
 let cycle_n = 1;
 let cycle_ms = 0;
