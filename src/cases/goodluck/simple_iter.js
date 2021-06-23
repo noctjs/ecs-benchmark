@@ -1,6 +1,6 @@
-import { BaseWorld, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
   C = [];
@@ -53,10 +53,10 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(0), B(1)] });
-    instantiate(world, { Using: [A(0), B(1), C(2)] });
-    instantiate(world, { Using: [A(0), B(1), C(2), D(3)] });
-    instantiate(world, { Using: [A(0), B(1), C(2), E(4)] });
+    instantiate(world, [A(0), B(1)]);
+    instantiate(world, [A(0), B(1), C(2)]);
+    instantiate(world, [A(0), B(1), C(2), D(3)]);
+    instantiate(world, [A(0), B(1), C(2), E(4)]);
   }
 
   const QUERY_AB = HAS_A | HAS_B;
