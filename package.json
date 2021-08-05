@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@javelin/ecs": "^0.21.0",
-    "@lastolivegames/becsy": "^0.4.0",
+    "@lastolivegames/becsy": "^0.7.0",
     "bitecs": "^0.3.6",
     "ecsy": "^0.4.2",
     "flock-ecs": "^0.1.5",

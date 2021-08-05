@@ -1,6 +1,6 @@
 import { System, Type, World } from "@lastolivegames/becsy/perf.js";
 
-export default (count) => {
+export default async (count) => {
   const COMPS = Array.from(
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     () =>
@@ -18,16 +18,16 @@ export default (count) => {
   }
 
   class DataSystem extends System {
-    entities = this.query((q) => q.all.with(Data).write);
+    entities = this.query((q) => q.current.with(Data).write);
 
     execute() {
-      for (const entity of this.entities.all) {
+      for (const entity of this.entities.current) {
         entity.write(Data).value *= 2;
       }
     }
   }
 
-  const world = new World({
+  const world = await World.create({
     maxEntities: count * COMPS.length,
     defs: [COMPS, Data, DataSystem],
   });
