@@ -19,6 +19,6 @@
     "wolf-ecs": "^0.8.2"
   },
   "devDependencies": {
-    "@types/node": "^15.6.1"
+    "@types/node": "^16.4.12"
   }
 }
