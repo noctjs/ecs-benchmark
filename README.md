@@ -10,7 +10,7 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | flock-ecs   |   3,312 op/s |   3,145 op/s |   1,738 op/s |   7,470 op/s |      94 op/s | 18,144 op/s |
 | geotic      |  37,355 op/s |  41,713 op/s |  26,426 op/s |  45,248 op/s |      27 op/s |    822 op/s |
 | goodluck    |  51,630 op/s |  53,048 op/s |  28,136 op/s | 100,559 op/s |  12,679 op/s | 89,410 op/s |
-| javelin-ecs |  66,776 op/s |  67,414 op/s |  38,804 op/s | 103,980 op/s |     301 op/s |  3,393 op/s |
+| javelin-ecs |  68,278 op/s |  68,148 op/s |  42,285 op/s | 118,208 op/s |     326 op/s |  3,479 op/s |
 | makr        |  14,031 op/s |  10,264 op/s |   7,241 op/s |  27,371 op/s |  10,812 op/s | 27,231 op/s |
 | perform-ecs |  56,882 op/s |  58,701 op/s |  77,554 op/s |  31,243 op/s |      35 op/s |    314 op/s |
 | picoes      |  26,502 op/s |   7,274 op/s |   4,518 op/s |  15,414 op/s |   1,372 op/s |  4,061 op/s |

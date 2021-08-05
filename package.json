@@ -5,7 +5,7 @@
     "start": "node src/bench.js"
   },
   "dependencies": {
-    "@javelin/ecs": "^0.21.0",
+    "@javelin/ecs": "^0.22.0",
     "@lastolivegames/becsy": "^0.7.0",
     "bitecs": "^0.3.16",
     "ecsy": "^0.4.2",
