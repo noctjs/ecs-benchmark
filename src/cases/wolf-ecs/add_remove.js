@@ -3,34 +3,38 @@ import {ECS, types} from "wolf-ecs"
 export default function(n) {
   const ecs = new ECS()
 
-  ecs.defineComponent("A", types.u32)
-  ecs.defineComponent("B", types.u32)
+  const A = ecs.defineComponent()
+  const B = ecs.defineComponent()
 
-  const qA = ecs.createQuery("A")
-  const qB = ecs.createQuery("B")
-
+  const qA = ecs.createQuery(A)
   function add() {
-    for(let i = 0, l = qA.archetypes.length; i < l; i++) {
-      const ent = qA.archetypes[i].entities
-      for(let j = ent.length; j > 0; j--) {
-        ecs.addComponent(ent[j - 1], "B")
+    const lB = B
+    for(let i = 0; i < qA.archetypes.length; i++) {
+      const arch = qA.archetypes[i].entities
+      for(let j = arch.length - 1; j >= 0; j--) {
+        ecs.addComponent(arch[j], lB)
       }
     }
   }
 
+  const qB = ecs.createQuery(B)
   function remove() {
-    for(let i = 0, l = qB.archetypes.length; i < l; i++) {
-      const ent = qB.archetypes[i].entities
-      for(let j = ent.length; j > 0; j--) {
-        ecs.removeComponent(ent[j - 1], "B")
+    const lB = B
+    for(let i = 0; i < qB.archetypes.length; i++) {
+      const arch = qB.archetypes[i].entities
+      for(let j = arch.length - 1; j >= 0; j--) {
+        ecs.removeComponent(arch[j], lB)
       }
     }
   }
 
   for(let i = 0; i < n; i++) {
     ecs.createEntity()
-    ecs.addComponent(i, "A")
+    ecs.addComponent(i, A)
   }
+
+  add()
+  remove()
 
   return () => {
     add()
