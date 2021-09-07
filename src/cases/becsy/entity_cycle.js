@@ -1,6 +1,6 @@
 import { System, Type, World } from "@lastolivegames/becsy/perf.js";
 
-export default (count) => {
+export default async (count) => {
   class A {
     static schema = {
       value: Type.int32,
@@ -14,10 +14,10 @@ export default (count) => {
   }
 
   class SpawnB extends System {
-    entities = this.query((q) => q.all.with(A).also.using(B).write);
+    entities = this.query((q) => q.current.with(A).also.using(B).write);
 
     execute() {
-      for (const entity of this.entities.all) {
+      for (const entity of this.entities.current) {
         const value = entity.read(A).value;
         this.createEntity(B, { value });
         this.createEntity(B, { value });
@@ -26,16 +26,16 @@ export default (count) => {
   }
 
   class KillB extends System {
-    entities = this.query((q) => q.all.with(B).write);
+    entities = this.query((q) => q.current.with(B).write);
 
     execute() {
-      for (const entity of this.entities.all) {
+      for (const entity of this.entities.current) {
         entity.delete();
       }
     }
   }
 
-  const world = new World({
+  const world = await World.create({
     maxEntities: count * 8,
     maxLimboEntities: 10000,
     defs: [A, B, SpawnB, KillB],

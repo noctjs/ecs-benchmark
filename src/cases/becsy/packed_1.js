@@ -1,6 +1,6 @@
 import { System, Type, World } from "@lastolivegames/becsy/perf.js";
 
-export default (count) => {
+export default async (count) => {
   class A {
     static schema = {
       value: Type.int32,
@@ -32,16 +32,16 @@ export default (count) => {
   }
 
   class ASystem extends System {
-    entities = this.query((q) => q.all.with(A).write);
+    entities = this.query((q) => q.current.with(A).write);
 
     execute() {
-      for (const entity of this.entities.all) {
+      for (const entity of this.entities.current) {
         entity.write(A).value *= 2;
       }
     }
   }
 
-  const world = new World({
+  const world = await World.create({
     maxEntities: count,
     defs: [A, B, C, D, E, ASystem],
   });

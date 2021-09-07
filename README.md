@@ -4,18 +4,18 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |  add_remove |
 | ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | ----------: |
-| becsy       |  84,273 op/s |  76,489 op/s |  54,115 op/s | 153,480 op/s |   1,896 op/s | 11,223 op/s |
-| bitecs      | 234,608 op/s | 218,055 op/s | 133,733 op/s | 452,260 op/s |   1,266 op/s |  3,988 op/s |
-| ecsy        |   9,601 op/s |   7,080 op/s |   3,079 op/s |  23,755 op/s |      31 op/s |    718 op/s |
-| flock-ecs   |   3,742 op/s |   4,606 op/s |   1,822 op/s |   7,866 op/s |      82 op/s | 18,164 op/s |
-| geotic      |  34,400 op/s |  43,287 op/s |  27,159 op/s |  46,498 op/s |      29 op/s |    914 op/s |
-| goodluck    |  46,008 op/s |  53,443 op/s |  27,988 op/s | 102,591 op/s |  13,634 op/s | 92,730 op/s |
-| javelin-ecs |  67,306 op/s |  66,801 op/s |  39,770 op/s | 114,093 op/s |     285 op/s |  3,274 op/s |
-| makr        |  13,253 op/s |  10,086 op/s |   7,135 op/s |  25,167 op/s |  10,752 op/s | 26,686 op/s |
-| perform-ecs |  59,418 op/s |  59,047 op/s |  73,860 op/s |  27,874 op/s |      40 op/s |    374 op/s |
-| picoes      |  26,304 op/s |   6,886 op/s |   4,065 op/s |  12,619 op/s |   1,425 op/s |  3,576 op/s |
-| tiny-ecs    |  15,788 op/s |  14,873 op/s |  26,729 op/s |  43,586 op/s |      39 op/s |    880 op/s |
-| wolf-ecs    | 317,003 op/s | 314,997 op/s | 151,010 op/s | 517,377 op/s |   4,019 op/s | 19,486 op/s |
+| becsy       |  28,991 op/s |  28,955 op/s |  18,195 op/s |  68,419 op/s |     224 op/s |  8,580 op/s |
+| bitecs      | 211,808 op/s | 200,276 op/s | 111,841 op/s | 392,767 op/s |   1,056 op/s |  4,016 op/s |
+| ecsy        |  13,474 op/s |   7,442 op/s |   4,928 op/s |  25,914 op/s |      30 op/s |    835 op/s |
+| flock-ecs   |   3,810 op/s |   3,638 op/s |   1,695 op/s |   7,531 op/s |      90 op/s | 18,575 op/s |
+| geotic      |  36,293 op/s |  43,565 op/s |  28,492 op/s |  48,515 op/s |      27 op/s |    956 op/s |
+| goodluck    |  42,553 op/s |  51,312 op/s |  28,935 op/s | 103,808 op/s |  12,945 op/s | 87,892 op/s |
+| javelin-ecs |  74,950 op/s |  67,306 op/s |  34,544 op/s | 112,038 op/s |     278 op/s |  3,133 op/s |
+| makr        |  13,584 op/s |  10,102 op/s |   7,274 op/s |  25,681 op/s |  10,875 op/s | 27,278 op/s |
+| perform-ecs |  54,800 op/s |  58,672 op/s |  73,878 op/s |  30,777 op/s |      37 op/s |    407 op/s |
+| picoes      |  25,502 op/s |   7,486 op/s |   4,576 op/s |  15,819 op/s |   1,384 op/s |  4,297 op/s |
+| tiny-ecs    |  20,202 op/s |  17,068 op/s |  29,495 op/s |  47,007 op/s |      49 op/s |    969 op/s |
+| wolf-ecs    | 332,510 op/s | 295,930 op/s | 176,768 op/s | 615,459 op/s |   3,001 op/s | 12,090 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v16.3.0.
 

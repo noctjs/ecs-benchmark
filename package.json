@@ -2,23 +2,24 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node src/bench.js"
+    "start": "node src/bench.js",
+    "deps": "npx npm-check -upE"
   },
   "dependencies": {
-    "@javelin/ecs": "^0.21.0",
-    "@lastolivegames/becsy": "^0.4.0",
-    "bitecs": "^0.3.6",
-    "ecsy": "^0.4.2",
-    "flock-ecs": "^0.1.5",
-    "geotic": "^4.1.6",
-    "goodluck": "^7.0.0",
-    "makr": "^2.1.1",
-    "perform-ecs": "^0.7.8",
-    "picoes": "^1.0.0",
-    "tiny-ecs": "^2.0.0",
-    "wolf-ecs": "^0.8.2"
+    "@javelin/ecs": "0.22.0",
+    "@lastolivegames/becsy": "0.8.0",
+    "bitecs": "0.3.16",
+    "ecsy": "0.4.2",
+    "flock-ecs": "0.1.5",
+    "geotic": "4.1.6",
+    "goodluck": "7.0.0",
+    "makr": "2.1.1",
+    "perform-ecs": "0.7.8",
+    "picoes": "1.0.0",
+    "tiny-ecs": "2.0.0",
+    "wolf-ecs": "2.1.1"
   },
   "devDependencies": {
-    "@types/node": "^15.6.1"
+    "@types/node": "^16.7.13"
   }
 }
