@@ -3,35 +3,36 @@ import { ECS, types } from "wolf-ecs";
 export default function (n) {
   const ecs = new ECS();
 
-  ecs.defineComponent("A");
-  ecs.defineComponent("B");
+  const A = ecs.defineComponent();
+  const B = ecs.defineComponent();
 
-  const qA = ecs.createQuery("A");
-  const qB = ecs.createQuery("B");
-
+  const qA = ecs.createQuery(A);
   function create() {
+    const lB = B;
     for (let i = 0, l = qA.archetypes.length; i < l; i++) {
-      for (let j = 0, l = qA.archetypes[i].entities.length; j < l; j++) {
+      const arch = qA.archetypes[i].entities;
+      for (let j = 0, l = arch.length; j < l; j++) {
         const id = ecs.createEntity();
-        ecs.addComponent(id, "B");
+        ecs.addComponent(id, lB);
         const id2 = ecs.createEntity();
-        ecs.addComponent(id2, "B");
+        ecs.addComponent(id2, lB);
       }
     }
   }
 
+  const qB = ecs.createQuery(B);
   function destroy() {
     for (let i = 0, l = qB.archetypes.length; i < l; i++) {
-      for (let j of qB.archetypes[i].entities) {
-        ecs.destroyEntity(j);
+      const arch = qB.archetypes[i].entities;
+      for (let j = arch.length - 1; j >= 0; j--) {
+        ecs.destroyEntity(arch[j]);
       }
     }
   }
 
   for (let i = 0; i < n; i++) {
     ecs.createEntity();
-    ecs.addComponent(i, "A");
-    ecs.components.A[i] = 1;
+    ecs.addComponent(i, A);
   }
 
   create();
