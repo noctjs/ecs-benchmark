@@ -48,6 +48,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
+- [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`makr`](https://github.com/makrjs/makr)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
