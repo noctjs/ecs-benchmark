@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node src/bench.js",
+    "start": "node --es-module-specifier-resolution=node src/bench.js",
     "deps": "npx npm-check -upE"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "flock-ecs": "0.1.5",
     "geotic": "4.1.6",
     "goodluck": "7.0.0",
+    "harmony-ecs": "0.0.2",
     "makr": "2.1.1",
     "perform-ecs": "0.7.8",
     "picoes": "1.0.0",
