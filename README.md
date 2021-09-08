@@ -15,6 +15,7 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | perform-ecs |  54,800 op/s |  58,672 op/s |  73,878 op/s |  30,777 op/s |      37 op/s |    407 op/s |
 | picoes      |  25,502 op/s |   7,486 op/s |   4,576 op/s |  15,819 op/s |   1,384 op/s |  4,297 op/s |
 | tiny-ecs    |  20,202 op/s |  17,068 op/s |  29,495 op/s |  47,007 op/s |      49 op/s |    969 op/s |
+| uecs        |  33,851 op/s |  31,990 op/s |  15,546 op/s |  67,026 op/s |     892 op/s |  5,262 op/s |
 | wolf-ecs    | 332,510 op/s | 295,930 op/s | 176,768 op/s | 615,459 op/s |   3,001 op/s | 12,090 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v16.3.0.
@@ -32,6 +33,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
 - [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
+- [`uecs`](https://github.com/jprochazk/uecs)
 - [`wolf-ecs`](https://github.com/EnderShadow8/wolf-ecs)
 
 ## Benchmarks

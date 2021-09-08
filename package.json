@@ -17,6 +17,7 @@
     "perform-ecs": "0.7.8",
     "picoes": "1.0.0",
     "tiny-ecs": "2.0.0",
+    "uecs": "0.4.0",
     "wolf-ecs": "2.1.1"
   },
   "devDependencies": {
