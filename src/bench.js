@@ -1,3 +1,4 @@
+import { existsSync } from "fs";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import { Worker } from "worker_threads";
@@ -27,24 +28,50 @@ const BENCHMARKS = {
   add_remove: 1_000,
 };
 
+let libraries = [];
+let args = process.argv.slice(2);
+if (args.length > 0) {
+  for (let lib of args) {
+    if (LIBRARIES.includes(lib)) {
+      libraries.push(lib);
+    } else {
+      console.warn(`${lib} is not supported`);
+    }
+  }
+} else {
+  libraries = LIBRARIES;
+}
+
+const CURRENT_DIR = dirname(fileURLToPath(import.meta.url));
 const RESULTS = [];
 
-for (let lib of LIBRARIES) {
+for (let lib of libraries) {
   let results = [];
   RESULTS.push(results);
   console.log(lib);
   for (let name in BENCHMARKS) {
-    let config = BENCHMARKS[name];
-    let path = `./cases/${lib}/${name}.js`;
     let log = `  ${name} ${" ".repeat(14 - name.length)}`;
+    let path = resolve(CURRENT_DIR, `./cases/${lib}/${name}.js`);
+    if (!existsSync(path)) {
+      results.push("TODO");
+      console.log(`${log} TODO`);
+      continue;
+    }
     try {
+      let config = BENCHMARKS[name];
       let result = await run_bench(path, config);
       results.push(result);
       console.log(`${log} ${Math.floor(result.hz).toLocaleString()} op/s`);
     } catch (err) {
-      results.push(err);
-      console.log(`${log} ${err.code ?? "ERROR"}`);
-      console.log(err.stack);
+      if (err instanceof Error) {
+        results.push(err.code ?? "ERROR");
+        console.log(`${log} ${err.code ?? "ERROR"}`);
+        console.log(err.stack);
+      } else {
+        results.push("ERROR");
+        console.log(`${log} ERROR`);
+        console.log(err);
+      }
     }
   }
   console.log();
@@ -52,14 +79,14 @@ for (let lib of LIBRARIES) {
 
 console.log("|     | " + Object.keys(BENCHMARKS).join(" | ") + " |");
 console.log("| --- | " + "--: |".repeat(Object.keys(BENCHMARKS).length));
-for (let i = 0; i < LIBRARIES.length; i++) {
+for (let i = 0; i < libraries.length; i++) {
   console.log(
-    `| ${LIBRARIES[i]} | ` +
+    `| ${libraries[i]} | ` +
       RESULTS[i]
         .map((result) =>
           "hz" in result
             ? `${Math.floor(result.hz).toLocaleString()} op/s`
-            : result.code ?? "ERROR"
+            : result
         )
         .join(" | ") +
       " |"
@@ -67,8 +94,7 @@ for (let i = 0; i < LIBRARIES.length; i++) {
 }
 
 function run_bench(path, config) {
-  let current_dir = dirname(fileURLToPath(import.meta.url));
-  let worker_file = resolve(current_dir, "bench_worker.js");
+  let worker_file = resolve(CURRENT_DIR, "bench_worker.js");
 
   return new Promise((resolve, reject) => {
     let worker = new Worker(worker_file, {
