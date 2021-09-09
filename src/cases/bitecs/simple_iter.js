@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -20,9 +20,9 @@ export default (count) => {
   const D = defineComponent({ value: i32 });
   const E = defineComponent({ value: i32 });
 
-  const queryAB = defineQuery([A,B])
-  const systemAB = defineSystem(world => {
-    const ents = queryAB(world)
+  const queryAB = defineQuery([A, B]);
+  const systemAB = defineSystem((world) => {
+    const ents = queryAB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = A.value[eid];
@@ -31,9 +31,9 @@ export default (count) => {
     }
   });
 
-  const queryCD = defineQuery([C,D])
-  const systemCD = defineSystem(world => {
-    const ents = queryCD(world)
+  const queryCD = defineQuery([C, D]);
+  const systemCD = defineSystem((world) => {
+    const ents = queryCD(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
@@ -41,9 +41,10 @@ export default (count) => {
       D.value[eid] = x;
     }
   });
-  const queryCE = defineQuery([C,E])
-  const systemCE = defineSystem(world => {
-    const ents = queryCE(world)
+
+  const queryCE = defineQuery([C, E]);
+  const systemCE = defineSystem((world) => {
+    const ents = queryCE(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
@@ -88,11 +89,7 @@ export default (count) => {
     E.value[e4] = 3;
   }
 
-  const pipeline = pipe(
-    systemAB,
-    systemCD,
-    systemCE,
-  );
+  const pipeline = pipe(systemAB, systemCD, systemCE);
 
   return () => {
     pipeline(world);

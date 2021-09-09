@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -10,16 +10,16 @@ import {
 
 const { i32 } = Types;
 
-const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 export default (count) => {
   const world = createWorld();
 
-  const components = COMPS.map(c => defineComponent({ value: i32 }));
+  const components = COMPS.map((c) => defineComponent({ value: i32 }));
 
   const Data = defineComponent({ value: i32 });
   const dataQuery = defineQuery([Data]);
-  const dataSystem = defineSystem(world => {
+  const dataSystem = defineSystem((world) => {
     const ents = dataQuery(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];

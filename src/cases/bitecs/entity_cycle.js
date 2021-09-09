@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -7,7 +7,7 @@ import {
   addEntity,
   removeEntity,
   Types,
-  pipe
+  pipe,
 } from "bitecs";
 
 const { i32 } = Types;
@@ -19,7 +19,7 @@ export default (count) => {
   const B = defineComponent({ value: i32 });
 
   const queryA = defineQuery([A]);
-  const spawnB = defineSystem(world => {
+  const spawnB = defineSystem((world) => {
     const ents = queryA(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
@@ -33,7 +33,7 @@ export default (count) => {
   });
 
   const queryB = defineQuery([B]);
-  const killB = defineSystem(world => {
+  const killB = defineSystem((world) => {
     const ents = queryB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
@@ -47,10 +47,7 @@ export default (count) => {
     A.value[eid] = i;
   }
 
-  const pipeline = pipe(
-    spawnB,
-    killB,
-  );
+  const pipeline = pipe(spawnB, killB);
 
   return () => {
     pipeline(world);
