@@ -1,4 +1,4 @@
-import { ECS, types } from "wolf-ecs";
+import { ECS } from "wolf-ecs";
 
 export default function (n) {
   const ecs = new ECS();

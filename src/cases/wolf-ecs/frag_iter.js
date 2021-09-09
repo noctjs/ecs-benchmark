@@ -14,14 +14,14 @@ export default function (n) {
     const lData = data;
     for (let i = 0, l = q.archetypes.length; i < l; i++) {
       const arch = q.archetypes[i].entities;
-      for (let i = 0, l = arch.length; i < l; i++) {
-        lData[i] *= 2;
+      for (let j = 0, l = arch.length; j < l; j++) {
+        lData[arch[j]] *= 2;
       }
     }
   }
 
   for (let i = 0; i < n; i++) {
-    for (let i = 0; i < 26; i++) {
+    for (let i = 0; i < cmps.length; i++) {
       const id = ecs.createEntity();
       ecs.addComponent(id, cmps[i]);
       ecs.addComponent(id, data);
