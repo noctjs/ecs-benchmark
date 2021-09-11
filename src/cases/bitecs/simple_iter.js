@@ -2,7 +2,6 @@ import {
   createWorld,
   defineComponent,
   defineQuery,
-  defineSystem,
   addComponent,
   addEntity,
   pipe,
