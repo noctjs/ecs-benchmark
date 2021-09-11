@@ -1,6 +1,6 @@
-import { BaseWorld, destroyEntity, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
 }
@@ -8,17 +8,29 @@ class World extends BaseWorld {
 const HAS_A = 1 << 0;
 const HAS_B = 1 << 1;
 
-function A(value) {
+class A {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class B {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+function a(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = { value };
+    world.A[entity] = new A(value);
   };
 }
 
-function B(value) {
+function b(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_B;
-    world.B[entity] = { value };
+    world.B[entity] = new B(value);
   };
 }
 
@@ -26,21 +38,21 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(i)] });
+    instantiate(world, [a(i)]);
   }
 
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_A) === HAS_A) {
         let value = world.A[i].value;
-        instantiate(world, { Using: [B(value)] });
-        instantiate(world, { Using: [B(value)] });
+        instantiate(world, [b(value)]);
+        instantiate(world, [b(value)]);
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === HAS_B) {
-        destroyEntity(world, i);
+        world.DestroyEntity(i);
       }
     }
   };

@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,

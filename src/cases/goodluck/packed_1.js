@@ -1,6 +1,6 @@
-import { BaseWorld, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
   C = [];
@@ -14,38 +14,68 @@ const HAS_C = 1 << 2;
 const HAS_D = 1 << 3;
 const HAS_E = 1 << 4;
 
-function A(value) {
+class A {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class B {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class C {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class D {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class E {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+function a(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = { value };
+    world.A[entity] = new A(value);
   };
 }
 
-function B(value) {
+function b(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_B;
-    world.B[entity] = { value };
+    world.B[entity] = new B(value);
   };
 }
 
-function C(value) {
+function c(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_C;
-    world.C[entity] = { value };
+    world.C[entity] = new C(value);
   };
 }
 
-function D(value) {
+function d(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_D;
-    world.D[entity] = { value };
+    world.D[entity] = new D(value);
   };
 }
 
-function E(value) {
+function e(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_E;
-    world.E[entity] = { value };
+    world.E[entity] = new E(value);
   };
 }
 
@@ -53,7 +83,7 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(0), B(0), C(0), D(0), E(0)] });
+    instantiate(world, [a(0), b(0), c(0), d(0), e(0)]);
   }
 
   return () => {

@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -80,13 +80,7 @@ export default (count) => {
     addComponent(world, E, e);
   }
 
-  const pipeline = pipe(
-    PACKED_A,
-    PACKED_B,
-    PACKED_C,
-    PACKED_D,
-    PACKED_E,
-  );
+  const pipeline = pipe(PACKED_A, PACKED_B, PACKED_C, PACKED_D, PACKED_E);
 
   return () => {
     pipeline(world);

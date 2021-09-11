@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -91,11 +91,7 @@ export default (count) => {
     E.value[e4] = 3;
   }
 
-  const pipeline = pipe(
-    systemAB,
-    systemCD,
-    systemCE,
-  );
+  const pipeline = pipe(systemAB, systemCD, systemCE);
 
   return () => {
     pipeline(world);

@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -12,7 +12,7 @@ const { i32 } = Types;
 
 export default (count) => {
   const world = createWorld();
-  
+
   const A = defineComponent({ value: i32 });
   const B = defineComponent({ value: i32 });
   const C = defineComponent({ value: i32 });
@@ -40,7 +40,7 @@ export default (count) => {
     addComponent(world, D, eid);
     addComponent(world, E, eid);
   }
-  
+
   return () => {
     system(world);
   };

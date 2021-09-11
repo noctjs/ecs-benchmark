@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -7,7 +7,7 @@ import {
   addEntity,
   removeEntity,
   Types,
-  pipe
+  pipe,
 } from "bitecs";
 
 const { i32 } = Types;
@@ -49,10 +49,7 @@ export default (count) => {
     A.value[eid] = i;
   }
 
-  const pipeline = pipe(
-    spawnB,
-    killB,
-  );
+  const pipeline = pipe(spawnB, killB);
 
   return () => {
     pipeline(world);

@@ -1,4 +1,4 @@
-import { 
+import {
   createWorld,
   defineComponent,
   defineQuery,
@@ -10,12 +10,12 @@ import {
 
 const { i32 } = Types;
 
-const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 export default (count) => {
   const world = createWorld();
 
-  const components = COMPS.map(c => defineComponent({ value: i32 }));
+  const components = COMPS.map((c) => defineComponent({ value: i32 }));
 
   const Data = defineComponent({ value: i32 });
   const { value } = Data

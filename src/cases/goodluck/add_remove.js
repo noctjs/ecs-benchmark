@@ -1,6 +1,6 @@
-import { BaseWorld, instantiate } from "goodluck";
+import { WorldImpl, instantiate } from "goodluck";
 
-class World extends BaseWorld {
+class World extends WorldImpl {
   A = [];
   B = [];
 }
@@ -8,10 +8,22 @@ class World extends BaseWorld {
 const HAS_A = 1 << 0;
 const HAS_B = 1 << 1;
 
-function A(value = 0) {
+class A {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class B {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+function a(value = 0) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = { value };
+    world.A[entity] = new A(value);
   };
 }
 
@@ -19,14 +31,14 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, { Using: [A(0)] });
+    instantiate(world, [a(0)]);
   }
 
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === 0) {
         world.Signature[i] |= HAS_B;
-        world.B[i] = { value: 0 };
+        world.B[i] = new B(0);
       }
     }
 
