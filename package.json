@@ -7,7 +7,7 @@
   "dependencies": {
     "@javelin/ecs": "^0.21.0",
     "@lastolivegames/becsy": "^0.4.0",
-    "bitecs": "^0.3.6",
+    "bitecs": "^0.3.20-2",
     "ecsy": "^0.4.2",
     "flock-ecs": "^0.1.5",
     "geotic": "^4.1.6",
@@ -20,5 +20,8 @@
   },
   "devDependencies": {
     "@types/node": "^15.6.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.2"
   }
 }

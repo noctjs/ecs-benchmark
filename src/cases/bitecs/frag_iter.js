@@ -18,14 +18,17 @@ export default (count) => {
   const components = COMPS.map(c => defineComponent({ value: i32 }));
 
   const Data = defineComponent({ value: i32 });
+  const { value } = Data
+  
   const dataQuery = defineQuery([Data]);
-  const dataSystem = defineSystem(world => {
+  const dataSystem = world => {
     const ents = dataQuery(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
-      Data.value[eid] *= 2;
+      value[eid] *= 2;
     }
-  });
+    return world;
+  };
 
   for (let i = 0; i < count; i++) {
     for (const component of components) {
