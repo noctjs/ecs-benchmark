@@ -17,10 +17,10 @@ export default (count) => {
   const components = COMPS.map((c) => defineComponent({ value: i32 }));
 
   const Data = defineComponent({ value: i32 });
-  const { value } = Data
-  
+  const { value } = Data;
+
   const dataQuery = defineQuery([Data]);
-  const dataSystem = world => {
+  const dataSystem = (world) => {
     const ents = dataQuery(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];

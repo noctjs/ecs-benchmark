@@ -18,7 +18,7 @@ export default (count) => {
   const B = defineComponent({ value: i32 });
 
   const queryA = defineQuery([A]);
-  const addB = world => {
+  const addB = (world) => {
     const ents = queryA(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
@@ -28,7 +28,7 @@ export default (count) => {
   };
 
   const queryB = defineQuery([B]);
-  const removeB = world => {
+  const removeB = (world) => {
     const ents = queryB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];

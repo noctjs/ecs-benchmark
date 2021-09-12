@@ -19,9 +19,9 @@ export default (count) => {
   const D = defineComponent({ value: i32 });
   const E = defineComponent({ value: i32 });
 
-  const queryAB = defineQuery([A,B])
-  const systemAB = world => {
-    const ents = queryAB(world)
+  const queryAB = defineQuery([A, B]);
+  const systemAB = (world) => {
+    const ents = queryAB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = A.value[eid];
@@ -31,9 +31,9 @@ export default (count) => {
     return world;
   };
 
-  const queryCD = defineQuery([C,D])
-  const systemCD = world => {
-    const ents = queryCD(world)
+  const queryCD = defineQuery([C, D]);
+  const systemCD = (world) => {
+    const ents = queryCD(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
@@ -42,9 +42,10 @@ export default (count) => {
     }
     return world;
   };
-  const queryCE = defineQuery([C,E])
-  const systemCE = world => {
-    const ents = queryCE(world)
+
+  const queryCE = defineQuery([C, E]);
+  const systemCE = (world) => {
+    const ents = queryCE(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
