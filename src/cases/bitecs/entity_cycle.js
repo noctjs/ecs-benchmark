@@ -2,7 +2,6 @@ import {
   createWorld,
   defineComponent,
   defineQuery,
-  defineSystem,
   addComponent,
   addEntity,
   removeEntity,
@@ -19,7 +18,7 @@ export default (count) => {
   const B = defineComponent({ value: i32 });
 
   const queryA = defineQuery([A]);
-  const spawnB = defineSystem((world) => {
+  const spawnB = world => {
     const ents = queryA(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
@@ -30,16 +29,18 @@ export default (count) => {
       B.value[eidA] = A.value[eid];
       B.value[eidB] = A.value[eid];
     }
-  });
+    return world;
+  };
 
   const queryB = defineQuery([B]);
-  const killB = defineSystem((world) => {
+  const killB = world => {
     const ents = queryB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       removeEntity(world, eid);
     }
-  });
+    return world;
+  };
 
   for (let i = 0; i < count; i++) {
     const eid = addEntity(world);
