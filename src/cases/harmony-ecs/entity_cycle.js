@@ -1,5 +1,5 @@
 import {
-  destroyEntity,
+  deleteEntity,
   formats,
   makeBinarySchema,
   makeEntity,
@@ -31,7 +31,7 @@ export default (count) => {
     for (let i = 0; i < qb.length; i++) {
       const [e] = qb[i];
       for (let j = e.length - 1; j >= 0; j--) {
-        destroyEntity(world, e[j], B);
+        deleteEntity(world, e[j], B);
       }
     }
   };
