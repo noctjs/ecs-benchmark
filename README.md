@@ -2,23 +2,6 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-<<<<<<< HEAD
-|             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |  add_remove |
-| ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | ----------: |
-| becsy       |  74,978 op/s |  80,088 op/s |  29,625 op/s |  64,644 op/s |     209 op/s |  7,271 op/s |
-| bitecs      | 251,435 op/s | 319,393 op/s | 113,831 op/s | 490,027 op/s |     587 op/s |  2,199 op/s |
-| ecsy        |  13,080 op/s |   7,556 op/s |   4,699 op/s |  26,692 op/s |      35 op/s |    786 op/s |
-| flock-ecs   |   3,791 op/s |   3,712 op/s |   1,639 op/s |   7,669 op/s |      90 op/s | 18,961 op/s |
-| geotic      |  36,799 op/s |  44,512 op/s |  24,497 op/s |  48,109 op/s |      26 op/s |    852 op/s |
-| goodluck    |  64,200 op/s |  54,488 op/s |  33,611 op/s | 106,659 op/s |  14,547 op/s | 85,540 op/s |
-| javelin-ecs |  57,635 op/s |  63,127 op/s |  34,547 op/s | 114,828 op/s |     297 op/s |  2,880 op/s |
-| makr        |  12,881 op/s |   9,598 op/s |   6,832 op/s |  21,553 op/s |  10,433 op/s | 27,358 op/s |
-| perform-ecs |  54,975 op/s |  57,022 op/s |  72,202 op/s |  30,754 op/s |      41 op/s |    417 op/s |
-| picoes      |  25,641 op/s |   7,138 op/s |   4,371 op/s |  15,536 op/s |   1,363 op/s |  3,700 op/s |
-| tiny-ecs    |  18,047 op/s |  15,896 op/s |  31,426 op/s |  46,404 op/s |      48 op/s |    930 op/s |
-| uecs        |  33,625 op/s |  30,875 op/s |  14,740 op/s |  62,533 op/s |     832 op/s |  4,611 op/s |
-| wolf-ecs    | 333,628 op/s | 291,870 op/s | 167,773 op/s | 544,317 op/s |   3,404 op/s | 12,514 op/s |
-=======
 |                    |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |   add_remove |
 | ------------------ | -----------: | -----------: | -----------: | -----------: | -----------: | -----------: |
 | becsy              |  51,768 op/s |  49,559 op/s |  31,755 op/s | 112,976 op/s |     263 op/s |  15,125 op/s |
@@ -35,7 +18,6 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | picoes             |  42,973 op/s |  11,653 op/s |   7,424 op/s |  25,086 op/s |   1,940 op/s |   6,551 op/s |
 | tiny-ecs           |  33,298 op/s |  29,848 op/s |  52,432 op/s |  65,742 op/s |      74 op/s |   1,261 op/s |
 | wolf-ecs           | 452,731 op/s | 442,979 op/s | 242,801 op/s | 810,898 op/s |   5,906 op/s |  20,640 op/s |
->>>>>>> 2a3a4d0 (Add harmony-ecs and harmony-ecs-object benchmarks)
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v16.3.0.
 
@@ -48,7 +30,6 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
-- [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`makr`](https://github.com/makrjs/makr)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
