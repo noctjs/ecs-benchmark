@@ -1,9 +1,9 @@
 import {
+  addComponent,
+  addEntity,
   createWorld,
   defineComponent,
   defineQuery,
-  addComponent,
-  addEntity,
   Types,
 } from "bitecs";
 

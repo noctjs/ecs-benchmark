@@ -1,6 +1,6 @@
 import { ECS, types } from "wolf-ecs";
 
-export default function (n) {
+export default (count) => {
   const ecs = new ECS();
 
   const A = ecs.defineComponent(types.u32);
@@ -13,9 +13,7 @@ export default function (n) {
   const qCD = ecs.createQuery(C, D);
   const qCE = ecs.createQuery(C, E);
 
-  function sysAB() {
-    const lA = A;
-    const lB = B;
+  function sysAB(lA, lB) {
     for (let i = 0, l = qAB.archetypes.length; i < l; i++) {
       const arch = qAB.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -26,9 +24,7 @@ export default function (n) {
     }
   }
 
-  function sysCD() {
-    const lC = C;
-    const lD = D;
+  function sysCD(lC, lD) {
     for (let i = 0, l = qCD.archetypes.length; i < l; i++) {
       const arch = qCD.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -39,9 +35,7 @@ export default function (n) {
     }
   }
 
-  function sysCE() {
-    const lC = C;
-    const lE = E;
+  function sysCE(lC, lE) {
     for (let i = 0, l = qCE.archetypes.length; i < l; i++) {
       const arch = qCE.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -52,7 +46,7 @@ export default function (n) {
     }
   }
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < count; i++) {
     const ab = ecs.createEntity();
     ecs.addComponent(ab, A);
     ecs.addComponent(ab, B);
@@ -76,8 +70,8 @@ export default function (n) {
   }
 
   return () => {
-    sysAB();
-    sysCD();
-    sysCE();
+    sysAB(A, B);
+    sysCD(C, D);
+    sysCE(C, E);
   };
-}
+};

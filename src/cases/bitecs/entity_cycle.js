@@ -1,12 +1,12 @@
 import {
+  addComponent,
+  addEntity,
   createWorld,
   defineComponent,
   defineQuery,
-  addComponent,
-  addEntity,
+  pipe,
   removeEntity,
   Types,
-  pipe,
 } from "bitecs";
 
 const { i32 } = Types;

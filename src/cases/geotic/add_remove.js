@@ -12,7 +12,7 @@ export default (count) => {
   const world = engine.createWorld();
 
   for (let i = 0; i < count; i++) {
-    world.createEntity().add(A, { value: 0 });
+    world.createEntity().add(A);
   }
 
   let with_b = world.createQuery({ all: [B] });
@@ -20,7 +20,7 @@ export default (count) => {
 
   return () => {
     for (let entity of without_b.get()) {
-      entity.add(B, { value: 0 });
+      entity.add(B);
     }
 
     for (let entity of with_b.get()) {

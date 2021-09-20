@@ -1,19 +1,18 @@
 import { ECS, types } from "wolf-ecs";
 
-export default function (n) {
+export default (count) => {
   const ecs = new ECS();
 
   const A = ecs.defineComponent();
   const B = ecs.defineComponent();
 
   const qA = ecs.createQuery(A);
-  function create() {
-    const lB = B;
+  function create(lB) {
     for (let i = 0, l = qA.archetypes.length; i < l; i++) {
       const arch = qA.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
-        const id = ecs.createEntity();
-        ecs.addComponent(id, lB);
+        const id1 = ecs.createEntity();
+        ecs.addComponent(id1, lB);
         const id2 = ecs.createEntity();
         ecs.addComponent(id2, lB);
       }
@@ -30,16 +29,13 @@ export default function (n) {
     }
   }
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < count; i++) {
     ecs.createEntity();
     ecs.addComponent(i, A);
   }
 
-  create();
-  destroy();
-
   return () => {
-    create();
+    create(B);
     destroy();
   };
-}
+};

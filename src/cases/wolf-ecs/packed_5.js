@@ -1,6 +1,6 @@
 import { ECS, types } from "wolf-ecs";
 
-export default function (n) {
+export default (count) => {
   const ecs = new ECS();
 
   const A = ecs.defineComponent(types.u32);
@@ -10,8 +10,7 @@ export default function (n) {
   const E = ecs.defineComponent(types.u32);
 
   const qA = ecs.createQuery(A);
-  function sysA() {
-    const lA = A;
+  function sysA(lA) {
     for (let i = 0, l = qA.archetypes.length; i < l; i++) {
       const arch = qA.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -21,8 +20,7 @@ export default function (n) {
   }
 
   const qB = ecs.createQuery(B);
-  function sysB() {
-    const lB = B;
+  function sysB(lB) {
     for (let i = 0, l = qB.archetypes.length; i < l; i++) {
       const arch = qB.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -32,8 +30,7 @@ export default function (n) {
   }
 
   const qC = ecs.createQuery(C);
-  function sysC() {
-    const lC = C;
+  function sysC(lC) {
     for (let i = 0, l = qC.archetypes.length; i < l; i++) {
       const arch = qC.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -43,8 +40,7 @@ export default function (n) {
   }
 
   const qD = ecs.createQuery(D);
-  function sysD() {
-    const lD = D;
+  function sysD(lD) {
     for (let i = 0, l = qD.archetypes.length; i < l; i++) {
       const arch = qD.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -54,8 +50,7 @@ export default function (n) {
   }
 
   const qE = ecs.createQuery(E);
-  function sysE() {
-    const lE = E;
+  function sysE(lE) {
     for (let i = 0, l = qE.archetypes.length; i < l; i++) {
       const arch = qE.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
@@ -64,7 +59,7 @@ export default function (n) {
     }
   }
 
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < count; i++) {
     ecs.createEntity();
     ecs.addComponent(i, A);
     A[i] = 1;
@@ -78,19 +73,11 @@ export default function (n) {
     E[i] = 1;
   }
 
-  for (let i = 0; i < 1000; i++) {
-    sysA();
-    sysB();
-    sysC();
-    sysD();
-    sysE();
-  }
-
   return () => {
-    sysA();
-    sysB();
-    sysC();
-    sysD();
-    sysE();
+    sysA(A);
+    sysB(B);
+    sysC(C);
+    sysD(D);
+    sysE(E);
   };
-}
+};

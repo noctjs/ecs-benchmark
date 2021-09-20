@@ -11,8 +11,8 @@ import {
 
 export default (count) => {
   const world = makeWorld(count);
-  const A = makeBinarySchema(world, formats.float64);
-  const B = makeBinarySchema(world, formats.float64);
+  const A = makeBinarySchema(world, formats.int32);
+  const B = makeBinarySchema(world, formats.int32);
   const qa = makeQuery(world, [A], not([B]));
   const qab = makeQuery(world, [A, B]);
 

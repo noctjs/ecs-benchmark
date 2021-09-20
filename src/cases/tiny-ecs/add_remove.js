@@ -2,13 +2,8 @@ import pkg from "tiny-ecs";
 
 const { EntityManager } = pkg;
 
-function A(value) {
-  this.value = value;
-}
-
-function B(value) {
-  this.value = value;
-}
+function A() {}
+function B() {}
 
 export default (count) => {
   let ecs = new EntityManager();
