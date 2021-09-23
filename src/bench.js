@@ -11,7 +11,6 @@ const LIBRARIES = [
   "geotic",
   "goodluck",
   "harmony-ecs",
-  "harmony-ecs-object",
   "javelin-ecs",
   "makr",
   "perform-ecs",
