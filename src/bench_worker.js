@@ -1,5 +1,5 @@
-import { performance } from "perf_hooks";
-import { parentPort, workerData } from "worker_threads";
+import { performance } from "node:perf_hooks";
+import { parentPort, workerData } from "node:worker_threads";
 
 // Load the function to bench
 let setup = await import(workerData.path).then((module) => module.default);

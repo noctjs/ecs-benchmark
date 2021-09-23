@@ -1,7 +1,7 @@
-import { existsSync } from "fs";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
-import { Worker } from "worker_threads";
+import { existsSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { Worker } from "node:worker_threads";
 
 const LIBRARIES = [
   "becsy",
