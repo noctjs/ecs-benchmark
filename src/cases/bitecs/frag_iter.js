@@ -14,17 +14,27 @@ const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 export default (count) => {
   const world = createWorld();
 
-  const components = COMPS.map((c) => defineComponent({ value: i32 }));
+  const components = COMPS.map(() => defineComponent({ value: i32 }));
 
+  const Z = components[25];
   const Data = defineComponent({ value: i32 });
-  const { value } = Data;
 
   const dataQuery = defineQuery([Data]);
   const dataSystem = (world) => {
     const ents = dataQuery(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
-      value[eid] *= 2;
+      Data.value[eid] *= 2;
+    }
+    return world;
+  };
+
+  const zQuery = defineQuery([Z]);
+  const zSystem = (world) => {
+    const ents = zQuery(world);
+    for (let i = 0; i < ents.length; i++) {
+      const eid = ents[i];
+      Z.value[eid] *= 2;
     }
     return world;
   };
@@ -39,5 +49,6 @@ export default (count) => {
 
   return () => {
     dataSystem(world);
+    zSystem(world);
   };
 };

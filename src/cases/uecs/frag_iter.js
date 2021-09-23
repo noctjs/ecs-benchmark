@@ -8,6 +8,8 @@ const COMPS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (name) =>
   `)()
 );
 
+const Z = COMPS[25];
+
 function Data(value = 0) {
   this.value = value;
 }
@@ -24,6 +26,9 @@ export default (count) => {
   return () => {
     world.view(Data).each((entity, data) => {
       data.value *= 2;
+    });
+    world.view(Z).each((entity, z) => {
+      z.value *= 2;
     });
   };
 };

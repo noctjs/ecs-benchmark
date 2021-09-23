@@ -43,6 +43,7 @@ const COMPS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (name, index) => {
   };
 });
 
+const HAS_Z = 1 << 25;
 const HAS_DATA = 1 << 26;
 
 class Data {
@@ -71,6 +72,11 @@ export default (count) => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_DATA) === HAS_DATA) {
         world.Data[i].value *= 2;
+      }
+    }
+    for (let i = 0; i < world.Signature.length; i++) {
+      if ((world.Signature[i] & HAS_Z) === HAS_Z) {
+        world.Z[i].value *= 2;
       }
     }
   };

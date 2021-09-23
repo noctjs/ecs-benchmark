@@ -4,6 +4,8 @@ const COMPS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (name) =>
   Function("Component", `return class ${name} extends Component {}`)(Component)
 );
 
+const Z = COMPS[25];
+
 class Data extends Component {}
 
 export default (count) => {
@@ -26,10 +28,14 @@ export default (count) => {
   }
 
   let data = world.createQuery({ all: [Data] });
+  let z = world.createQuery({ all: [Z] });
 
   return () => {
     for (let entity of data.get()) {
       entity.data.value *= 2;
+    }
+    for (let entity of z.get()) {
+      entity.z.value *= 2;
     }
   };
 };

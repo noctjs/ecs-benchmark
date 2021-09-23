@@ -5,16 +5,28 @@ export default (count) => {
 
   const cmps = [];
   for (let i = 0; i < 26; i++) {
-    cmps.push(ecs.defineComponent());
+    cmps.push(ecs.defineComponent(types.i32));
   }
-  const data = ecs.defineComponent(types.u32);
 
-  const q = ecs.createQuery(data);
-  function sys(lData) {
-    for (let i = 0, l = q.archetypes.length; i < l; i++) {
-      const arch = q.archetypes[i].entities;
+  const z = cmps[25];
+  const data = ecs.defineComponent(types.i32);
+
+  const dataQuery = ecs.createQuery(data);
+  function dataSystem(lData) {
+    for (let i = 0, l = dataQuery.archetypes.length; i < l; i++) {
+      const arch = dataQuery.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
         lData[arch[j]] *= 2;
+      }
+    }
+  }
+
+  const zQuery = ecs.createQuery(z);
+  function zSystem(lZ) {
+    for (let i = 0, l = zQuery.archetypes.length; i < l; i++) {
+      const arch = zQuery.archetypes[i].entities;
+      for (let j = 0, l = arch.length; j < l; j++) {
+        lZ[arch[j]] *= 2;
       }
     }
   }
@@ -24,11 +36,13 @@ export default (count) => {
       const id = ecs.createEntity();
       ecs.addComponent(id, cmps[i]);
       ecs.addComponent(id, data);
-      data[id] = 1;
+      data[id] = 0;
+      cmps[i][id] = 0;
     }
   }
 
   return () => {
-    sys(data);
+    dataSystem(data);
+    zSystem(z);
   };
 };
