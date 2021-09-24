@@ -4,13 +4,13 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |   add_remove |
 | ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | -----------: |
-| becsy       |  85,792 op/s |  76,985 op/s |  28,355 op/s |  54,708 op/s |     213 op/s |   7,900 op/s |
+| becsy       |  94,575 op/s |  84,279 op/s |  32,457 op/s |  58,258 op/s |     225 op/s |   7,971 op/s |
 | bitecs      | 253,655 op/s | 311,195 op/s | 111,961 op/s | 432,781 op/s |     673 op/s |   2,320 op/s |
 | ecsy        |  12,863 op/s |   7,981 op/s |   4,828 op/s |  24,866 op/s |      36 op/s |     817 op/s |
 | flock-ecs   |   3,451 op/s |   3,825 op/s |   1,734 op/s |   6,474 op/s |      88 op/s |  18,929 op/s |
 | geotic      |  38,062 op/s |  39,530 op/s |  26,410 op/s |  46,832 op/s |      30 op/s |     829 op/s |
 | goodluck    |  64,034 op/s |  54,710 op/s |  34,944 op/s |  82,482 op/s |  14,384 op/s | 267,147 op/s |
-| harmony-ecs | 276,636 op/s | 242,120 op/s | 117,732 op/s | 440,730 op/s |   1,918 op/s |   7,870 op/s |
+| harmony-ecs | 317,857 op/s | 253,654 op/s | 132,760 op/s | 486,285 op/s |   2,238 op/s |  11,162 op/s |
 | javelin-ecs |  53,437 op/s |  53,171 op/s |  34,938 op/s | 103,905 op/s |     239 op/s |   2,927 op/s |
 | makr        |  11,720 op/s |   8,495 op/s |   5,518 op/s |  17,623 op/s |   8,675 op/s |  24,936 op/s |
 | perform-ecs |  54,325 op/s |  56,576 op/s |  70,736 op/s |  30,036 op/s |      40 op/s |     385 op/s |
