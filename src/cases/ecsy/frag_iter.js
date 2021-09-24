@@ -10,6 +10,8 @@ const COMPS = Array.from(
     }
 );
 
+const Z = COMPS[25];
+
 class Data extends Component {
   static schema = {
     value: { type: Types.Number },
@@ -29,6 +31,19 @@ class DataSystem extends System {
   }
 }
 
+class ZSystem extends System {
+  static queries = {
+    entities: { components: [Z] },
+  };
+
+  execute() {
+    this.queries.entities.results.forEach((entity) => {
+      let z = entity.getMutableComponent(Z);
+      z.value *= 2;
+    });
+  }
+}
+
 export default (count) => {
   let world = new World();
 
@@ -38,6 +53,7 @@ export default (count) => {
 
   world.registerComponent(Data);
   world.registerSystem(DataSystem);
+  world.registerSystem(ZSystem);
 
   for (let i = 0; i < count; i++) {
     for (let Comp of COMPS) {

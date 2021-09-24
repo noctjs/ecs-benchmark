@@ -24,11 +24,20 @@ const Data = createComponentType({
 export default (count) => {
   const world = createWorld();
   const qd = query(Data);
+  const qz = query(componentTypes[25]);
 
   world.addSystem(() => {
     for (const [entities, [d]] of qd) {
       for (let i = 0; i < entities.length; i++) {
         d[i].value *= 2;
+      }
+    }
+  });
+
+  world.addSystem(() => {
+    for (const [entities, [z]] of qz) {
+      for (let i = 0; i < entities.length; i++) {
+        z[i].value *= 2;
       }
     }
   });

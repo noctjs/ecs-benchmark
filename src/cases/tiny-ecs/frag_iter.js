@@ -10,6 +10,8 @@ const COMPS = Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ", (name) =>
   `)()
 );
 
+const Z = COMPS[25];
+
 function Data(value = 0) {
   this.value = value;
 }
@@ -26,6 +28,9 @@ export default (count) => {
   return () => {
     for (let entity of ecs.queryComponents([Data])) {
       entity.data.value *= 2;
+    }
+    for (let entity of ecs.queryComponents([Z])) {
+      entity.z.value *= 2;
     }
   };
 };

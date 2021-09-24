@@ -4,20 +4,20 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 |             |     packed_1 |     packed_5 |  simple_iter |    frag_iter | entity_cycle |   add_remove |
 | ----------- | -----------: | -----------: | -----------: | -----------: | -----------: | -----------: |
-| becsy       |  82,144 op/s |  82,210 op/s |  30,488 op/s |  64,463 op/s |     224 op/s |   8,050 op/s |
-| bitecs      | 246,727 op/s | 335,463 op/s | 111,215 op/s | 486,824 op/s |     654 op/s |   2,314 op/s |
-| ecsy        |  14,510 op/s |   7,778 op/s |   4,786 op/s |  23,327 op/s |      34 op/s |     914 op/s |
-| flock-ecs   |   3,519 op/s |   3,754 op/s |   1,718 op/s |   7,854 op/s |      93 op/s |  19,202 op/s |
-| geotic      |  40,963 op/s |  45,986 op/s |  29,105 op/s |  46,699 op/s |      30 op/s |   1,005 op/s |
-| goodluck    |  58,862 op/s |  54,663 op/s |  35,040 op/s | 103,021 op/s |  13,752 op/s | 269,077 op/s |
-| harmony-ecs | 312,105 op/s | 252,354 op/s | 133,024 op/s | 495,510 op/s |   2,221 op/s |  11,180 op/s |
-| javelin-ecs |  61,655 op/s |  68,741 op/s |  36,541 op/s | 118,779 op/s |     293 op/s |   2,969 op/s |
-| makr        |  13,685 op/s |   9,565 op/s |   7,162 op/s |  23,187 op/s |  10,967 op/s |  25,982 op/s |
-| perform-ecs |  56,221 op/s |  56,417 op/s |  73,847 op/s |  28,948 op/s |      39 op/s |     424 op/s |
-| picoes      |  26,221 op/s |   7,733 op/s |   4,549 op/s |  16,157 op/s |   1,403 op/s |   4,124 op/s |
-| tiny-ecs    |  20,034 op/s |  17,194 op/s |  31,176 op/s |  49,498 op/s |      52 op/s |   1,048 op/s |
-| uecs        |  35,038 op/s |  31,911 op/s |  15,051 op/s |  66,222 op/s |     858 op/s |   5,189 op/s |
-| wolf-ecs    | 324,656 op/s | 304,422 op/s | 165,203 op/s | 524,042 op/s |   3,352 op/s |  10,765 op/s |
+| becsy       |  85,792 op/s |  76,985 op/s |  28,355 op/s |  54,708 op/s |     213 op/s |   7,900 op/s |
+| bitecs      | 253,655 op/s | 311,195 op/s | 111,961 op/s | 432,781 op/s |     673 op/s |   2,320 op/s |
+| ecsy        |  12,863 op/s |   7,981 op/s |   4,828 op/s |  24,866 op/s |      36 op/s |     817 op/s |
+| flock-ecs   |   3,451 op/s |   3,825 op/s |   1,734 op/s |   6,474 op/s |      88 op/s |  18,929 op/s |
+| geotic      |  38,062 op/s |  39,530 op/s |  26,410 op/s |  46,832 op/s |      30 op/s |     829 op/s |
+| goodluck    |  64,034 op/s |  54,710 op/s |  34,944 op/s |  82,482 op/s |  14,384 op/s | 267,147 op/s |
+| harmony-ecs | 276,636 op/s | 242,120 op/s | 117,732 op/s | 440,730 op/s |   1,918 op/s |   7,870 op/s |
+| javelin-ecs |  53,437 op/s |  53,171 op/s |  34,938 op/s | 103,905 op/s |     239 op/s |   2,927 op/s |
+| makr        |  11,720 op/s |   8,495 op/s |   5,518 op/s |  17,623 op/s |   8,675 op/s |  24,936 op/s |
+| perform-ecs |  54,325 op/s |  56,576 op/s |  70,736 op/s |  30,036 op/s |      40 op/s |     385 op/s |
+| picoes      |  24,218 op/s |   7,066 op/s |   3,677 op/s |  11,094 op/s |   1,263 op/s |   3,734 op/s |
+| tiny-ecs    |  18,254 op/s |  16,222 op/s |  29,307 op/s |  43,993 op/s |      50 op/s |     990 op/s |
+| uecs        |  33,098 op/s |  29,833 op/s |  14,513 op/s |  10,096 op/s |     807 op/s |   5,013 op/s |
+| wolf-ecs    | 303,799 op/s | 291,085 op/s | 161,958 op/s | 400,477 op/s |   3,291 op/s |  10,400 op/s |
 
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v16.3.0.
 
@@ -77,7 +77,9 @@ This benchmark is designed to test how efficiently the ECS can run multiple inde
 This benchmark is designed to test how the ECS handles iteration through a fragmented dataset.
 
 - **Dataset:** 26 component types (`A` through `Z`), each with 100 entities plus a `Data` component.
-- **Test:** Iterate through all entities with a `Data` component and double its value.
+- **Test:**
+  - Iterate through all entities with a `Data` component and double its value.
+  - Iterate through all entities with a `Z` component and double its value.
 
 ### Entity Cycle
 

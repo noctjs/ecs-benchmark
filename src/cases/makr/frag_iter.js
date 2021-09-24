@@ -12,6 +12,8 @@ function Data(value) {
   this.value = value;
 }
 
+const Z = COMPS[25];
+
 export default (count) => {
   let em = makr(Data, ...COMPS);
 
@@ -27,6 +29,10 @@ export default (count) => {
     for (let entity of em.query(Data)) {
       let data = entity.get(Data);
       data.value *= 2;
+    }
+    for (let entity of em.query(Z)) {
+      let z = entity.get(Z);
+      z.value *= 2;
     }
   };
 };
