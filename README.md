@@ -28,6 +28,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`bitecs`](https://github.com/NateTheGreatt/bitecs)
 - [`ecsy`](https://github.com/ecsyjs/ecsy)
 - [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
+- [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
 - [`makr`](https://github.com/makrjs/makr)
