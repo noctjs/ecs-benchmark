@@ -15,6 +15,7 @@ const LIBRARIES = [
   "makr",
   "perform-ecs",
   "picoes",
+  "piecs",
   "tiny-ecs",
   "uecs",
   "wolf-ecs",
