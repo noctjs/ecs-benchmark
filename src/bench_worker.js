@@ -1,8 +1,11 @@
 import { performance } from "node:perf_hooks";
 import { parentPort, workerData } from "node:worker_threads";
+import { pathToFileURL } from "node:url";
 
 // Load the function to bench
-let setup = await import(workerData.path).then((module) => module.default);
+let setup = await import(pathToFileURL(workerData.path)).then(
+  (module) => module.default
+);
 let fn = await setup(workerData.config);
 
 let cycle_n = 1;

@@ -1,22 +1,16 @@
-import {
-  formats,
-  makeBinarySchema,
-  makeEntity,
-  makeQuery,
-  makeWorld,
-} from "harmony-ecs";
+import { Entity, Format, Query, Schema, World } from "harmony-ecs";
 
 export default (count) => {
-  const world = makeWorld(count);
-  const A = makeBinarySchema(world, formats.float64);
-  const B = makeBinarySchema(world, formats.float64);
-  const C = makeBinarySchema(world, formats.float64);
-  const D = makeBinarySchema(world, formats.float64);
-  const E = makeBinarySchema(world, formats.float64);
-  const qa = makeQuery(world, [A]);
+  const world = World.make(count);
+  const A = Schema.makeBinary(world, Format.float64);
+  const B = Schema.makeBinary(world, Format.float64);
+  const C = Schema.makeBinary(world, Format.float64);
+  const D = Schema.makeBinary(world, Format.float64);
+  const E = Schema.makeBinary(world, Format.float64);
+  const qa = Query.make(world, [A]);
 
   for (let i = 0; i < count; i++) {
-    makeEntity(world, [A, B, C, D, E]);
+    Entity.make(world, [A, B, C, D, E]);
   }
 
   return () => {
