@@ -13,6 +13,7 @@ const LIBRARIES = [
   "javelin-ecs",
   "perform-ecs",
   "picoes",
+  "piecs",
   "tiny-ecs",
   "uecs",
   "wolf-ecs",

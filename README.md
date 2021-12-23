@@ -30,6 +30,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`goodluck`](https://github.com/piesku/goodluck)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
+- [`piecs`](https://github.com/sondresj/piecs)
 - [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
 - [`uecs`](https://github.com/jprochazk/uecs)
 - [`wolf-ecs`](https://github.com/EnderShadow8/wolf-ecs)
