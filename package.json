@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/bench.js",
+    "check-format": "prettier --check 'src/**/*.js'",
     "deps": "npx npm-check -upE"
   },
   "dependencies": {
@@ -21,6 +22,7 @@
     "wolf-ecs": "2.1.1"
   },
   "devDependencies": {
-    "@types/node": "^16.9.1"
+    "@types/node": "^16.9.1",
+    "prettier": "^2.5.1"
   }
 }
