@@ -7,7 +7,6 @@ const LIBRARIES = [
   "becsy",
   "bitecs",
   "ecsy",
-  "flock-ecs",
   "geotic",
   "goodluck",
   "harmony-ecs",
