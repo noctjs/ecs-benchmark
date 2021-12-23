@@ -17,7 +17,7 @@
     "picoes": "1.0.0",
     "piecs": "0.4.0",
     "tiny-ecs": "2.0.0",
-    "uecs": "0.4.0",
+    "uecs": "0.4.2",
     "wolf-ecs": "2.1.1"
   },
   "devDependencies": {
