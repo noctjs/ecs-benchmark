@@ -11,7 +11,6 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | goodluck    |  82,030 op/s |  78,068 op/s |  55,714 op/s | 120,164 op/s |  22,974 op/s | 488,034 op/s |
 | harmony-ecs | 467,302 op/s | 442,276 op/s | 255,896 op/s | 697,671 op/s |   3,356 op/s |   6,520 op/s |
 | javelin-ecs |  83,788 op/s |  82,870 op/s |  94,569 op/s | 138,895 op/s |     467 op/s |   5,046 op/s |
-| makr        |  22,373 op/s |  17,950 op/s |  12,847 op/s |  37,609 op/s |  16,859 op/s |  41,781 op/s |
 | perform-ecs |  75,420 op/s |  85,416 op/s | 132,313 op/s |  43,410 op/s |      68 op/s |     630 op/s |
 | picoes      |  42,467 op/s |  11,540 op/s |   7,542 op/s |  18,535 op/s |   1,878 op/s |   6,170 op/s |
 | tiny-ecs    |  31,270 op/s |  27,891 op/s |  53,389 op/s |  61,539 op/s |      74 op/s |   1,300 op/s |
@@ -29,7 +28,6 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
-- [`makr`](https://github.com/makrjs/makr)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
 - [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)

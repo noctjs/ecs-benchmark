@@ -11,7 +11,6 @@ const LIBRARIES = [
   "goodluck",
   "harmony-ecs",
   "javelin-ecs",
-  "makr",
   "perform-ecs",
   "picoes",
   "tiny-ecs",
