@@ -77,16 +77,14 @@ for (let lib of libraries) {
   console.log();
 }
 
-console.log("|     | " + Object.keys(BENCHMARKS).join(" | ") + " |");
-console.log("| --- | " + "--: |".repeat(Object.keys(BENCHMARKS).length));
+console.log("| op/s | " + Object.keys(BENCHMARKS).join(" | ") + " |");
+console.log("| ---- | " + "--: |".repeat(Object.keys(BENCHMARKS).length));
 for (let i = 0; i < libraries.length; i++) {
   console.log(
     `| ${libraries[i]} | ` +
       RESULTS[i]
         .map((result) =>
-          "hz" in result
-            ? `${Math.floor(result.hz).toLocaleString()} op/s`
-            : result
+          "hz" in result ? Math.floor(result.hz).toLocaleString() : result
         )
         .join(" | ") +
       " |"
