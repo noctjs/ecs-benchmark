@@ -1,4 +1,4 @@
-import { World, createEntitySystem } from "piecs/dist/index.mjs";
+import { createEntitySystem, World } from "piecs/dist/index.mjs";
 
 export default function createPacked5(count) {
   const world = new World();
@@ -24,7 +24,7 @@ export default function createPacked5(count) {
     arr: new Uint32Array(count).fill(1),
   };
 
-  const p = world.prefabricate([A, B, C, D, E]);
+  const prefab = world.prefabricate([A, B, C, D, E]);
 
   world
     .registerSystem(
@@ -34,7 +34,7 @@ export default function createPacked5(count) {
             A.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(A)
       )
     )
     .registerSystem(
@@ -44,7 +44,7 @@ export default function createPacked5(count) {
             B.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(B)
       )
     )
     .registerSystem(
@@ -54,7 +54,7 @@ export default function createPacked5(count) {
             C.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(C)
       )
     )
     .registerSystem(
@@ -64,7 +64,7 @@ export default function createPacked5(count) {
             D.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(D)
       )
     )
     .registerSystem(
@@ -74,13 +74,13 @@ export default function createPacked5(count) {
             E.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(E)
       )
     )
     .initialize();
 
   for (let i = 0; i < count; i++) {
-    world.createEntity(p);
+    world.createEntity(prefab);
   }
 
   return function packed5() {

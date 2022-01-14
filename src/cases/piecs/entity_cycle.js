@@ -1,4 +1,4 @@
-import { World, createEntitySystem } from "piecs/dist/index.mjs";
+import { createEntitySystem, World } from "piecs/dist/index.mjs";
 
 export default function createEntityCycle(count) {
   const world = new World();
@@ -17,7 +17,7 @@ export default function createEntityCycle(count) {
             world.createEntity(prefabB);
           }
         },
-        (q) => q.prefabricated(prefabA)
+        (q) => q.every(A)
       )
     )
     .registerSystem(
@@ -27,7 +27,7 @@ export default function createEntityCycle(count) {
             world.deleteEntity(entities[i]);
           }
         },
-        (q) => q.prefabricated(prefabB)
+        (q) => q.every(B)
       )
     )
     .initialize();

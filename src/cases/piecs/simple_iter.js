@@ -1,4 +1,4 @@
-import { World, createEntitySystem } from "piecs/dist/index.mjs";
+import { createEntitySystem, World } from "piecs/dist/index.mjs";
 
 export default function createSimpleIter(count) {
   const world = new World();
@@ -23,10 +23,10 @@ export default function createSimpleIter(count) {
     arr: new Uint32Array(count * 4).fill(0),
   };
 
-  const prefab1 = world.prefabricate([A, B]);
-  const prefab2 = world.prefabricate([A, B, C]);
-  const prefab3 = world.prefabricate([A, B, C, D]);
-  const prefab4 = world.prefabricate([A, B, C, E]);
+  const prefabAB = world.prefabricate([A, B]);
+  const prefabABC = world.prefabricate([A, B, C]);
+  const prefabABCD = world.prefabricate([A, B, C, D]);
+  const prefabABCE = world.prefabricate([A, B, C, E]);
 
   world
     .registerSystem(
@@ -40,7 +40,7 @@ export default function createSimpleIter(count) {
             B.arr[entity] = a;
           }
         },
-        (q) => q.prefabricated(prefab1)
+        (q) => q.every(A, B)
       )
     )
     .registerSystem(
@@ -54,7 +54,7 @@ export default function createSimpleIter(count) {
             D.arr[entity] = c;
           }
         },
-        (q) => q.prefabricated(prefab3)
+        (q) => q.every(C, D)
       )
     )
     .registerSystem(
@@ -68,16 +68,16 @@ export default function createSimpleIter(count) {
             E.arr[entity] = c;
           }
         },
-        (q) => q.prefabricated(prefab4)
+        (q) => q.every(C, E)
       )
     )
     .initialize();
 
   for (let i = 0; i < count; i++) {
-    world.createEntity(prefab1);
-    world.createEntity(prefab2);
-    world.createEntity(prefab3);
-    world.createEntity(prefab4);
+    world.createEntity(prefabAB);
+    world.createEntity(prefabABC);
+    world.createEntity(prefabABCD);
+    world.createEntity(prefabABCE);
   }
 
   return function simpleIter() {

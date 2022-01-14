@@ -1,4 +1,4 @@
-import { World, createEntitySystem } from "piecs/dist/index.mjs";
+import { createEntitySystem, World } from "piecs/dist/index.mjs";
 
 export default function createPacked1(count) {
   const world = new World();
@@ -11,7 +11,7 @@ export default function createPacked1(count) {
   const D = world.createComponentId();
   const E = world.createComponentId();
 
-  const p = world.prefabricate([A, B, C, D, E]);
+  const prefab = world.prefabricate([A, B, C, D, E]);
 
   world
     .registerSystem(
@@ -21,13 +21,13 @@ export default function createPacked1(count) {
             A.arr[entities[i]] *= 2;
           }
         },
-        (q) => q.prefabricated(p)
+        (q) => q.every(A)
       )
     )
     .initialize();
 
   for (let i = 0; i < count; i++) {
-    world.createEntity(p);
+    world.createEntity(prefab);
   }
 
   return function packed1() {

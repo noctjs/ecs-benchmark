@@ -1,19 +1,17 @@
-import { World, createEntitySystem } from "piecs/dist/index.mjs";
+import { createEntitySystem, World } from "piecs/dist/index.mjs";
 
 export default function createAddRemove(count) {
   const world = new World();
   const A = world.createComponentId();
   const B = world.createComponentId();
-
   const prefabA = world.prefabricate([A]);
-  const prefabAB = world.prefabricate([A, B]);
 
   world
     .registerSystem(
       createEntitySystem(
         function addB(entities, world) {
           for (let i = entities.length - 1; i >= 0; i--) {
-            world.transformEntity(entities[i], prefabAB);
+            world.addComponent(entities[i], B);
           }
         },
         (q) => q.every(A)
@@ -23,7 +21,7 @@ export default function createAddRemove(count) {
       createEntitySystem(
         function removeB(entities, world) {
           for (let i = entities.length - 1; i >= 0; i--) {
-            world.transformEntity(entities[i], prefabA);
+            world.removeComponent(entities[i], B);
           }
         },
         (q) => q.every(B)
