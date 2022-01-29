@@ -1,6 +1,6 @@
-import {ECS, types} from "wolf-ecs"
+import { ECS, types } from "wolf-ecs";
 
-export default function(n) {
+export default function (n) {
   const ecs = new ECS();
 
   const cmps = [];
@@ -45,4 +45,4 @@ export default function(n) {
     dataSystem();
     zSystem();
   };
-};
+}
