@@ -1,6 +1,6 @@
-import {ECS, types} from "wolf-ecs"
+import { ECS, types } from "wolf-ecs";
 
-export default function(n) {
+export default function (n) {
   const ecs = new ECS();
 
   const cmps = [];
@@ -13,8 +13,8 @@ export default function(n) {
 
   const dataQuery = ecs.createQuery(data);
   function dataSystem() {
-    for (let i = 0, l = dataQuery.length; i < l; i++) {
-      const arch = dataQuery[i];
+    for (let i = 0, l = dataQuery.a.length; i < l; i++) {
+      const arch = dataQuery.a[i].e;
       for (let j = 0, l = arch.length; j < l; j++) {
         data[arch[j]] *= 2;
       }
@@ -23,8 +23,8 @@ export default function(n) {
 
   const zQuery = ecs.createQuery(z);
   function zSystem() {
-    for (let i = 0, l = zQuery.length; i < l; i++) {
-      const arch = zQuery[i];
+    for (let i = 0, l = zQuery.a.length; i < l; i++) {
+      const arch = zQuery.a[i].e;
       for (let j = 0, l = arch.length; j < l; j++) {
         z[arch[j]] *= 2;
       }
@@ -45,4 +45,4 @@ export default function(n) {
     dataSystem();
     zSystem();
   };
-};
+}

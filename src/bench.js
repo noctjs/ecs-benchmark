@@ -4,18 +4,18 @@ import { fileURLToPath } from "node:url";
 import { Worker } from "node:worker_threads";
 
 const LIBRARIES = [
-  "becsy",
-  "bitecs",
-  "ecsy",
-  "geotic",
-  "goodluck",
-  "harmony-ecs",
-  "javelin-ecs",
-  "perform-ecs",
-  "picoes",
-  "piecs",
-  "tiny-ecs",
-  "uecs",
+  // "becsy",
+  // "bitecs",
+  // "ecsy",
+  // "geotic",
+  // "goodluck",
+  // "harmony-ecs",
+  // "javelin-ecs",
+  // "perform-ecs",
+  // "picoes",
+  // "piecs",
+  // "tiny-ecs",
+  // "uecs",
   "wolf-ecs",
 ];
 
@@ -26,6 +26,7 @@ const BENCHMARKS = {
   frag_iter: 100,
   entity_cycle: 1_000,
   add_remove: 1_000,
+  query_stress: 100,
 };
 
 let libraries = [];
