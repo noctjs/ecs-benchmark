@@ -16,8 +16,8 @@ export default function(n) {
   function sysAB() {
     const lA = A
     const lB = B
-    for(let i = 0, l = qAB.archetypes.length; i < l; i++) {
-      const arch = qAB.archetypes[i].entities
+    for(let i = 0, l = qAB.length; i < l; i++) {
+      const arch = qAB[i]
       for(let j = 0, l = arch.length; j < l; j++) {
         const temp = lA[arch[j]]
         lA[arch[j]] = lB[arch[j]]
@@ -29,8 +29,8 @@ export default function(n) {
   function sysCD() {
     const lC = C
     const lD = D
-    for(let i = 0, l = qCD.archetypes.length; i < l; i++) {
-      const arch = qCD.archetypes[i].entities
+    for(let i = 0, l = qCD.length; i < l; i++) {
+      const arch = qCD[i]
       for(let j = 0, l = arch.length; j < l; j++) {
         const temp = lC[arch[j]]
         lC[arch[j]] = lD[arch[j]]
@@ -42,8 +42,8 @@ export default function(n) {
   function sysCE() {
     const lC = C
     const lE = E
-    for(let i = 0, l = qCE.archetypes.length; i < l; i++) {
-      const arch = qCE.archetypes[i].entities
+    for(let i = 0, l = qCE.length; i < l; i++) {
+      const arch = qCE[i]
       for(let j = 0, l = arch.length; j < l; j++) {
         const temp = lC[arch[j]]
         lC[arch[j]] = lE[arch[j]]

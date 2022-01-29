@@ -40,10 +40,23 @@ class DataSystem extends System {
   }
 }
 
+class ZSystem extends System {
+  view = EntityViewFactory.createView({
+    components: [COMPS[25]],
+  });
+
+  update() {
+    for (let entity of this.view.entities) {
+      entity.z *= 2;
+    }
+  }
+}
+
 export default (count) => {
   let ecs = new ECS();
 
   ecs.registerSystem(new DataSystem());
+  ecs.registerSystem(new ZSystem());
 
   for (let i = 0; i < count; i++) {
     for (let Comp of COMPS) {

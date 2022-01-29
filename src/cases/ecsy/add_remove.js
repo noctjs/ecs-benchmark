@@ -1,15 +1,11 @@
 import { Component, Not, System, Types, World } from "ecsy";
 
 class A extends Component {
-  static schema = {
-    value: { type: Types.Number },
-  };
+  static schema = {};
 }
 
 class B extends Component {
-  static schema = {
-    value: { type: Types.Number },
-  };
+  static schema = {};
 }
 
 class AddB extends System {
@@ -19,7 +15,7 @@ class AddB extends System {
 
   execute() {
     this.queries.entities.results.forEach((entity) => {
-      entity.addComponent(B, { value: 0 });
+      entity.addComponent(B);
     });
   }
 }
@@ -46,7 +42,7 @@ export default (count) => {
     .registerSystem(RemoveB);
 
   for (let i = 0; i < count; i++) {
-    world.createEntity().addComponent(A, { value: 0 });
+    world.createEntity().addComponent(A);
   }
 
   return () => {

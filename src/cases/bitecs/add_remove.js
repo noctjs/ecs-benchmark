@@ -1,40 +1,38 @@
-import { 
+import {
+  addComponent,
+  addEntity,
   createWorld,
   defineComponent,
   defineQuery,
-  defineSystem,
-  addComponent,
-  removeComponent,
-  addEntity,
-  Types,
   pipe,
+  removeComponent,
 } from "bitecs";
-
-const { i32 } = Types;
 
 export default (count) => {
   const world = createWorld();
 
-  const A = defineComponent({ value: i32 });
-  const B = defineComponent({ value: i32 });
+  const A = defineComponent();
+  const B = defineComponent();
 
   const queryA = defineQuery([A]);
-  const addB = defineSystem(world => {
+  const addB = (world) => {
     const ents = queryA(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       addComponent(world, B, eid);
     }
-  });
+    return world;
+  };
 
   const queryB = defineQuery([B]);
-  const removeB = defineSystem(world => {
+  const removeB = (world) => {
     const ents = queryB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       removeComponent(world, B, eid);
     }
-  })
+    return world;
+  };
 
   for (let i = 0; i < count; i++) {
     let eid = addEntity(world);

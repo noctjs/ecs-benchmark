@@ -1,10 +1,9 @@
-import { 
+import {
+  addComponent,
+  addEntity,
   createWorld,
   defineComponent,
   defineQuery,
-  defineSystem,
-  addComponent,
-  addEntity,
   pipe,
   Types,
 } from "bitecs";
@@ -21,45 +20,59 @@ export default (count) => {
   const E = defineComponent({ value: i32 });
 
   const queryA = defineQuery([A]);
-  const PACKED_A = defineSystem(world => {
+  const { value: valA } = A;
+  const PACKED_A = (world) => {
     const ents = queryA(world);
-    for (let i = 0; i < ents.length; i++) {
+    for (let i = 0, n = ents.length; i < n; i++) {
       const eid = ents[i];
-      A.value[eid] *= 2;
+      valA[eid] *= 2;
     }
-  });
+    return world;
+  };
+
   const queryB = defineQuery([B]);
-  const PACKED_B = defineSystem(world => {
+  const { value: valB } = B;
+  const PACKED_B = (world) => {
     const ents = queryB(world);
-    for (let i = 0; i < ents.length; i++) {
+    for (let i = 0, n = ents.length; i < n; i++) {
       const eid = ents[i];
-      B.value[eid] *= 2;
+      valB[eid] *= 2;
     }
-  });
+    return world;
+  };
+
   const queryC = defineQuery([C]);
-  const PACKED_C = defineSystem(world => {
+  const { value: valC } = C;
+  const PACKED_C = (world) => {
     const ents = queryC(world);
-    for (let i = 0; i < ents.length; i++) {
+    for (let i = 0, n = ents.length; i < n; i++) {
       const eid = ents[i];
-      C.value[eid] *= 2;
+      valC[eid] *= 2;
     }
-  });
+    return world;
+  };
+
   const queryD = defineQuery([D]);
-  const PACKED_D = defineSystem(world => {
+  const { value: valD } = D;
+  const PACKED_D = (world) => {
     const ents = queryD(world);
-    for (let i = 0; i < ents.length; i++) {
+    for (let i = 0, n = ents.length; i < n; i++) {
       const eid = ents[i];
-      D.value[eid] *= 2;
+      valD[eid] *= 2;
     }
-  });
+    return world;
+  };
+
   const queryE = defineQuery([E]);
-  const PACKED_E = defineSystem(world => {
+  const { value: valE } = E;
+  const PACKED_E = (world) => {
     const ents = queryE(world);
-    for (let i = 0; i < ents.length; i++) {
+    for (let i = 0, n = ents.length; i < n; i++) {
       const eid = ents[i];
-      E.value[eid] *= 2;
+      valE[eid] *= 2;
     }
-  });
+    return world;
+  };
 
   for (let i = 0; i < count; i++) {
     let e = addEntity(world);
@@ -70,15 +83,9 @@ export default (count) => {
     addComponent(world, E, e);
   }
 
-  const pipeline = pipe(
-    PACKED_A,
-    PACKED_B,
-    PACKED_C,
-    PACKED_D,
-    PACKED_E,
-  );
+  const pipeline = pipe(PACKED_A, PACKED_B, PACKED_C, PACKED_D, PACKED_E);
 
   return () => {
-    pipeline(world)
+    pipeline(world);
   };
 };

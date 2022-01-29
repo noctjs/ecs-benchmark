@@ -1,6 +1,6 @@
 import { World } from "picoes";
 
-const COMPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const COMPS = "abcdefghijklmnopqrstuvwxyz";
 
 function Box(value = 0) {
   this.value = value;
@@ -28,6 +28,10 @@ export default (count) => {
   return () => {
     world.each("data", ({ data }) => {
       data.value *= 2;
+    });
+
+    world.each("z", ({ z }) => {
+      z.value *= 2;
     });
   };
 };

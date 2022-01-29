@@ -1,4 +1,4 @@
-import makr from "makr";
+import { World } from "uecs";
 
 function A(value) {
   this.value = value;
@@ -21,20 +21,15 @@ function E(value) {
 }
 
 export default (count) => {
-  let em = makr(A, B, C, D, E);
+  let world = new World();
 
   for (let i = 0; i < count; i++) {
-    let e = em.create();
-    e.add(new A(0));
-    e.add(new B(0));
-    e.add(new C(0));
-    e.add(new D(0));
-    e.add(new E(0));
+    world.create(new A(0), new B(0), new C(0), new D(0), new E(0));
   }
 
   return () => {
-    for (let entity of em.query(A)) {
-      entity.get(A).value *= 2;
-    }
+    world.view(A).each((entity, a) => {
+      a.value *= 2;
+    });
   };
 };

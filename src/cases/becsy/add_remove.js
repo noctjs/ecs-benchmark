@@ -1,16 +1,12 @@
-import { System, Type, World } from "@lastolivegames/becsy/perf.js";
+import { System, World } from "@lastolivegames/becsy/perf.js";
 
 export default async (count) => {
   class A {
-    static schema = {
-      value: Type.int32,
-    };
+    static schema = {};
   }
 
   class B {
-    static schema = {
-      value: Type.int32,
-    };
+    static schema = {};
   }
 
   class AddB extends System {
@@ -18,7 +14,7 @@ export default async (count) => {
 
     execute() {
       for (const entity of this.entities.current) {
-        entity.add(B, { value: 0 });
+        entity.add(B);
       }
     }
   }
@@ -40,7 +36,7 @@ export default async (count) => {
   });
 
   for (let i = 0; i < count; i++) {
-    world.createEntity(A, { value: 0 });
+    world.createEntity(A);
   }
 
   return () => {

@@ -1,18 +1,11 @@
-import { performance } from "perf_hooks";
-import { parentPort, workerData } from "worker_threads";
+import { performance } from "node:perf_hooks";
+import { parentPort, workerData } from "node:worker_threads";
+import { pathToFileURL } from "node:url";
 
 // Load the function to bench
-let mod;
-try {
-  mod = await import(workerData.path);
-} catch {
-  let todo = new Error();
-  todo.message = "Not yet implemented";
-  todo.code = "TODO";
-  throw todo;
-}
-
-let setup = mod.default;
+let setup = await import(pathToFileURL(workerData.path)).then(
+  (module) => module.default
+);
 let fn = await setup(workerData.config);
 
 let cycle_n = 1;

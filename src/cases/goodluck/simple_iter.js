@@ -14,38 +14,68 @@ const HAS_C = 1 << 2;
 const HAS_D = 1 << 3;
 const HAS_E = 1 << 4;
 
-function A(value) {
+class A {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class B {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class C {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class D {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+class E {
+  constructor(value) {
+    this.value = value;
+  }
+}
+
+function a(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = { value };
+    world.A[entity] = new A(value);
   };
 }
 
-function B(value) {
+function b(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_B;
-    world.B[entity] = { value };
+    world.B[entity] = new B(value);
   };
 }
 
-function C(value) {
+function c(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_C;
-    world.C[entity] = { value };
+    world.C[entity] = new C(value);
   };
 }
 
-function D(value) {
+function d(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_D;
-    world.D[entity] = { value };
+    world.D[entity] = new D(value);
   };
 }
 
-function E(value) {
+function e(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_E;
-    world.E[entity] = { value };
+    world.E[entity] = new E(value);
   };
 }
 
@@ -53,10 +83,10 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, [A(0), B(1)]);
-    instantiate(world, [A(0), B(1), C(2)]);
-    instantiate(world, [A(0), B(1), C(2), D(3)]);
-    instantiate(world, [A(0), B(1), C(2), E(4)]);
+    instantiate(world, [a(0), b(1)]);
+    instantiate(world, [a(0), b(1), c(2)]);
+    instantiate(world, [a(0), b(1), c(2), d(3)]);
+    instantiate(world, [a(0), b(1), c(2), e(4)]);
   }
 
   const QUERY_AB = HAS_A | HAS_B;

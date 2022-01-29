@@ -12,8 +12,8 @@ export default function(n) {
   const q = ecs.createQuery(A)
   function sys() {
     const lA = A
-    for(let i = 0, l = q.archetypes.length; i < l; i++) {
-      const arch = q.archetypes[i].entities
+    for(let i = 0, l = q.length; i < l; i++) {
+      const arch = q[i]
       for(let j = 0, l = arch.length; j < l; j++) {
         lA[arch[j]] *= 2
       }
@@ -33,8 +33,6 @@ export default function(n) {
     ecs.addComponent(i, E)
     E[i] = 1
   }
-
-  sys()
 
   return () => {
     sys()

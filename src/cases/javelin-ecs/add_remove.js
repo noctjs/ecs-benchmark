@@ -2,16 +2,12 @@ import { createComponentType, createWorld, number, query } from "@javelin/ecs";
 
 const A = createComponentType({
   type: 0,
-  schema: {
-    value: number,
-  },
+  schema: {},
 });
 
 const B = createComponentType({
   type: 1,
-  schema: {
-    value: number,
-  },
+  schema: {},
 });
 
 export default (count) => {

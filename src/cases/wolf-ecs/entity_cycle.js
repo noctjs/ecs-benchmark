@@ -9,8 +9,8 @@ export default function(n) {
   const qA = ecs.createQuery(A)
   function create() {
     const lB = B
-    for(let i = 0, l = qA.archetypes.length; i < l; i++) {
-      const arch = qA.archetypes[i].entities
+    for(let i = 0, l = qA.length; i < l; i++) {
+      const arch = qA[i]
       for(let j = 0, l = arch.length; j < l; j++) {
         const id = ecs.createEntity()
         ecs.addComponent(id, lB)
@@ -22,8 +22,8 @@ export default function(n) {
 
   const qB = ecs.createQuery(B)
   function destroy() {
-    for(let i = 0, l = qB.archetypes.length; i < l; i++) {
-      const arch = qB.archetypes[i].entities
+    for(let i = 0, l = qB.length; i < l; i++) {
+      const arch = qB[i]
       for(let j = arch.length - 1; j >= 0; j--) {
         ecs.destroyEntity(arch[j])
       }

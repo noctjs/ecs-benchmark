@@ -1,10 +1,9 @@
-import { 
+import {
+  addComponent,
+  addEntity,
   createWorld,
   defineComponent,
   defineQuery,
-  defineSystem,
-  addComponent,
-  addEntity,
   pipe,
   Types,
 } from "bitecs";
@@ -20,37 +19,41 @@ export default (count) => {
   const D = defineComponent({ value: i32 });
   const E = defineComponent({ value: i32 });
 
-  const queryAB = defineQuery([A,B])
-  const systemAB = defineSystem(world => {
-    const ents = queryAB(world)
+  const queryAB = defineQuery([A, B]);
+  const systemAB = (world) => {
+    const ents = queryAB(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = A.value[eid];
       A.value[eid] = B.value[eid];
       B.value[eid] = x;
     }
-  });
+    return world;
+  };
 
-  const queryCD = defineQuery([C,D])
-  const systemCD = defineSystem(world => {
-    const ents = queryCD(world)
+  const queryCD = defineQuery([C, D]);
+  const systemCD = (world) => {
+    const ents = queryCD(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
       C.value[eid] = D.value[eid];
       D.value[eid] = x;
     }
-  });
-  const queryCE = defineQuery([C,E])
-  const systemCE = defineSystem(world => {
-    const ents = queryCE(world)
+    return world;
+  };
+
+  const queryCE = defineQuery([C, E]);
+  const systemCE = (world) => {
+    const ents = queryCE(world);
     for (let i = 0; i < ents.length; i++) {
       const eid = ents[i];
       const x = C.value[eid];
       C.value[eid] = E.value[eid];
       E.value[eid] = x;
     }
-  });
+    return world;
+  };
 
   for (let i = 0; i < count; i++) {
     let e1 = addEntity(world);
@@ -88,11 +91,7 @@ export default (count) => {
     E.value[e4] = 3;
   }
 
-  const pipeline = pipe(
-    systemAB,
-    systemCD,
-    systemCE,
-  );
+  const pipeline = pipe(systemAB, systemCD, systemCE);
 
   return () => {
     pipeline(world);

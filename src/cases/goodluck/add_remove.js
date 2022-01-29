@@ -8,10 +8,10 @@ class World extends WorldImpl {
 const HAS_A = 1 << 0;
 const HAS_B = 1 << 1;
 
-function A(value = 0) {
+function a(value) {
   return (world, entity) => {
     world.Signature[entity] |= HAS_A;
-    world.A[entity] = { value };
+    world.A[entity] = value;
   };
 }
 
@@ -19,21 +19,20 @@ export default (count) => {
   let world = new World();
 
   for (let i = 0; i < count; i++) {
-    instantiate(world, [A(0)]);
+    instantiate(world, [a(i)]);
   }
 
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === 0) {
         world.Signature[i] |= HAS_B;
-        world.B[i] = { value: 0 };
+        world.B[i] = i;
       }
     }
 
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_B) === HAS_B) {
         world.Signature[i] &= ~HAS_B;
-        world.B[i] = undefined;
       }
     }
   };

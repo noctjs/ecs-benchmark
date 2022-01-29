@@ -2,22 +2,23 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
-|     | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
-| --- | --: |--: |--: |--: |--: |--: |
-| becsy | 25,255 op/s | 24,249 op/s | 17,427 op/s | 45,495 op/s | 637 op/s | 3,847 op/s |
-| bitecs | 76,780 op/s | 68,638 op/s | 35,408 op/s | 141,930 op/s | 254 op/s | 1,066 op/s |
-| ecsy | 1,827 op/s | 1,902 op/s | 992 op/s | 5,538 op/s | 10 op/s | 216 op/s |
-| flock-ecs | 715 op/s | 1,085 op/s | 466 op/s | 2,154 op/s | 48 op/s | 5,940 op/s |
-| geotic | 8,665 op/s | 11,208 op/s | 4,587 op/s | 11,834 op/s | 6 op/s | 265 op/s |
-| goodluck | 12,528 op/s | 14,476 op/s | 9,711 op/s | 28,465 op/s | 3,635 op/s | 26,686 op/s |
-| javelin-ecs | TODO | TODO | TODO | TODO | TODO | TODO |
-| makr | 3,907 op/s | 3,274 op/s | 2,307 op/s | 8,483 op/s | 3,529 op/s | 8,545 op/s |
-| perform-ecs | 16,865 op/s | 14,345 op/s | 25,181 op/s | 8,150 op/s | 11 op/s | 65 op/s |
-| picoes | 6,981 op/s | 1,912 op/s | 1,188 op/s | 4,288 op/s | 493 op/s | 1,386 op/s |
-| tiny-ecs | 5,359 op/s | 5,318 op/s | 10,208 op/s | 16,305 op/s | 14 op/s | 291 op/s |
-| wolf-ecs | 88,996 op/s | 104,250 op/s | 55,283 op/s | 195,988 op/s | 1,070 op/s | 3,146 op/s |
+| op/s        | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
+| ----------- | -------: | -------: | ----------: | --------: | -----------: | ---------: |
+| becsy       |   74,770 |   95,250 |      25,063 |    57,351 |          331 |      7,654 |
+| bitecs      |  246,659 |  323,070 |      99,514 |   424,033 |          779 |      2,244 |
+| ecsy        |   13,118 |    7,324 |       3,019 |    19,249 |           29 |        935 |
+| geotic      |   34,457 |   42,450 |      27,108 |    46,177 |           27 |      1,003 |
+| goodluck    |   51,415 |   50,686 |      28,581 |    64,490 |       10,824 |    288,178 |
+| harmony-ecs |  296,847 |  301,924 |     124,312 |   470,393 |        1,941 |      4,056 |
+| javelin-ecs |   58,029 |   65,504 |      34,660 |    99,843 |          253 |      2,866 |
+| perform-ecs |   55,740 |   53,823 |      72,235 |    29,529 |           39 |        381 |
+| picoes      |   25,450 |    6,162 |       4,149 |    10,019 |        1,315 |      3,938 |
+| piecs       |  302,328 |  350,606 |     174,518 |   401,037 |       32,910 |     17,881 |
+| tiny-ecs    |   16,563 |   16,102 |      30,010 |    44,251 |           45 |        926 |
+| uecs        |   33,597 |   28,129 |      12,418 |     8,734 |          849 |      5,015 |
+| wolf-ecs    |  330,019 |  353,396 |     156,575 |   486,199 |        3,005 |     10,262 |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v15.12.0.
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.3.0.
 
 ## Frameworks
 
@@ -25,13 +26,14 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`@lastolivegames/becsy`](https://github.com/lastolivegames/becsy)
 - [`bitecs`](https://github.com/NateTheGreatt/bitecs)
 - [`ecsy`](https://github.com/ecsyjs/ecsy)
-- [`flock-ecs`](https://github.com/dannyfritz/flock-ecs)
+- [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
-- [`makr`](https://github.com/makrjs/makr)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
+- [`piecs`](https://github.com/sondresj/piecs)
 - [`tiny-ecs`](https://github.com/bvalosek/tiny-ecs)
+- [`uecs`](https://github.com/jprochazk/uecs)
 - [`wolf-ecs`](https://github.com/EnderShadow8/wolf-ecs)
 
 ## Benchmarks
@@ -74,7 +76,9 @@ This benchmark is designed to test how efficiently the ECS can run multiple inde
 This benchmark is designed to test how the ECS handles iteration through a fragmented dataset.
 
 - **Dataset:** 26 component types (`A` through `Z`), each with 100 entities plus a `Data` component.
-- **Test:** Iterate through all entities with a `Data` component and double its value.
+- **Test:**
+  - Iterate through all entities with a `Data` component and double its value.
+  - Iterate through all entities with a `Z` component and double its value.
 
 ### Entity Cycle
 
