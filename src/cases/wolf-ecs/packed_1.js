@@ -1,6 +1,6 @@
 import { ECS, types } from "wolf-ecs";
 
-export default (count) => {
+export default function (n) {
   const ecs = new ECS();
 
   const A = ecs.defineComponent(types.u32);
@@ -10,16 +10,17 @@ export default (count) => {
   const E = ecs.defineComponent(types.u32);
 
   const q = ecs.createQuery(A);
-  function sys(lA) {
-    for (let i = 0, l = q.archetypes.length; i < l; i++) {
-      const arch = q.archetypes[i].entities;
+  function sys() {
+    const lA = A;
+    for (let i = 0, l = q.length; i < l; i++) {
+      const arch = q[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         lA[arch[j]] *= 2;
       }
     }
   }
 
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < n; i++) {
     ecs.createEntity();
     ecs.addComponent(i, A);
     A[i] = 1;
@@ -34,6 +35,6 @@ export default (count) => {
   }
 
   return () => {
-    sys(A);
+    sys();
   };
-};
+}

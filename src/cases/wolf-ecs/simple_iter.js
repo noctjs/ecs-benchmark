@@ -1,6 +1,6 @@
 import { ECS, types } from "wolf-ecs";
 
-export default (count) => {
+export default function (n) {
   const ecs = new ECS();
 
   const A = ecs.defineComponent(types.u32);
@@ -13,9 +13,11 @@ export default (count) => {
   const qCD = ecs.createQuery(C, D);
   const qCE = ecs.createQuery(C, E);
 
-  function sysAB(lA, lB) {
-    for (let i = 0, l = qAB.archetypes.length; i < l; i++) {
-      const arch = qAB.archetypes[i].entities;
+  function sysAB() {
+    const lA = A;
+    const lB = B;
+    for (let i = 0, l = qAB.length; i < l; i++) {
+      const arch = qAB[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         const temp = lA[arch[j]];
         lA[arch[j]] = lB[arch[j]];
@@ -24,9 +26,11 @@ export default (count) => {
     }
   }
 
-  function sysCD(lC, lD) {
-    for (let i = 0, l = qCD.archetypes.length; i < l; i++) {
-      const arch = qCD.archetypes[i].entities;
+  function sysCD() {
+    const lC = C;
+    const lD = D;
+    for (let i = 0, l = qCD.length; i < l; i++) {
+      const arch = qCD[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         const temp = lC[arch[j]];
         lC[arch[j]] = lD[arch[j]];
@@ -35,9 +39,11 @@ export default (count) => {
     }
   }
 
-  function sysCE(lC, lE) {
-    for (let i = 0, l = qCE.archetypes.length; i < l; i++) {
-      const arch = qCE.archetypes[i].entities;
+  function sysCE() {
+    const lC = C;
+    const lE = E;
+    for (let i = 0, l = qCE.length; i < l; i++) {
+      const arch = qCE[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         const temp = lC[arch[j]];
         lC[arch[j]] = lE[arch[j]];
@@ -46,7 +52,7 @@ export default (count) => {
     }
   }
 
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < n; i++) {
     const ab = ecs.createEntity();
     ecs.addComponent(ab, A);
     ecs.addComponent(ab, B);
@@ -70,8 +76,8 @@ export default (count) => {
   }
 
   return () => {
-    sysAB(A, B);
-    sysCD(C, D);
-    sysCE(C, E);
+    sysAB();
+    sysCD();
+    sysCE();
   };
-};
+}

@@ -26,6 +26,7 @@ const BENCHMARKS = {
   frag_iter: 100,
   entity_cycle: 1_000,
   add_remove: 1_000,
+  query_stress: 100,
 };
 
 let libraries = [];

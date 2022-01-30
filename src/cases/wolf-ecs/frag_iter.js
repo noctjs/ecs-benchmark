@@ -1,6 +1,6 @@
 import { ECS, types } from "wolf-ecs";
 
-export default (count) => {
+export default function (n) {
   const ecs = new ECS();
 
   const cmps = [];
@@ -12,26 +12,26 @@ export default (count) => {
   const data = ecs.defineComponent(types.i32);
 
   const dataQuery = ecs.createQuery(data);
-  function dataSystem(lData) {
-    for (let i = 0, l = dataQuery.archetypes.length; i < l; i++) {
-      const arch = dataQuery.archetypes[i].entities;
+  function dataSystem() {
+    for (let i = 0, l = dataQuery.length; i < l; i++) {
+      const arch = dataQuery[i];
       for (let j = 0, l = arch.length; j < l; j++) {
-        lData[arch[j]] *= 2;
+        data[arch[j]] *= 2;
       }
     }
   }
 
   const zQuery = ecs.createQuery(z);
-  function zSystem(lZ) {
-    for (let i = 0, l = zQuery.archetypes.length; i < l; i++) {
-      const arch = zQuery.archetypes[i].entities;
+  function zSystem() {
+    for (let i = 0, l = zQuery.length; i < l; i++) {
+      const arch = zQuery[i];
       for (let j = 0, l = arch.length; j < l; j++) {
-        lZ[arch[j]] *= 2;
+        z[arch[j]] *= 2;
       }
     }
   }
 
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < n; i++) {
     for (let i = 0; i < cmps.length; i++) {
       const id = ecs.createEntity();
       ecs.addComponent(id, cmps[i]);
@@ -42,7 +42,7 @@ export default (count) => {
   }
 
   return () => {
-    dataSystem(data);
-    zSystem(z);
+    dataSystem();
+    zSystem();
   };
-};
+}
