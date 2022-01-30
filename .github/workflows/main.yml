@@ -3,11 +3,21 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
+      - uses: actions/checkout@v2
       - run: npm ci
       - run: npm run check-format
-      - run: npm run start
+  bench-obj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run start -- @obj
+  bench-soa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run start -- @soa
