@@ -32,7 +32,6 @@ export default (count) => {
     for (const [entities, [a]] of qa) {
       for (let i = 0; i < entities.length; i++) {
         world.spawn(world.component(B, a[i].value));
-        world.spawn(world.component(B, a[i].value));
       }
     }
   });

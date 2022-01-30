@@ -19,9 +19,9 @@ class SpawnB extends System {
 
   execute() {
     this.queries.entities.results.forEach((entity) => {
-      let value = entity.getComponent(A).value;
-      this.world.createEntity().addComponent(B, { value });
-      this.world.createEntity().addComponent(B, { value });
+      this.world.createEntity().addComponent(B, {
+        value: entity.getComponent(A).value,
+      });
     });
   }
 }

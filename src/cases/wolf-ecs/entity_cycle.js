@@ -1,4 +1,4 @@
-import { ECS, types } from "wolf-ecs";
+import { ECS } from "wolf-ecs";
 
 export default (count) => {
   const ecs = new ECS();
@@ -11,10 +11,7 @@ export default (count) => {
     for (let i = 0, l = qA.archetypes.length; i < l; i++) {
       const arch = qA.archetypes[i].entities;
       for (let j = 0, l = arch.length; j < l; j++) {
-        const id1 = ecs.createEntity();
-        ecs.addComponent(id1, lB);
-        const id2 = ecs.createEntity();
-        ecs.addComponent(id2, lB);
+        ecs.addComponent(ecs.createEntity(), lB);
       }
     }
   }

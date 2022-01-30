@@ -29,7 +29,6 @@ class SpawnB extends System {
   update() {
     for (let entity of this.view.entities) {
       this.ecs.createEntity([{ component: B, args: [entity.a] }]);
-      this.ecs.createEntity([{ component: B, args: [entity.a] }]);
     }
   }
 }

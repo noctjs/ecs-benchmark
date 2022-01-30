@@ -14,7 +14,6 @@ export default function createEntityCycle(count) {
         function spawnBs(entities, world) {
           for (let i = 0, l = entities.length; i < l; i++) {
             world.createEntity(prefabB);
-            world.createEntity(prefabB);
           }
         },
         (q) => q.every(A)

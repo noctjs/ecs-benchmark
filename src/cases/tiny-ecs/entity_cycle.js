@@ -19,9 +19,7 @@ export default (count) => {
 
   return () => {
     for (let entity of ecs.queryComponents([A])) {
-      let value = entity.a.value;
-      ecs.createEntity().addComponent(B).value = value;
-      ecs.createEntity().addComponent(B).value = value;
+      ecs.createEntity().addComponent(B).value = entity.a.value;
     }
 
     for (let entity of ecs.queryComponents([B])) {

@@ -2,23 +2,30 @@
 
 A suite of benchmarks designed to test and compare JavaScript ECS library performance across a variety of challenging circumstances.
 
+**SoA implementations**
+
 | op/s        | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
 | ----------- | -------: | -------: | ----------: | --------: | -----------: | ---------: |
-| becsy       |   74,770 |   95,250 |      25,063 |    57,351 |          331 |      7,654 |
-| bitecs      |  246,659 |  323,070 |      99,514 |   424,033 |          779 |      2,244 |
-| ecsy        |   13,118 |    7,324 |       3,019 |    19,249 |           29 |        935 |
-| geotic      |   34,457 |   42,450 |      27,108 |    46,177 |           27 |      1,003 |
-| goodluck    |   51,415 |   50,686 |      28,581 |    64,490 |       10,824 |    288,178 |
-| harmony-ecs |  296,847 |  301,924 |     124,312 |   470,393 |        1,941 |      4,056 |
-| javelin-ecs |   58,029 |   65,504 |      34,660 |    99,843 |          253 |      2,866 |
-| perform-ecs |   55,740 |   53,823 |      72,235 |    29,529 |           39 |        381 |
-| picoes      |   25,450 |    6,162 |       4,149 |    10,019 |        1,315 |      3,938 |
-| piecs       |  302,328 |  350,606 |     174,518 |   401,037 |       32,910 |     17,881 |
-| tiny-ecs    |   16,563 |   16,102 |      30,010 |    44,251 |           45 |        926 |
-| uecs        |   33,597 |   28,129 |      12,418 |     8,734 |          849 |      5,015 |
-| wolf-ecs    |  330,019 |  353,396 |     156,575 |   486,199 |        3,005 |     10,262 |
+| bitecs      |  259,306 |  328,481 |     109,926 |   438,962 |        1,697 |      2,333 |
+| harmony-ecs |  317,302 |  311,319 |     131,833 |   483,519 |        4,278 |      4,152 |
+| piecs       |  361,401 |  373,020 |     186,534 |   455,730 |       63,648 |     20,633 |
+| wolf-ecs    |  364,235 |  378,423 |     169,555 |   525,270 |        5,880 |      9,856 |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.3.0.
+**Object-based implementations**
+
+| op/s        | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
+| ----------- | -------: | -------: | ----------: | --------: | -----------: | ---------: |
+| becsy       |   78,738 |  102,034 |      28,640 |    60,945 |          682 |      9,003 |
+| ecsy        |   14,656 |    7,964 |       4,562 |    22,156 |          107 |        996 |
+| geotic      |   35,785 |   43,397 |      29,146 |    48,329 |          105 |      1,061 |
+| goodluck    |   48,004 |   53,413 |      30,671 |    71,558 |       26,408 |    278,057 |
+| javelin-ecs |   53,673 |   62,704 |      34,157 |   114,460 |          635 |      2,718 |
+| perform-ecs |   54,174 |   52,388 |      90,815 |    30,407 |          145 |        399 |
+| picoes      |   25,694 |    6,609 |       4,079 |    11,244 |        2,771 |      4,367 |
+| tiny-ecs    |   19,782 |   16,378 |      33,890 |    45,214 |          191 |      1,088 |
+| uecs        |   35,189 |   29,688 |      14,645 |     9,289 |        1,737 |      5,385 |
+
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.4.0.
 
 ## Frameworks
 
@@ -85,7 +92,7 @@ This benchmark is designed to test how the ECS handles iteration through a fragm
 This benchmark is designed to test the base cost of constructing and destroying entities into the ECS.
 
 - **Dataset:** 1,000 entities with a single `A` component.
-- **Test:** Iterate through all entities, and create 2 entities with a `B` component. Then iterate through all entities with a `B` component and destroy them.
+- **Test:** Iterate through all entities, and create 1 entity with a `B` component. Then iterate through all entities with a `B` component and destroy them.
 
 ### Add / Remove
 

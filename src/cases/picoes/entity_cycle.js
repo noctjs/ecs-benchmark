@@ -17,7 +17,6 @@ export default (count) => {
   return () => {
     world.each("a", (a) => {
       world.entity().set("b", a.value);
-      world.entity().set("b", a.value);
     });
 
     world.each("b", (_, entity) => {

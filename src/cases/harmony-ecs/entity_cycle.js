@@ -16,9 +16,7 @@ export default (count) => {
     for (let i = 0; i < qa.length; i++) {
       const [e, [a]] = qa[i];
       for (let j = 0; j < e.length; j++) {
-        const data = [a[j]];
-        Entity.make(world, type, data);
-        Entity.make(world, type, data);
+        Entity.make(world, type, [a[j]]);
       }
     }
     for (let i = 0; i < qb.length; i++) {

@@ -1,4 +1,4 @@
-import { WorldImpl, instantiate } from "goodluck";
+import { instantiate, WorldImpl } from "goodluck";
 
 class World extends WorldImpl {
   A = [];
@@ -44,9 +44,7 @@ export default (count) => {
   return () => {
     for (let i = 0; i < world.Signature.length; i++) {
       if ((world.Signature[i] & HAS_A) === HAS_A) {
-        let value = world.A[i].value;
-        instantiate(world, [b(value)]);
-        instantiate(world, [b(value)]);
+        instantiate(world, [b(world.A[i].value)]);
       }
     }
 

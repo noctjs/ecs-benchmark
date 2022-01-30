@@ -18,7 +18,6 @@ export default (count) => {
   return () => {
     world.view(A).each((entity, a) => {
       world.create(new B(a.value));
-      world.create(new B(a.value));
     });
 
     world.view(B).each((entity) => {

@@ -20,9 +20,9 @@ export default (count) => {
 
   return () => {
     for (let entity of with_a.get()) {
-      let value = entity.a.value;
-      world.createEntity().add(B, { value });
-      world.createEntity().add(B, { value });
+      world.createEntity().add(B, {
+        value: entity.a.value,
+      });
     }
 
     for (let entity of with_b.get()) {

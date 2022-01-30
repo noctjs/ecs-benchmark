@@ -21,13 +21,9 @@ export default (count) => {
   const spawnB = (world) => {
     const ents = queryA(world);
     for (let i = 0; i < ents.length; i++) {
-      const eid = ents[i];
-      const eidA = addEntity(world);
-      const eidB = addEntity(world);
-      addComponent(world, B, eidA);
-      addComponent(world, B, eidB);
-      B.value[eidA] = A.value[eid];
-      B.value[eidB] = A.value[eid];
+      const eid = addEntity(world);
+      addComponent(world, B, eid);
+      B.value[eid] = A.value[ents[i]];
     }
     return world;
   };

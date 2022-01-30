@@ -18,9 +18,9 @@ export default async (count) => {
 
     execute() {
       for (const entity of this.entities.current) {
-        const value = entity.read(A).value;
-        this.createEntity(B, { value });
-        this.createEntity(B, { value });
+        this.createEntity(B, {
+          value: entity.read(A).value,
+        });
       }
     }
   }
