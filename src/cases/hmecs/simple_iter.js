@@ -4,19 +4,19 @@ export default async (count) => {
   const ecs = createECS();
 
   for (let i = 0; i < count; i++) {
-    ecs.addComponent({ A: 1, B: 1 });
+    ecs.addEntity({ A: 1, B: 1 });
   }
 
   for (let i = 0; i < count; i++) {
-    ecs.addComponent({ A: 1, B: 1, C: 1 });
+    ecs.addEntity({ A: 1, B: 1, C: 1 });
   }
 
   for (let i = 0; i < count; i++) {
-    ecs.addComponent({ A: 1, B: 1, C: 1, D: 1 });
+    ecs.addEntity({ A: 1, B: 1, C: 1, D: 1 });
   }
 
   for (let i = 0; i < count; i++) {
-    ecs.addComponent({ A: 1, B: 1, C: 1, E: 1 });
+    ecs.addEntity({ A: 1, B: 1, C: 1, E: 1 });
   }
 
   ecs.flush();
