@@ -17,5 +17,7 @@ export default async (count) => {
     for (const entity of ecs.entities) {
       ecs.removeComponent(entity, "B");
     }
+
+    ecs.flush();
   };
 };
