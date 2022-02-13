@@ -13,8 +13,8 @@ export default (count) => {
 
   const dataQuery = ecs.createQuery(data);
   function dataSystem(lData) {
-    for (let i = 0, l = dataQuery.archetypes.length; i < l; i++) {
-      const arch = dataQuery.archetypes[i].entities;
+    for (let i = 0, l = dataQuery.length; i < l; i++) {
+      const arch = dataQuery[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         lData[arch[j]] *= 2;
       }
@@ -23,8 +23,8 @@ export default (count) => {
 
   const zQuery = ecs.createQuery(z);
   function zSystem(lZ) {
-    for (let i = 0, l = zQuery.archetypes.length; i < l; i++) {
-      const arch = zQuery.archetypes[i].entities;
+    for (let i = 0, l = zQuery.length; i < l; i++) {
+      const arch = zQuery[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         lZ[arch[j]] *= 2;
       }

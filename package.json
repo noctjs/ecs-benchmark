@@ -19,7 +19,7 @@
     "piecs": "0.4.0",
     "tiny-ecs": "2.0.0",
     "uecs": "0.4.2",
-    "wolf-ecs": "2.1.1"
+    "wolf-ecs": "2.1.2"
   },
   "devDependencies": {
     "@types/node": "^16.9.1",

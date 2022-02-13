@@ -8,8 +8,8 @@ export default (count) => {
 
   const qA = ecs.createQuery(A);
   function create(lB) {
-    for (let i = 0, l = qA.archetypes.length; i < l; i++) {
-      const arch = qA.archetypes[i].entities;
+    for (let i = 0, l = qA.length; i < l; i++) {
+      const arch = qA[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         ecs.addComponent(ecs.createEntity(), lB);
       }
@@ -18,8 +18,8 @@ export default (count) => {
 
   const qB = ecs.createQuery(B);
   function destroy() {
-    for (let i = 0, l = qB.archetypes.length; i < l; i++) {
-      const arch = qB.archetypes[i].entities;
+    for (let i = 0, l = qB.length; i < l; i++) {
+      const arch = qB[i];
       for (let j = arch.length - 1; j >= 0; j--) {
         ecs.destroyEntity(arch[j]);
       }
