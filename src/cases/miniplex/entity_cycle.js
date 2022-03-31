@@ -14,7 +14,8 @@ export default (count) => {
       ecs.createEntity({ B: 1 });
     }
 
-    for (const entity in withB.entities) {
+    for (let i = withB.entities.length; i > 0; i--) {
+      const entity = withB.entities[i - 1];
       ecs.destroyEntity(entity);
     }
   };
