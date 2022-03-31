@@ -10,7 +10,7 @@ export default async (count) => {
   const withA = ecs.archetype("A");
 
   return () => {
-    for (const entity of ecs.get(withA)) {
+    for (const entity of withA.entities) {
       entity.A *= 2;
     }
   };

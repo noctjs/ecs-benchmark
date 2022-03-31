@@ -13,11 +13,11 @@ export default async (count) => {
   const withData = ecs.archetype("Data");
 
   return () => {
-    for (const entity of ecs.get(withZ)) {
+    for (const entity of withZ.entities) {
       entity.Z *= 2;
     }
 
-    for (const entity of ecs.get(withData)) {
+    for (const entity of withData.entities) {
       entity.Data *= 2;
     }
   };

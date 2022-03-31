@@ -14,23 +14,23 @@ export default async (count) => {
   const withE = ecs.archetype("E");
 
   return () => {
-    for (const entity of ecs.get(withA)) {
+    for (const entity of withA.entities) {
       entity.A *= 2;
     }
 
-    for (const entity of ecs.get(withB)) {
+    for (const entity of withB.entities) {
       entity.B *= 2;
     }
 
-    for (const entity of ecs.get(withC)) {
+    for (const entity of withC.entities) {
       entity.C *= 2;
     }
 
-    for (const entity of ecs.get(withD)) {
+    for (const entity of withD.entities) {
       entity.D *= 2;
     }
 
-    for (const entity of ecs.get(withE)) {
+    for (const entity of withE.entities) {
       entity.E *= 2;
     }
   };

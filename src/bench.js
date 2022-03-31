@@ -7,6 +7,7 @@ const OBJ = "obj";
 const SOA = "soa";
 
 const LIBRARIES = [
+  { kind: OBJ, name: "miniplex" },
   { kind: SOA, name: "bitecs" },
   { kind: SOA, name: "harmony-ecs" },
   { kind: SOA, name: "piecs" },
@@ -20,7 +21,6 @@ const LIBRARIES = [
   { kind: OBJ, name: "picoes" },
   { kind: OBJ, name: "tiny-ecs" },
   { kind: OBJ, name: "uecs" },
-  { kind: OBJ, name: "miniplex" },
 ];
 
 const BENCHMARKS = {
