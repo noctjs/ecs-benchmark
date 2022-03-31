@@ -36,6 +36,7 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 - [`harmony-ecs`](https://github.com/3mcd/harmony-ecs)
 - [`geotic`](https://github.com/ddmills/geotic)
 - [`goodluck`](https://github.com/piesku/goodluck)
+- [`miniplex`](https://github.com/hmans/miniplex)
 - [`perform-ecs`](https://github.com/fireveined/perform-ecs)
 - [`picoes`](https://github.com/ayebear/picoes)
 - [`piecs`](https://github.com/sondresj/piecs)
