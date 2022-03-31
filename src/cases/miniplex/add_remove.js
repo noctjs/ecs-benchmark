@@ -4,7 +4,7 @@ export default async (count) => {
   const ecs = new World();
 
   for (let i = 0; i < count; i++) {
-    ecs.addEntity({ A: true });
+    ecs.createEntity({ A: true });
   }
 
   return () => {

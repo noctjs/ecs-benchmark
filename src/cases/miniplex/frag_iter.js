@@ -5,7 +5,7 @@ export default async (count) => {
 
   Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").forEach((component) => {
     for (let i = 0; i < count; i++) {
-      ecs.addEntity({ [component]: 1, Data: 1 });
+      ecs.createEntity({ [component]: 1, Data: 1 });
     }
   });
 
