@@ -11,8 +11,8 @@ export default (count) => {
 
   const q = ecs.createQuery(A);
   function sys(lA) {
-    for (let i = 0, l = q.archetypes.length; i < l; i++) {
-      const arch = q.archetypes[i].entities;
+    for (let i = 0, l = q.length; i < l; i++) {
+      const arch = q[i];
       for (let j = 0, l = arch.length; j < l; j++) {
         lA[arch[j]] *= 2;
       }

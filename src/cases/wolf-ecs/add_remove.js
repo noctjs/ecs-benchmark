@@ -8,8 +8,8 @@ export default (count) => {
 
   const qA = ecs.createQuery(A);
   function add(lB) {
-    for (let i = 0; i < qA.archetypes.length; i++) {
-      const arch = qA.archetypes[i].entities;
+    for (let i = 0; i < qA.length; i++) {
+      const arch = qA[i];
       for (let j = arch.length - 1; j >= 0; j--) {
         ecs.addComponent(arch[j], lB);
       }
@@ -18,8 +18,8 @@ export default (count) => {
 
   const qB = ecs.createQuery(B);
   function remove(lB) {
-    for (let i = 0; i < qB.archetypes.length; i++) {
-      const arch = qB.archetypes[i].entities;
+    for (let i = 0; i < qB.length; i++) {
+      const arch = qB[i];
       for (let j = arch.length - 1; j >= 0; j--) {
         ecs.removeComponent(arch[j], lB);
       }
