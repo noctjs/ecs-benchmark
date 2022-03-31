@@ -1,13 +1,11 @@
-import { createECS } from "hmecs";
+import { World } from "miniplex";
 
 export default async (count) => {
-  const ecs = createECS();
+  const ecs = new World();
 
   for (let i = 0; i < count; i++) {
     ecs.addEntity({ A: 1 });
   }
-
-  ecs.flush();
 
   const withB = ecs.archetype("B");
 
@@ -16,12 +14,8 @@ export default async (count) => {
       ecs.addEntity({ B: 1 });
     }
 
-    ecs.flush();
-
     for (const entity in ecs.get(withB)) {
       ecs.removeEntity(entity);
     }
-
-    ecs.flush();
   };
 };

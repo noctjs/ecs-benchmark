@@ -1,15 +1,13 @@
-import { createECS } from "hmecs";
+import { World } from "miniplex";
 
 export default async (count) => {
-  const ecs = createECS();
+  const ecs = new World();
 
   Array.from("ABCDEFGHIJKLMNOPQRSTUVWXYZ").forEach((component) => {
     for (let i = 0; i < count; i++) {
       ecs.addEntity({ [component]: 1, Data: 1 });
     }
   });
-
-  ecs.flush();
 
   const withZ = ecs.archetype("Z");
   const withData = ecs.archetype("Data");

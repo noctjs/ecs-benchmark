@@ -14,7 +14,7 @@
     "geotic": "4.1.6",
     "goodluck": "7.0.0",
     "harmony-ecs": "0.0.12",
-    "hmecs": "^0.1.16",
+    "miniplex": "^0.8.1",
     "perform-ecs": "0.7.8",
     "picoes": "1.0.0",
     "piecs": "0.4.0",
