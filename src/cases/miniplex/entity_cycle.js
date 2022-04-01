@@ -7,10 +7,11 @@ export default (count) => {
     ecs.createEntity({ A: 1 });
   }
 
+  const withA = ecs.archetype("A");
   const withB = ecs.archetype("B");
 
   return () => {
-    for (let i = ecs.entities.length; i > 0; i--) {
+    for (const entity of withA.entities) {
       ecs.createEntity({ B: 1 });
     }
 
