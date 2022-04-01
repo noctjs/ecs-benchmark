@@ -25,15 +25,21 @@ export default async (count) => {
 
   return () => {
     for (const entity of withAB.entities) {
-      [entity.A, entity.B] = [entity.B, entity.A];
+      const temp = entity.A;
+      entity.A = entity.B;
+      entity.B = temp;
     }
 
     for (const entity of withCD.entities) {
-      [entity.C, entity.D] = [entity.D, entity.C];
+      const temp = entity.C;
+      entity.C = entity.D;
+      entity.D = temp;
     }
 
     for (const entity of withCE.entities) {
-      [entity.C, entity.E] = [entity.E, entity.C];
+      const temp = entity.C;
+      entity.C = entity.E;
+      entity.E = temp;
     }
   };
 };
