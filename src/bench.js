@@ -16,6 +16,7 @@ const LIBRARIES = [
   { kind: OBJ, name: "geotic" },
   { kind: OBJ, name: "goodluck" },
   { kind: OBJ, name: "javelin-ecs" },
+  { kind: OBJ, name: "miniplex" },
   { kind: OBJ, name: "perform-ecs" },
   { kind: OBJ, name: "picoes" },
   { kind: OBJ, name: "tiny-ecs" },
