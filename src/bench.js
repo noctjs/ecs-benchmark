@@ -24,7 +24,6 @@ const LIBRARIES = [
 ];
 
 const BENCHMARKS = {
-  packed_1: 5_000,
   packed_5: 1_000,
   simple_iter: 1_000,
   frag_iter: 100,

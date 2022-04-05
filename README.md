@@ -46,16 +46,9 @@ The best result for each benchmark is marked in bold text. Note that run to run 
 
 ## Benchmarks
 
-### Packed Iteration (1 query)
-
-This benchmark is designed to test the core overheads involved in component iteration in best-case conditions.
-
-- **Dataset:** 5,000 entities, each with `(A, B, C, D, E)` components.
-- **Test:** Iterate through all entities with `A` and double its value.
-
 ### Packed Iteration (5 queries)
 
-This benchmark is designed to test the core overheads involved in component iteration when multiple queries are run. The results are expected to match the ones from _Packed Iteration (1 query)_.
+This benchmark is designed to test the core overheads involved in component iteration when multiple queries are run.
 
 - **Dataset:** 1,000 entities, each with `(A, B, C, D, E)` components.
 - **Test:**
