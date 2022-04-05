@@ -4,28 +4,29 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 
 **SoA implementations**
 
-| op/s        | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
-| ----------- | -------: | -------: | ----------: | --------: | -----------: | ---------: |
-| bitecs      |  267,617 |  336,564 |     115,079 |   447,017 |        1,704 |      2,378 |
-| harmony-ecs |  322,344 |  315,090 |     131,084 |   487,506 |        4,279 |      4,136 |
-| piecs       |  359,421 |  373,086 |     178,521 |   472,741 |       64,130 |     20,752 |
-| wolf-ecs    |  369,404 |  367,648 |     166,334 |   544,661 |        2,521 |      3,964 |
+| op/s        | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
+| ----------- | -------: | ----------: | --------: | -----------: | ---------: |
+| bitecs      |  335,064 |     115,954 |   431,207 |        1,634 |      2,334 |
+| harmony-ecs |  313,278 |     132,026 |   489,903 |        4,040 |      4,194 |
+| piecs       |  364,652 |     177,269 |   470,904 |       64,075 |     20,649 |
+| wolf-ecs    |  378,471 |     165,951 |   535,362 |        2,597 |      3,913 |
 
 **Object-based implementations**
 
-| op/s        | packed_1 | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
-| ----------- | -------: | -------: | ----------: | --------: | -----------: | ---------: |
-| becsy       |   78,738 |  102,034 |      28,640 |    60,945 |          682 |      9,003 |
-| ecsy        |   14,656 |    7,964 |       4,562 |    22,156 |          107 |        996 |
-| geotic      |   35,785 |   43,397 |      29,146 |    48,329 |          105 |      1,061 |
-| goodluck    |   48,004 |   53,413 |      30,671 |    71,558 |       26,408 |    278,057 |
-| javelin-ecs |   53,673 |   62,704 |      34,157 |   114,460 |          635 |      2,718 |
-| perform-ecs |   54,174 |   52,388 |      90,815 |    30,407 |          145 |        399 |
-| picoes      |   25,694 |    6,609 |       4,079 |    11,244 |        2,771 |      4,367 |
-| tiny-ecs    |   19,782 |   16,378 |      33,890 |    45,214 |          191 |      1,088 |
-| uecs        |   35,189 |   29,688 |      14,645 |     9,289 |        1,737 |      5,385 |
+| op/s        | packed_5 | simple_iter | frag_iter | entity_cycle | add_remove |
+| ----------- | -------: | ----------: | --------: | -----------: | ---------: |
+| becsy       |  103,417 |      28,337 |    61,296 |          692 |      8,953 |
+| ecsy        |    7,822 |       4,822 |    24,537 |          120 |        975 |
+| geotic      |   45,957 |      29,631 |    49,482 |          106 |      1,099 |
+| goodluck    |   53,927 |      31,894 |    77,575 |       27,253 |    301,727 |
+| javelin-ecs |   65,990 |      38,474 |   121,207 |          656 |      3,286 |
+| miniplex    |  109,296 |      36,316 |    20,372 |          310 |      6,645 |
+| perform-ecs |   55,241 |      94,791 |    31,170 |          159 |        442 |
+| picoes      |    6,814 |       4,223 |    12,368 |        2,679 |      4,303 |
+| tiny-ecs    |   16,391 |      35,488 |    45,760 |          194 |      1,082 |
+| uecs        |   29,855 |      14,747 |     9,861 |        1,724 |      5,207 |
 
-The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.4.0.
+The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.8.0.
 
 ## Frameworks
 
