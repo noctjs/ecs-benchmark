@@ -26,6 +26,22 @@ A suite of benchmarks designed to test and compare JavaScript ECS library perfor
 | tiny-ecs    |   16,391 |      35,488 |    45,760 |          194 |      1,082 |
 | uecs        |   29,855 |      14,747 |     9,861 |        1,724 |      5,207 |
 
+**Code complexity (lines)**
+[('miniplex', 148),
+ ('picoes', 165),
+ ('uecs', 186),
+ ('harmony-ecs', 193),
+ ('tiny-ecs', 212),
+ ('geotic', 225),
+ ('wolf-ecs', 284),
+ ('piecs', 308),
+ ('javelin-ecs', 338),
+ ('bitecs', 343),
+ ('becsy', 354),
+ ('goodluck', 420),
+ ('ecsy', 424),
+ ('perform-ecs', 443)]
+
 The best result for each benchmark is marked in bold text. Note that run to run variance for these benchmarks is typically 1-4%. Any benchmarks within a few percent of each other should be considered “effectively equal”. The above benchmarks are run on node v17.8.0.
 
 ## Frameworks
